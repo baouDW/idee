@@ -72,6 +72,36 @@ class Manager
         
     }
 
+    public function getEntrepriseUserPosts($pseudo)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT id, title, content, author, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM entreprise WHERE author= ? ORDER BY creation_date DESC LIMIT 0, 5');
+            $req->execute(array($pseudo));
+
+        return $req;
+        
+    }
+
+    public function getPolitiqueUserPosts($pseudo)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT id, title, content, author, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM politique WHERE author= ? ORDER BY creation_date DESC LIMIT 0, 5');
+            $req->execute(array($pseudo));
+
+        return $req;
+        
+    }
+
+    public function getStoryUserPosts($pseudo)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT id, title, content, author, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM story WHERE author= ? ORDER BY creation_date DESC LIMIT 0, 5');
+            $req->execute(array($pseudo));
+
+        return $req;
+        
+    }
+
     public function getWorldPost($postId)
     {
         $db = $this->dbConnect();

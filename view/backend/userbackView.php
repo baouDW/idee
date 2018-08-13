@@ -224,9 +224,9 @@
                     <div class="col-sm-6">
 						<h2>Mes publications</h2>
 					</div>
-					<div class="col-sm-6">
+					<!-- <div class="col-sm-6">
 						<a href="./index.php?action=createView" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Ecrire un post</span></a>												
-					</div>
+					</div> -->
                 </div>
             </div>
             <table class="table table-striped table-hover">
@@ -240,8 +240,9 @@
                     </tr>
                 </thead>
                 <tbody>
+                	<!-- world posts -->
                 	<?php
-					while ($data = $req->fetch())
+					while ($data = $wposts->fetch())
 					{
 					?> 
 					<tr>
@@ -255,8 +256,65 @@
 					    
 					<?php
 					}
-					$req->closeCursor();
-					?>                   
+					$wposts->closeCursor();
+					?>     
+
+					<!-- entreprise posts -->
+					<?php
+					while ($edata = $eposts->fetch())
+					{
+					?> 
+					<tr>
+						<td class= "none">							
+						</td>
+                        <td><a href="index.php?id=<?= $edata['id'] ?>&action=entreprisepost"><?= $edata['title'] ?></td>
+                        <td><?= $edata['creation_date_fr'] ?></td>
+                        <td></td>				
+                        
+                    </tr>
+					    
+					<?php
+					}
+					$eposts->closeCursor();
+					?>  
+
+					<!-- politique posts -->
+					<?php
+					while ($pdata = $pposts->fetch())
+					{
+					?> 
+					<tr>
+						<td class= "none">							
+						</td>
+                        <td><a href="index.php?id=<?= $pdata['id'] ?>&action=politiquepost"><?= $pdata['title'] ?></td>
+                        <td><?= $pdata['creation_date_fr'] ?></td>
+                        <td></td>				
+                        
+                    </tr>
+					    
+					<?php
+					}
+					$pposts->closeCursor();
+					?> 
+
+					<!-- story posts -->
+					<?php
+					while ($sdata = $sposts->fetch())
+					{
+					?> 
+					<tr>
+						<td class= "none">							
+						</td>
+                        <td><a href="index.php?id=<?= $sdata['id'] ?>&action=storypost"><?= $sdata['title'] ?></td>
+                        <td><?= $sdata['creation_date_fr'] ?></td>
+                        <td></td>				
+                        
+                    </tr>
+					    
+					<?php
+					}
+					$sposts->closeCursor();
+					?> 
                 </tbody>
             </table>
 			

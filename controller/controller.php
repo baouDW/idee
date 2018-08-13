@@ -378,7 +378,10 @@ function adminaccess(){
 function useraccess(){
 	$manager = new Manager();
 	$pseudoo=$_SESSION['pseudo'];
-	$req= $manager->getWordlUserPosts($pseudoo);
+	$wposts= $manager->getWordlUserPosts($pseudoo);
+	$eposts= $manager->getEntrepriseUserPosts($pseudoo);
+	$pposts= $manager->getPolitiqueUserPosts($pseudoo);
+	$sposts= $manager->getStoryUserPosts($pseudoo);
 	require('./view/backend/userbackView.php');
 }
 
