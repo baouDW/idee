@@ -119,9 +119,27 @@ function addvidComment()
     }
 }
 
-function updateView(){
+function updateworldView(){
 	$manager = new Manager();
 	$post= $manager->getWorldPost($_GET['id']);
+	require('./view/backend/updateView.php');
+}
+
+function updateentrepriseView(){
+	$manager = new Manager();
+	$post= $manager->getEntreprisePost($_GET['id']);
+	require('./view/backend/updateView.php');
+}
+
+function updatepolitiqueView(){
+	$manager = new Manager();
+	$post= $manager->getPolitiquePost($_GET['id']);
+	require('./view/backend/updateView.php');
+}
+
+function updatestoryView(){
+	$manager = new Manager();
+	$post= $manager->getStoryPost($_GET['id']);
 	require('./view/backend/updateView.php');
 }
 
@@ -155,9 +173,27 @@ function createTheme(){
 	require('./view/backend/createthemeView.php');
 }
 
-function update(){
+function updateworld(){
 	$manager = new Manager();
 	$update= $manager->UptdatePost($_POST['titre'], $_POST['texte'], $_GET['id']);
+	header('Location: ./index.php?action=adminaccess');
+}
+
+function updateentreprise(){
+	$manager = new Manager();
+	$update= $manager->UptdateEntreprisePost($_POST['titre'], $_POST['texte'], $_GET['id']);
+	header('Location: ./index.php?action=adminaccess');
+}
+
+function updatepolitique(){
+	$manager = new Manager();
+	$update= $manager->UptdatePolitiquePost($_POST['titre'], $_POST['texte'], $_GET['id']);
+	header('Location: ./index.php?action=adminaccess');
+}
+
+function updatestory(){
+	$manager = new Manager();
+	$update= $manager->UptdateStoryPost($_POST['titre'], $_POST['texte'], $_GET['id']);
 	header('Location: ./index.php?action=adminaccess');
 }
 
@@ -185,9 +221,27 @@ function signalvidC(){
 	header('Location: ' . $_SERVER['HTTP_REFERER'] );
 }
 
-function delete(){
+function deletewolrd(){
 	$manager = new Manager();
-	$delete= $manager->deletePost($_GET['id']);
+	$delete= $manager->deleteWorldPost($_GET['id']);
+	header('Location: ./index.php?action=adminaccess');
+}
+
+function deleteentreprise(){
+	$manager = new Manager();
+	$delete= $manager->deleteEntreprisePost($_GET['id']);
+	header('Location: ./index.php?action=adminaccess');
+}
+
+function deletepolitique(){
+	$manager = new Manager();
+	$delete= $manager->deletePolitiquePost($_GET['id']);
+	header('Location: ./index.php?action=adminaccess');
+}
+
+function deletestory(){
+	$manager = new Manager();
+	$delete= $manager->deleteStoryPost($_GET['id']);
 	header('Location: ./index.php?action=adminaccess');
 }
 
@@ -207,15 +261,15 @@ function entreprisePost(){
 
 function politiquePost(){
 	$manager = new Manager();
-	$post= $manager->getEntreprisePost($_GET['id']);
-	$comments= $manager->getEntrepriseComments($_GET['id']);
+	$post= $manager->getPolitiquePost($_GET['id']);
+	$comments= $manager->getPolitiqueComments($_GET['id']);
 	require('./view/frontend/politiquePostView.php');
 }
 
 function storyPost(){
 	$manager = new Manager();
-	$post= $manager->getEntreprisePost($_GET['id']);
-	$comments= $manager->getEntrepriseComments($_GET['id']);
+	$post= $manager->getStoryPost($_GET['id']);
+	$comments= $manager->getStoryComments($_GET['id']);
 	require('./view/frontend/storyPostView.php');
 }
 
@@ -314,14 +368,17 @@ function login(){
 
 function adminaccess(){
 	$manager = new Manager();
-	$posts= $manager->getWorldPosts();
+	$wposts= $manager->getWorldPosts();
+	$eposts= $manager->getEntreprisePosts();
+	$pposts= $manager->getPolitiquePosts();
+	$sposts= $manager->getStoryPosts();
 	require('./view/backend/crudView.php');
 }
 
 function useraccess(){
 	$manager = new Manager();
 	$pseudoo=$_SESSION['pseudo'];
-	$req= $manager->getUserPosts($pseudoo);
+	$req= $manager->getWordlUserPosts($pseudoo);
 	require('./view/backend/userbackView.php');
 }
 

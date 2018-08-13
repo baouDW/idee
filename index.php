@@ -4,8 +4,21 @@ require('controller/controller.php');
 try{
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'suppr') {
-            delete();
+            deletewolrd();
         }
+
+        elseif ($_GET['action'] == 'supprentreprise') {
+            deleteentreprise();
+        }
+
+        elseif ($_GET['action'] == 'supprpolitique') {
+            deletepolitique();
+        }
+
+        elseif ($_GET['action'] == 'supprstory') {
+            deletestory();
+        }
+
         elseif ($_GET['action'] == 'comm') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 worldPosts();
@@ -14,6 +27,7 @@ try{
                 throw new Exception('Erreur : aucun identifiant de billet envoyé');
             }
         }
+
 
         elseif ($_GET['action'] == 'entreprisepost') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -95,7 +109,34 @@ try{
 
         elseif ($_GET['action'] == 'modif') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
-                update();
+                updateworld();
+            }
+            else {
+                throw new Exception('Erreur : aucun identifiant de billet envoyé');
+            }
+        }
+
+        elseif ($_GET['action'] == 'modifentreprise') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                updateentreprise();
+            }
+            else {
+                throw new Exception('Erreur : aucun identifiant de billet envoyé');
+            }
+        }
+
+        elseif ($_GET['action'] == 'modifpolitique') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                updatepolitique();
+            }
+            else {
+                throw new Exception('Erreur : aucun identifiant de billet envoyé');
+            }
+        }
+
+        elseif ($_GET['action'] == 'modifstory') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                updatestory();
             }
             else {
                 throw new Exception('Erreur : aucun identifiant de billet envoyé');
@@ -276,7 +317,22 @@ try{
             
         }
         elseif ($_GET['action'] == 'upview') {
-           updateView();        
+           updateworldView();        
+            
+        }
+
+        elseif ($_GET['action'] == 'upentrepriseview') {
+           updateentrepriseView();        
+            
+        }
+
+        elseif ($_GET['action'] == 'uppolitiqueview') {
+           updatepolitiqueView();        
+            
+        }
+
+        elseif ($_GET['action'] == 'upstoryview') {
+           updatestoryView();        
             
         }
 

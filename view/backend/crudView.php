@@ -243,8 +243,10 @@
                     </tr>
                 </thead>
                 <tbody>
+
+                	<!-- world posts -->
                 	<?php
-					while ($data = $posts->fetch())
+					while ($data = $wposts->fetch())
 					{
 					?> 
 					<tr>
@@ -268,8 +270,99 @@
 					    
 					<?php
 					}
-					$posts->closeCursor();
-					?>                   
+					$wposts->closeCursor();
+					?> 
+
+					<!-- entreprise posts -->
+
+					<?php
+					while ($edata = $eposts->fetch())
+					{
+					?> 
+					<tr>
+						<td class= "none">							
+						</td>
+                        <td>
+                        	<a href="index.php?id=<?= $edata['id'] ?>&action=entreprisepost"><?= $edata['title'] ?>
+                        </td>
+                        <td>
+                        	<?= $edata['creation_date_fr'] ?>                        		
+                        </td>
+                        <td>
+                        	<a href="index.php?action=commadmin&amp;id=<?= $edata['id'] ?>">Gerer les commentaires</a>
+                        </td>	
+                        <td><?= $edata['signalement'] ?></td>		
+                        <td>
+                            <a href="./index.php?action=upentrepriseview&id=<?= $edata['id'] ?>" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a href="index.php?id=<?= $edata['id'] ?>&action=supprentreprise" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        </td>
+                    </tr>
+					    
+					<?php
+					}
+					$eposts->closeCursor();
+					?>  
+
+					<!-- politique posts -->
+
+					<?php
+					while ($pdata = $pposts->fetch())
+					{
+					?> 
+					<tr>
+						<td class= "none">							
+						</td>
+                        <td>
+                        	<a href="index.php?id=<?= $pdata['id'] ?>&action=politiquepost"><?= $pdata['title'] ?>
+                        </td>
+                        <td>
+                        	<?= $pdata['creation_date_fr'] ?>                        		
+                        </td>
+                        <td>
+                        	<a href="index.php?action=commadmin&amp;id=<?= $pdata['id'] ?>">Gerer les commentaires</a>
+                        </td>	
+                        <td><?= $pdata['signalement'] ?></td>		
+                        <td>
+                            <a href="./index.php?action=uppolitiqueview&id=<?= $pdata['id'] ?>" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a href="index.php?id=<?= $pdata['id'] ?>&action=supprpolitique" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        </td>
+                    </tr>
+					    
+					<?php
+					}
+					$pposts->closeCursor();
+					?>   
+
+
+					<!-- story posts -->
+
+					<?php
+					while ($sdata = $sposts->fetch())
+					{
+					?> 
+					<tr>
+						<td class= "none">							
+						</td>
+                        <td>
+                        	<a href="index.php?id=<?= $sdata['id'] ?>&action=storypost"><?= $sdata['title'] ?>
+                        </td>
+                        <td>
+                        	<?= $sdata['creation_date_fr'] ?>                        		
+                        </td>
+                        <td>
+                        	<a href="index.php?action=commadmin&amp;id=<?= $sdata['id'] ?>">Gerer les commentaires</a>
+                        </td>	
+                        <td><?= $sdata['signalement'] ?></td>		
+                        <td>
+                            <a href="./index.php?action=upstoryview&id=<?= $sdata['id'] ?>" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a href="index.php?id=<?= $sdata['id'] ?>&action=supprstory" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        </td>
+                    </tr>
+					    
+					<?php
+					}
+					$sposts->closeCursor();
+					?>              
                 </tbody>
             </table>
 			

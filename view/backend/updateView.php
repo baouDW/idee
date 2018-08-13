@@ -7,7 +7,27 @@
   }
 </style>
 <div class="space">
+  <?php 
+  if ($_GET['action'] == 'upentrepriseview'){
+   ?> 
+    <form method="post" action="index.php?id=<?php echo $_GET['id'] ?>&action=modifentreprise">
+    <?php   
+  }elseif ($_GET['action'] == 'uppolitiqueview'){
+    ?>
+    <form method="post" action="index.php?id=<?php echo $_GET['id'] ?>&action=modifpolitique">
+   <?php 
+  }elseif ($_GET['action'] == 'upstoryview'){
+    ?>
+    <form method="post" action="index.php?id=<?php echo $_GET['id'] ?>&action=modifstory">
+   <?php 
+  }else{
+    ?>
     <form method="post" action="index.php?id=<?php echo $_GET['id'] ?>&action=modif">
+    <?php
+  }
+   ?>
+   
+    
         <p>
            <label for="titre">
           Titre

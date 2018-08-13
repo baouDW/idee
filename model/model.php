@@ -62,10 +62,10 @@ class Manager
     }
 */
 
-    public function getUserPosts($pseudo)
+    public function getWordlUserPosts($pseudo)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, title, content, author, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM texte WHERE author= ? ORDER BY creation_date DESC LIMIT 0, 5');
+        $req = $db->prepare('SELECT id, title, content, author, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM monde WHERE author= ? ORDER BY creation_date DESC LIMIT 0, 5');
             $req->execute(array($pseudo));
 
         return $req;
@@ -345,7 +345,40 @@ class Manager
     public function UptdatePost($title, $content, $id)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('UPDATE texte SET title = :nvtitle, content = :nvcontent WHERE id= :id');
+        $req = $db->prepare('UPDATE monde SET title = :nvtitle, content = :nvcontent WHERE id= :id');
+        $req->execute(array(
+        'nvtitle' => $title,
+        'nvcontent' => $content,
+        'id' => $id
+        ));    
+    }
+
+    public function UptdateEntreprisePost($title, $content, $id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('UPDATE entreprise SET title = :nvtitle, content = :nvcontent WHERE id= :id');
+        $req->execute(array(
+        'nvtitle' => $title,
+        'nvcontent' => $content,
+        'id' => $id
+        ));    
+    }
+
+    public function UptdatePolitiquePost($title, $content, $id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('UPDATE politique SET title = :nvtitle, content = :nvcontent WHERE id= :id');
+        $req->execute(array(
+        'nvtitle' => $title,
+        'nvcontent' => $content,
+        'id' => $id
+        ));    
+    }
+
+    public function UptdateStoryPost($title, $content, $id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('UPDATE story SET title = :nvtitle, content = :nvcontent WHERE id= :id');
         $req->execute(array(
         'nvtitle' => $title,
         'nvcontent' => $content,
@@ -400,10 +433,37 @@ class Manager
         ));    
     }
 
-    public function deletePost($id)
+    public function deleteWorldPost($id)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('DELETE FROM texte WHERE id= :id');
+        $req = $db->prepare('DELETE FROM monde WHERE id= :id');
+        $req->execute(array(
+        'id' => $id    
+        ));
+    }
+
+    public function deleteEntreprisePost($id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('DELETE FROM entreprise WHERE id= :id');
+        $req->execute(array(
+        'id' => $id    
+        ));
+    }
+
+    public function deletePolitiquePost($id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('DELETE FROM politique WHERE id= :id');
+        $req->execute(array(
+        'id' => $id    
+        ));
+    }
+
+    public function deleteStoryPost($id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('DELETE FROM story WHERE id= :id');
         $req->execute(array(
         'id' => $id    
         ));
