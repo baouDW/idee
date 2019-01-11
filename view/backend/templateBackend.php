@@ -36,6 +36,9 @@
   </div>
   <div class="menu-lat">
     <div class="contain-lateral">
+      <div class="item-lateral">
+        <a href="view/backend/profilView.php">Mon profil</a>
+      </div>
       <?php
       if (isset($_SESSION['pseudo']) && $_SESSION['pseudo'] == "admin" OR isset($_COOKIES['pseudo']) && $_COOKIES['pseudo'] == "admin")
       {

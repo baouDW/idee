@@ -222,7 +222,7 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
-						<h2>Mes publications</h2>
+						<h2>Mes publications </h2>
 					</div>
 					<!-- <div class="col-sm-6">
 						<a href="./index.php?action=createView" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Ecrire un post</span></a>												
@@ -240,6 +240,8 @@
                     </tr>
                 </thead>
                 <tbody>
+
+                	
                 	<!-- world posts -->
                 	<?php
 					while ($data = $wposts->fetch())
