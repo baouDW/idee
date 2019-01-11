@@ -131,22 +131,26 @@ function updatestoryView(){
 // crée les posts
 function createworldView(){
 	$manager = new Manager();
-	$posts= $manager->getWorldPosts();
+	$pseudoo=$_SESSION['pseudo'];
+	$posts= $manager->getWordlUserPosts($pseudoo);
 	require('./view/backend/createworldView.php');
 }
 function createentrepriseView(){
 	$manager = new Manager();
-	$posts= $manager->getEntreprisePosts();
+	$pseudoo=$_SESSION['pseudo'];
+	$posts= $manager->getEntrepriseUserPosts($pseudoo);
 	require('./view/backend/createentrepriseView.php');
 }
 function createpolitiqueView(){
 	$manager = new Manager();
-	$posts= $manager->getPolitiquePosts();
+	$pseudoo=$_SESSION['pseudo'];
+	$posts= $manager->getPolitiqueUserPosts($pseudoo);
 	require('./view/backend/createpolitiqueView.php');
 }
 function createstoryView(){
 	$manager = new Manager();
-	$posts= $manager->getStoryPosts();
+	$pseudoo=$_SESSION['pseudo'];
+	$posts= $manager->getStoryUserPosts($pseudoo);
 	require('./view/backend/createstoryView.php');
 }
 function createTheme(){
@@ -365,7 +369,7 @@ function adminaccess(){
 function useraccess(){
 	$manager = new Manager();
 	$pseudoo=$_SESSION['pseudo'];
-	$req= $manager->getUserPosts($pseudoo);
+	/*$req= $manager->getUserPosts($pseudoo);*/
 	$wposts= $manager->getWordlUserPosts($pseudoo);
 	$eposts= $manager->getEntrepriseUserPosts($pseudoo);
 	$pposts= $manager->getPolitiqueUserPosts($pseudoo);

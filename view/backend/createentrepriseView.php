@@ -39,7 +39,7 @@
        <p><input type="submit" name="ajouter" value="Ajouter un article"></p>
     </form>
 </div>
-<h2 class="space">Apercu des chapitres</h2>
+<h2 class="space">Mes publications précédentes</h2>
 <?php
 while ($data = $posts->fetch())
 {
