@@ -74,6 +74,31 @@ function addEntrepriseComment()
     	header('Location: ' . $_SERVER['HTTP_REFERER'] );
     }
 }
+
+function addPolitiqueComment()
+{
+	$manager = new Manager();
+    $affectedLines = $manager->politiquePostComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment']);
+    if ($affectedLines === false) {
+        throw new Exception('Impossible d\'ajouter le commentaire !');
+    }
+    else {
+    	header('Location: ' . $_SERVER['HTTP_REFERER'] );
+    }
+}
+
+function addStoryComment()
+{
+	$manager = new Manager();
+    $affectedLines = $manager->storyPostComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment']);
+    if ($affectedLines === false) {
+        throw new Exception('Impossible d\'ajouter le commentaire !');
+    }
+    else {
+    	header('Location: ' . $_SERVER['HTTP_REFERER'] );
+    }
+}
+
 function addthemeComment()
 {
 	$manager = new Manager();
@@ -190,16 +215,55 @@ function updatestory(){
 }
 
 //Signalements
-function signal(){
+
+function signalMonde(){
 	$manager = new Manager();
-	$Signalement= $manager->Signalement($_GET['id']);
+	$SignalementPost= $manager->SignalementMonde($_GET['id']);
 	header('Location: ' . $_SERVER['HTTP_REFERER'] );
 }
-function signalPost(){
+
+function signalWorldCo(){
 	$manager = new Manager();
-	$SignalementPost= $manager->SignalementPost($_GET['id']);
-	//header('Location: ' . $_SERVER['HTTP_REFERER'] );
+	$SignalementPost= $manager->SignalementWorldCom($_GET['id']);
+	header('Location: ' . $_SERVER['HTTP_REFERER'] );
 }
+
+function signalEntreprise(){
+	$manager = new Manager();
+	$SignalementPost= $manager->SignalementEntreprise($_GET['id']);
+	header('Location: ' . $_SERVER['HTTP_REFERER'] );
+}
+
+function signalEntrepriseCo(){
+	$manager = new Manager();
+	$SignalementPost= $manager->SignalementEntrepriseCom($_GET['id']);
+	header('Location: ' . $_SERVER['HTTP_REFERER'] );
+}
+
+function signalPolitique(){
+	$manager = new Manager();
+	$SignalementPost= $manager->SignalementPolitique($_GET['id']);
+	header('Location: ' . $_SERVER['HTTP_REFERER'] );
+}
+
+function signalPolitiqueCo(){
+	$manager = new Manager();
+	$SignalementPost= $manager->SignalementPolitiqueCom($_GET['id']);
+	header('Location: ' . $_SERVER['HTTP_REFERER'] );
+}
+
+function signalStory(){
+	$manager = new Manager();
+	$SignalementPost= $manager->SignalementStory($_GET['id']);
+	header('Location: ' . $_SERVER['HTTP_REFERER'] );
+}
+
+function signalStoryCo(){
+	$manager = new Manager();
+	$SignalementPost= $manager->SignalementStoryCom($_GET['id']);
+	header('Location: ' . $_SERVER['HTTP_REFERER'] );
+}
+
 function signalthemeC(){
 	$manager = new Manager();
 	$SignalemenThemeC= $manager->SignalThemeCom($_GET['id']);
@@ -254,14 +318,14 @@ function entreprisePost(){
 }
 function politiquePost(){
 	$manager = new Manager();
-	$post= $manager->getEntreprisePost($_GET['id']);
-	$comments= $manager->getEntrepriseComments($_GET['id']);
+	$post= $manager->getPolitiquePost($_GET['id']);
+	$comments= $manager->getPolitiqueComments($_GET['id']);
 	require('./view/frontend/politiquePostView.php');
 }
 function storyPost(){
 	$manager = new Manager();
-	$post= $manager->getEntreprisePost($_GET['id']);
-	$comments= $manager->getEntrepriseComments($_GET['id']);
+	$post= $manager->getStoryPost($_GET['id']);
+	$comments= $manager->getStoryComments($_GET['id']);
 	require('./view/frontend/storyPostView.php');
 }
 function themeV(){

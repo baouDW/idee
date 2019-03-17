@@ -64,26 +64,86 @@ try{
             videoView();
         }
 
-        elseif ($_GET['action'] == 'signal') {
+        
+        elseif ($_GET['action'] == 'signalMonde') {
             if (isset($_GET['id']))
             {
-                signal();
+                signalMonde();
             }
             else {
                 throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
             }
         }
 
-        elseif ($_GET['action'] == 'signalPost') {
+        elseif ($_GET['action'] == 'signalWorldCo') {
             if (isset($_GET['id']))
             {
-                signalPost();
+                signalWorldCo();
             }
             else {
                 throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
             }
         }
 
+        elseif ($_GET['action'] == 'signalEntreprise') {
+            if (isset($_GET['id']))
+            {
+                signalEntreprise();
+            }
+            else {
+                throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
+            }
+        }
+
+        elseif ($_GET['action'] == 'signalEntrepriseCo') {
+            if (isset($_GET['id']))
+            {
+                signalEntrepriseCo();
+            }
+            else {
+                throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
+            }
+        }
+
+        elseif ($_GET['action'] == 'signalPolitique') {
+            if (isset($_GET['id']))
+            {
+                signalPolitique();
+            }
+            else {
+                throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
+            }
+        }
+
+        elseif ($_GET['action'] == 'signalPolitiqueCo') {
+            if (isset($_GET['id']))
+            {
+                signalPolitiqueCo();
+            }
+            else {
+                throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
+            }
+        }
+
+        elseif ($_GET['action'] == 'signalStory') {
+            if (isset($_GET['id']))
+            {
+                signalStory();
+            }
+            else {
+                throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
+            }
+        }
+
+        elseif ($_GET['action'] == 'signalStoryCo') {
+            if (isset($_GET['id']))
+            {
+                signalStoryCo();
+            }
+            else {
+                throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
+            }
+        }
 
         elseif ($_GET['action'] == 'signalthemecomm') {
             if (isset($_GET['id']))
@@ -191,7 +251,7 @@ try{
             }
         }
 
-        elseif ($_GET['action'] == 'addComment') {
+        elseif ($_GET['action'] == 'addWorldComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['comment'])) {
                     addWorldComment();
@@ -209,6 +269,34 @@ try{
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['comment'])) {
                     addEntrepriseComment();
+                }
+                else {
+                    throw new Exception('Erreur : tous les champs ne sont pas remplis !');
+                }
+            }
+            else {
+                throw new Exception('Erreur : aucun identifiant de billet envoyé');
+            }
+        }
+
+        elseif ($_GET['action'] == 'addPolitiqueComment') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                if (!empty($_POST['comment'])) {
+                    addPolitiqueComment();
+                }
+                else {
+                    throw new Exception('Erreur : tous les champs ne sont pas remplis !');
+                }
+            }
+            else {
+                throw new Exception('Erreur : aucun identifiant de billet envoyé');
+            }
+        }
+
+        elseif ($_GET['action'] == 'addStoryComment') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                if (!empty($_POST['comment'])) {
+                    addStoryComment();
                 }
                 else {
                     throw new Exception('Erreur : tous les champs ne sont pas remplis !');

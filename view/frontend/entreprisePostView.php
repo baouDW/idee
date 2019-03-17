@@ -64,7 +64,7 @@ entreprise
                 <!-- <span class="avis-jaime">j'aime</span>
                 <span class="nbr-jaime"><?= $post['jaime']?></span> -->
               
-              <div class="avis-item"><a href="./index.php?action=signalPost&amp;id=<?= $post['id'] ?>">signaler</a></div>
+              <div class="avis-item"><a href="./index.php?action=signalEntreprise&amp;id=<?= $post['id'] ?>">signaler</a></div>
             </p>
           </div>
           <hr>
@@ -104,7 +104,7 @@ entreprise
             <div class="media-body">
               <h5 class="mt-0"><?= htmlspecialchars($comment['author']) ?></h5>
               <?= nl2br(htmlspecialchars($comment['comment'])) ?>
-            </div><a href="./index.php?action=signal&amp;id=<?= $comment['id'] ?>">Signaler</a>
+            </div><a href="./index.php?action=signalEntrepriseCo&amp;id=<?= $comment['id'] ?>">Signaler</a>
           </div>
             <?php
             }
