@@ -13,7 +13,7 @@ body
     <div class="container">
 
       <!-- Page Heading/Breadcrumbs -->
-      <h1 class="mt-4 mb-3">Les dernières idées entreprise
+      <h1 class="mt-4 mb-3">Les dernières idées politiques
       </h1>
 
       <ol class="breadcrumb">

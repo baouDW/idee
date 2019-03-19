@@ -14,7 +14,7 @@ $title = 'Accueil';
 
 <?php
 
-while ($data = $posts->fetch())
+while ($data = $theme->fetch())
 {
 ?>    
     <div class="post-preview">

@@ -21,7 +21,7 @@
       }
     </style>
     <div class="container">
-entreprise
+Politique
       <!-- Page Heading/Breadcrumbs -->
       <h1 class="mt-4 mb-3"><?= $post['title'] ?>
         <small>de
