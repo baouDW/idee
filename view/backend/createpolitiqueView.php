@@ -16,7 +16,7 @@
     </style>
 
 <?php ob_start(); ?>
-
+<h1>Ecrire une nouvelle idée politique</h1>
 <div class="space">
     <form method="post" action="index.php?action=insertpolitiquePost">
 

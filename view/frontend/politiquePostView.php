@@ -76,7 +76,7 @@ Politique
           <div class="card my-4">
             <h5 class="card-header">Ecrire un commentaire:</h5>
             <div class="card-body">
-              <form action="./index.php?action=addStoryComment&amp;id=<?= $post['id'] ?>" method="post">
+              <form action="./index.php?action=addPolitiqueComment&amp;id=<?= $post['id'] ?>" method="post">
                 <div class="form-group">
                   <textarea name="comment" id="comment" class="form-control" rows="3"></textarea>
                 </div>

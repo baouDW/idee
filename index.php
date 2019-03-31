@@ -345,6 +345,33 @@ try{
             }
         }
 
+        elseif ($_GET['action'] == 'entrepriseCommadmin') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                entrepriseCommentsAdmin();
+            }
+            else {
+                throw new Exception('erreur');
+            }
+        }
+
+        elseif ($_GET['action'] == 'politiqueCommadmin') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                politiqueCommentsAdmin();
+            }
+            else {
+                throw new Exception('erreur');
+            }
+        }
+
+        elseif ($_GET['action'] == 'storyCommadmin') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                storyCommentsAdmin();
+            }
+            else {
+                throw new Exception('erreur');
+            }
+        }
+
         elseif ($_GET['action'] == 'delcomm') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                delcomm();

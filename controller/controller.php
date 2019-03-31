@@ -345,6 +345,25 @@ function commentsAdmin(){
 	$comments= $manager->getWorldComments($_GET['id']);
 	require('./view/backend/commentView.php');
 }
+function entrepriseCommentsAdmin(){
+	$manager = new Manager();
+	$post= $manager->getEntreprisePost($_GET['id']);
+	$comments= $manager->getEntrepriseComments($_GET['id']);
+	require('./view/backend/commentView.php');
+}
+function politiqueCommentsAdmin(){
+	$manager = new Manager();
+	$post= $manager->getPolitiquePost($_GET['id']);
+	$comments= $manager->getPolitiqueComments($_GET['id']);
+	require('./view/backend/commentView.php');
+}
+function storyCommentsAdmin(){
+	$manager = new Manager();
+	$post= $manager->getStoryPost($_GET['id']);
+	$comments= $manager->getStoryComments($_GET['id']);
+	require('./view/backend/commentView.php');
+}
+
 function membreView(){
 	$manager = new Manager();
 	$user = $manager->getUser();

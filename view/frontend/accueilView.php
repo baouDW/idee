@@ -79,7 +79,7 @@ body
   padding: 10px 16px;
   background: transparent;
 }
-.carousel .nav .nav-item.active a {
+.carousel .nav .nav-item a:hover {
   color: #fff;
   background: #20b0b9;
 }
@@ -101,6 +101,7 @@ body
     }).on("slid.bs.carousel", function(e){
       if(!clickEvent){
         itemIndex = $(e.relatedTarget).index();
+        console.log(itemIndex);
         targetNavItem = $(".nav li[data-slide-to='" + itemIndex + "']");
         $(".nav li").not(targetNavItem).removeClass("active");
         targetNavItem.addClass("active");
@@ -120,19 +121,20 @@ body
         <div class="carousel-inner">
            
           <div class="item carousel-item active">
-            <img src="/examples/images/slides/tablet.jpg" alt="">
+            <img src="" alt="">
             <div class="carousel-caption">
-              <h3>Video du jour</h3>              
-              <p>Nullam hendrerit justo non leo aliquet imperdiet. Etiam sagittis lectus condime dapibus vitae.</p>
+              <h3>dernier scenario</h3>              
+                <p>Voir les derniers posts des utilisateurs, donnez votre avis ou reagissez.
+                </p>
             </div>
           </div>
           <div class="item carousel-item">
-            <img src="/examples/images/slides/workstation.jpg" alt="">
+            <img src="" alt="">
             <div class="carousel-caption">
             <?php
             while ($data = $theme->fetch())
             {
-            ?>      
+            ?>                  
               <h3>Theme du jour</h3>
               <p><?= nl2br($data['content']) ?></p>
             <?php
@@ -141,10 +143,16 @@ body
             </div>
           </div>
           <div class="item carousel-item">
-            <img src="/examples/images/slides/report.jpg" alt="">
+            <img src="" alt="">
             <div class="carousel-caption">
-
-              <h3>Dernière pensée</h3>
+              <h3>Dernière idée entreprise</h3>
+              <p>Voir les derniers posts des utilisateurs, donnez votre avis ou reagissez.</p>
+            </div>
+          </div>
+          <div class="item carousel-item">
+            <img src="" alt="">
+            <div class="carousel-caption">
+              <h3>Dernière idée politique</h3>
               <p>Voir les derniers posts des utilisateurs, donnez votre avis ou reagissez.</p>
             </div>
           </div>
@@ -152,8 +160,9 @@ body
         <!-- End Carousel Inner -->
         <ul class="nav nav-pills nav-justified">
           <li data-target="#myCarousel" data-slide-to="1" class="nav-item"><a href="#" class="nav-link"><strong>Theme du jour</strong> </a></li>
-          <li data-target="#myCarousel" data-slide-to="2" class="nav-item"><a href="#" class="nav-link"><strong>Derniere pensée</strong> </a></li>
-          <li data-target="#myCarousel" data-slide-to="3" class="nav-item"><a href="#" class="nav-link"><strong>Video du jour</strong> </a></li>
+          <li data-target="#myCarousel" data-slide-to="2" class="nav-item"><a href="#" class="nav-link"><strong>Derniere idée entreprise</strong> </a></li>
+          <li data-target="#myCarousel" data-slide-to="3" class="nav-item"><a href="#" class="nav-link"><strong>Derniere idée politique</strong> </a></li>
+          <li data-target="#myCarousel" data-slide-to="4" class="nav-item"><a href="#" class="nav-link"><strong>Derniere idée scenario</strong> </a></li>
         </ul>
       </div>
     </div>

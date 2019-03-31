@@ -259,7 +259,7 @@
                         	<?= $data['creation_date_fr'] ?>                        		
                         </td>
                         <td>
-                        	<a href="index.php?action=commadmin&amp;id=<?= $data['id'] ?>">Gerer les commentaires</a>
+                        	<a href="index.php?action=commadmin&amp;id=<?= $data['id'] ?>">Voir les commentaires</a>
                         </td>	
                         <td><?= $data['signalement'] ?></td>		
                         <td>
@@ -288,9 +288,11 @@
                         <td>
                         	<?= $edata['creation_date_fr'] ?>                        		
                         </td>
+                        
                         <td>
-                        	<a href="index.php?action=commadmin&amp;id=<?= $edata['id'] ?>">Gerer les commentaires</a>
-                        </td>	
+                        	<a href="index.php?action=entrepriseCommadmin&amp;id=<?= $edata['id'] ?>">Voir les commentaires</a>
+                        </td>
+                        
                         <td><?= $edata['signalement'] ?></td>		
                         <td>
                             <a href="./index.php?action=upentrepriseview&id=<?= $edata['id'] ?>" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
@@ -319,7 +321,7 @@
                         	<?= $pdata['creation_date_fr'] ?>                        		
                         </td>
                         <td>
-                        	<a href="index.php?action=commadmin&amp;id=<?= $pdata['id'] ?>">Gerer les commentaires</a>
+                        	<a href="index.php?action=politiqueCommadmin&amp;id=<?= $pdata['id'] ?>">Voir les commentaires</a>
                         </td>	
                         <td><?= $pdata['signalement'] ?></td>		
                         <td>
@@ -350,7 +352,7 @@
                         	<?= $sdata['creation_date_fr'] ?>                        		
                         </td>
                         <td>
-                        	<a href="index.php?action=commadmin&amp;id=<?= $sdata['id'] ?>">Gerer les commentaires</a>
+                        	<a href="index.php?action=storyCommadmin&amp;id=<?= $sdata['id'] ?>">Voir les commentaires</a>
                         </td>	
                         <td><?= $sdata['signalement'] ?></td>		
                         <td>
