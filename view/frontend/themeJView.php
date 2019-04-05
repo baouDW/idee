@@ -70,7 +70,7 @@ ob_start();
 			<div class="col-lg-12 ">commentaire
 				<form action="./index.php?action=addthemeComment&amp;id=<?= $data['id'] ?>" method="post">
 					<?php
-					$themeCom=$manager->getCommentsTheme($data['id']);
+					$themeCom=$commentmanager->getCommentsTheme($data['id']);
 					}
 					//$theme->closeCursor();
 					//$themeCom=$manager->getCommentsTheme($data['id']);

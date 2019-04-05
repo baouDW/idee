@@ -1,6 +1,7 @@
 <?php
+require_once("Managers.php");
 
-class Manager
+class Manager extends Managers
 {
 
 
@@ -44,13 +45,7 @@ class Manager
         return $req;
     }
 
-    public function getVidT()
-    {
-        $db = $this->dbConnect();
-        $req = $db->query('SELECT id, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM vidjour ORDER BY creation_date DESC LIMIT 0, 1');
-
-        return $req;
-    }
+    
 /*
     public function getUserPosts()
     {
@@ -198,27 +193,7 @@ class Manager
         return $comments;
     }
 
-    public function getCommentsVid($postId)
-    {
-        $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT id, author, comment, signalement, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM vidcomment WHERE post_id = ? ORDER BY comment_date DESC');
-        $comments->execute(array($postId));
-
-        return $comments;
-    }
-    /*public function postComment($postId, $author, $comment)
-    {
-        $db = $this->dbConnect();
-        $comments = $db->prepare('INSERT INTO commentaires (post_id, author, comment, comment_date) VALUES(:post_id, :author, :comment, NOW())');
-        $affectedLines = true;
-        $comments->execute(array(
-        'post_id' => $postId,
-        'author' => $author,   
-        'comment' => $comment  
-        ));
-        return $affectedLines;
-    }*/
-
+    
     public function worldPostComment($postId, $author, $comment)
     {
         $db = $this->dbConnect();
@@ -284,18 +259,7 @@ class Manager
         return $affectedLines;
     }
 
-    public function vidComment($postId, $author, $comment)
-    {
-        $db = $this->dbConnect();
-        $comments = $db->prepare('INSERT INTO `vidcomment` (`id`, `post_id`, `author`, `comment`, `comment_date`, `signalement`) VALUES (NULL, :post_id, :author, :comment, CURRENT_TIMESTAMP, "non")'); 
-        $affectedLines = true;
-        $comments->execute(array(
-        'post_id' => $postId,
-        'author' => $author,   
-        'comment' => $comment  
-        ));
-        return $affectedLines;
-    }
+    
 
     public function deleteComment($id)
     {
@@ -372,14 +336,6 @@ class Manager
         ));
     }
 
-    public function insertVidT($content)
-    {
-        $db = $this->dbConnect();
-        $req = $db->prepare('INSERT INTO `vidjour` (`id`, `content`, `creation_date`) VALUES (NULL, :content, CURRENT_TIMESTAMP)');
-        $req->execute(array(
-        'content' => $content   
-        ));
-    }
 
 
     public function UptdatePost($title, $content, $id)
@@ -508,14 +464,7 @@ public function SignalementEntreprise($id)
         ));    
     }
 
-    public function SignalVidCom($id)
-    {
-        $db = $this->dbConnect();
-        $req = $db->prepare('UPDATE vidcomment SET signalement = \'oui\' WHERE id= :id');
-        $req->execute(array(
-        'id' => $id
-        ));    
-    }
+    
 
 
     public function updateLike($nbrlikes, $id)
@@ -602,20 +551,6 @@ public function SignalementEntreprise($id)
         return $resultat;    
     }
 
-    private function dbConnect()
-    {
-        try
-        {
-            $db = new PDO('mysql:host=localhost;dbname=idee;charset=utf8', 'root', '');
-            return $db;
-        }
-        catch(Exception $e)
-        {
-            die('Erreur : '.$e->getMessage());
-        }
-    }
-
-
-
+    
 
 }
