@@ -41,7 +41,7 @@
        <p><input type="submit" name="ajouter" value="Ajouter un article"></p>
     </form>
 </div>
-<h2 class="space">Apercu des themes</h2>
+<h2 class="space">Apercu des themes écrit</h2>
 <?php
 while ($data = $theme->fetch())
 {

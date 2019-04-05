@@ -228,7 +228,7 @@
 						<a href="./index.php?action=createView" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Ecrire un post</span></a>												
 					</div> -->
                 </div>
-            </div>
+            </div>            
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>

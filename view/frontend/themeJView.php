@@ -83,7 +83,7 @@ ob_start();
 			</div>
 		</div>
 		<hr>
-
+          <div class="allcomment">
 		      <?php
           while ($comment = $themeCom->fetch())
           {
@@ -99,7 +99,7 @@ ob_start();
             <?php
             }
             ?>
-          
+          </div>
           
           
 <?php $content = ob_get_clean(); ?>

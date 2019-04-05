@@ -38,6 +38,14 @@ try{
             }
         }
 
+        elseif ($_GET['action'] == 'refreshEntreprisepost') {
+            //echo "<b>index</b>";
+            refreshEntreprisepost();             
+        }
+        
+        
+
+
         elseif ($_GET['action'] == 'politiquepost') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 politiquePost();

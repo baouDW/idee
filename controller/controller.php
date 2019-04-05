@@ -274,6 +274,8 @@ function signalvidC(){
 	$SignalemenVidC= $manager->SignalVidCom($_GET['id']);
 	header('Location: ' . $_SERVER['HTTP_REFERER'] );
 }
+
+//suppression de posts
 function delete(){
 	$manager = new Manager();
 	$delete= $manager->deletePost($_GET['id']);
@@ -304,6 +306,8 @@ function deletestory(){
 	header('Location: ./index.php?action=adminaccess');
 }
 
+
+
 function worldPosts(){
 	$manager = new Manager();
 	$post= $manager->getWorldPost($_GET['id']);
@@ -316,6 +320,24 @@ function entreprisePost(){
 	$comments= $manager->getEntrepriseComments($_GET['id']);
 	require('./view/frontend/entreprisePostView.php');
 }
+function refreshEntreprisePost(){
+	$manager = new Manager();
+	$rcomments= $manager->getEntrepriseComments(44);
+
+	while ($rcomment = $rcomments->fetch())
+        {          
+        echo 
+        "<div class=\"media mb-4\">
+        	<img class=\"d-flex mr-3 rounded-circle\" src=\"http://placehold.it/50x50\" alt=\"\">
+        	<div class=\"media-body\">
+        		<h5 class=\"mt-0\"/>". htmlspecialchars($rcomment['author'])."</h5></br>".
+        		nl2br(htmlspecialchars($rcomment['comment'])).
+        	"</div>
+        	<a class=signaler href=\"./index.php?action=signalEntrepriseCo&amp;id=". $rcomment['id']. "\">Signaler</a>
+        </div><hr>";
+    }	
+}
+
 function politiquePost(){
 	$manager = new Manager();
 	$post= $manager->getPolitiquePost($_GET['id']);

@@ -48,23 +48,13 @@
           <div class="avis">
             <p>
               <div class="avis-item"></div>
-                <div>
-                  <iframe src="http://www.facebook.com/plugins/like.php?href=http://localhost/projet5/index.php?id=39&action=comm/page.html&layout=box_count&show_faces=true&width=65&action=like&font=arial&colorscheme=light&height=65" 
-  scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:65px; height:65px; margin-top:3px;" allowTransparency="true"></iframe>
-                </div>
-                <div>
-                  <a href="http://twitter.com/share" class="twitter-share-button" 
-  data-count="vertical" data-via="InfoWebMaster">Tweet</a>
-<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-                </div>
+                
+                
 
-              <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
-{lang: 'fr'}
-</script>
-                <!-- <span class="avis-jaime">j'aime</span>
-                <span class="nbr-jaime"><?= $post['jaime']?></span> -->
               
-              <div class="avis-item"><a href="./index.php?action=signalMonde&amp;id=<?= $post['id'] ?>">signaler</a></div>
+              
+              <div class="avis-item"><a href="./index.php?action=signalMonde&amp;id=<?= $post['id'] ?>">signaler</a>
+              </div>
             </p>
           </div>
           <hr>
@@ -93,22 +83,24 @@
           <?php
           }
           ?>
-          
-          <?php
-          while ($comment = $comments->fetch())
-          {
-          ?>
-          <!-- Single Comment -->
-          <div class="media mb-4">
-            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-            <div class="media-body">
-              <h5 class="mt-0"><?= htmlspecialchars($comment['author']) ?></h5>
-              <?= nl2br(htmlspecialchars($comment['comment'])) ?>
-            </div><a href="./index.php?action=signalWorldCo&amp;id=<?= $comment['id'] ?>">Signaler</a>
-          </div>
+
+          <div class="allcomment">
             <?php
-            }
+            while ($comment = $comments->fetch())
+            {
             ?>
+            <!-- Single Comment -->
+            <div class="media mb-4">
+              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+              <div class="media-body">
+                <h5 class="mt-0"><?= htmlspecialchars($comment['author']) ?></h5>
+                <?= nl2br(htmlspecialchars($comment['comment'])) ?>
+              </div><a href="./index.php?action=signalWorldCo&amp;id=<?= $comment['id'] ?>">Signaler</a>
+            </div>
+              <?php
+              }
+              ?>
+          </div>
             <?php $content = ob_get_clean(); ?>
             
             <?php require('templateFront.html'); ?>

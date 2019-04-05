@@ -19,7 +19,7 @@
   <div class="contain">
     <div class="menu-back">
       <a href="index.php" class="item-menu-back">pense le monde</a>
-      <em class="">
+      <em class="bjr">
         Bonjour <?php
         if (isset($_COOKIE['pseudo'])){
                   echo $_COOKIE['pseudo'];
@@ -55,16 +55,16 @@
       }
       ?>
       <div class="item-lateral">
-        <a href="./index.php?action=createworldView">Ecrire un world</a>
+        <a href="./index.php?action=createworldView">Ecrire une idée world</a>
       </div>
       <div class="item-lateral">
-        <a href="./index.php?action=createentrepriseView">Ecrire un entreprise</a>
+        <a href="./index.php?action=createentrepriseView">Ecrire une idée d'entreprise</a>
       </div>
       <div class="item-lateral">
-        <a href="./index.php?action=createpolitiqueView">Ecrire un politique</a>
+        <a href="./index.php?action=createpolitiqueView">Ecrire une idée politique</a>
       </div>
       <div class="item-lateral">
-        <a href="./index.php?action=createstoryView">Ecrire un story</a>
+        <a href="./index.php?action=createstoryView">Ecrire une idée d'histoire</a>
       </div>
       <?php
       if (isset($_SESSION['pseudo']) && $_SESSION['pseudo'] == "admin" OR isset($_COOKIES['pseudo']) && $_COOKIES['pseudo'] == "admin")
