@@ -10,164 +10,145 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
 <style type="text/css">
-body
-    {
-      background-color: #5c3c3c;
-    }
-.carousel {
-  margin: 30px 0;
-    background: #ccc;
+
+#carrousel
+{
+    position:relative;
+    height:400px;
+    width:700px;
+    margin:auto;
+    margin-top: 10%;
+    background-color:white ;
 }
-.carousel .item {
-    text-align: center;
-  overflow: hidden;
-    height: 475px;
+
+
+.text-slide
+{
+  padding: 10%;
 }
-.carousel .item img {
-  max-width: 100%;
-    margin: 0 auto; /* Align slide image horizontally center in Bootstrap v3 */
-}
-.carousel .carousel-control {
-  width: 50px;
-    height: 50px;
-    background: #000;
-    margin: auto 0;
-  opacity: 0.8;
-}
-.carousel .carousel-control:hover {
-  opacity: 0.9;
-}
-.carousel .carousel-control i {
-    font-size: 41px;
-  margin-top: 3px;
-}
-.carousel-caption h3, .carousel-caption p {
-  color: #fff;
-  display: inline-block;
-  font-family: 'Oswald', sans-serif;
-  text-shadow: none;
-  margin-bottom: 20px;
-}
-.carousel-caption h3 {
-  background: rgba(0,0,0,0.9);
-  padding: 12px 24px;
-  font-size: 40px;  
-  text-transform: uppercase;
-}
-.carousel-caption p {
-  background: #20b0b9;
-  padding: 10px 20px;
-  font-size: 20px;
-  font-weight: 300;
-}
-.carousel-indicators li, .carousel-indicators li.active {
-  margin-left: 4px;
-  margin-right: 4px;
-}
-.carousel-indicators li.active {
-  background: #20b0b9;
-  border-color: #20b0b9;
-}
-.carousel .nav {  
-  background: #eee;
-}
-.carousel .nav a {
-  color: #333;
-  border-radius: 0;
-  font-size: 85%;
-  padding: 10px 16px;
-  background: transparent;
-}
-.carousel .nav .nav-item a:hover {
-  color: #fff;
-  background: #20b0b9;
-}
-.carousel .nav strong {
-  display: block;
-  font-family: 'Roboto', sans-serif;
-  font-size: 110%;
-  text-transform: uppercase;
-}
+.controls
+{
+  text-align: center;
+}  
+
 </style>
+
+
+
 <script type="text/javascript">
   $(document).ready(function(){
-    // Highlight bottom nav links
-    var clickEvent = false;
-    $("#myCarousel").on("click", ".nav a", function(){
-      clickEvent = true;
-      $(this).parent().siblings().removeClass("active");
-      $(this).parent().addClass("active");    
-    }).on("slid.bs.carousel", function(e){
-      if(!clickEvent){
-        itemIndex = $(e.relatedTarget).index();
-        console.log(itemIndex);
-        targetNavItem = $(".nav li[data-slide-to='" + itemIndex + "']");
-        $(".nav li").not(targetNavItem).removeClass("active");
-        targetNavItem.addClass("active");
-      }
-      clickEvent = false;
-    });
-  });
+    
+var $carrousel = $('#carrousel'), // on cible le bloc du carrousel
+    $img = $('#carrousel .text-slide'), // on cible les images contenues dans le carrousel
+    indexImg = $img.length - 1, // on définit l'index du dernier élément
+    i = 0, // on initialise un compteur
+    $currentImg = $img.eq(i); // enfin, on cible l'image courante, qui possède l'index i (0 pour l'instant)
+
+$img.css('display', 'none'); // on cache les images
+$currentImg.css('display', 'block'); // on affiche seulement l'image courante
+
+
+
+$('.next').click(function(){ // image suivante
+
+    i++; // on incrémente le compteur
+
+    if( i <= indexImg ){
+        $img.css('display', 'none'); // on cache les images
+        $currentImg = $img.eq(i); // on définit la nouvelle image
+        $currentImg.css('display', 'block'); // puis on l'affiche
+    }
+    else{
+        i = indexImg;
+    }
+
+});
+
+$('.prev').click(function(){ // image précédente
+
+    i--; // on décrémente le compteur, puis on réalise la même chose que pour la fonction "suivante"
+
+    if( i >= 0 ){
+        $img.css('display', 'none');
+        $currentImg = $img.eq(i);
+        $currentImg.css('display', 'block');
+    }
+    else{
+        i = 0;
+    }
+
+});
+
+function slideImg(){
+    setTimeout(function(){ // on utilise une fonction anonyme
+            
+        if(i < indexImg){ // si le compteur est inférieur au dernier index
+      i++; // on l'incrémente
+  }
+  else{ // sinon, on le remet à 0 (première image)
+      i = 0;
+  }
+
+  $img.css('display', 'none');
+
+  $currentImg = $img.eq(i);
+  $currentImg.css('display', 'block');
+
+  slideImg(); // on oublie pas de relancer la fonction à la fin
+
+    }, 7000); // on définit l'intervalle à 7000 millisecondes (7s)
+}
+
+slideImg(); // enfin, on lance la fonction une première fois
+
+});
+
+
+
 </script>
+
+
 </head>
 <?php ob_start(); ?>
 <body>
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <!-- Wrapper for carousel items -->
-        <div class="carousel-inner">
-           
-          <div class="item carousel-item active">
-            <img src="" alt="">
-            <div class="carousel-caption">
-              <h3>dernier scenario</h3>              
-                <p>Voir les derniers posts des utilisateurs, donnez votre avis ou reagissez.
-                </p>
-            </div>
-          </div>
-          <div class="item carousel-item">
-            <img src="" alt="">
-            <div class="carousel-caption">
-            <?php
-            while ($data = $theme->fetch())
-            {
-            ?>                  
-              <h3>Theme du jour</h3>
-              <p><?= nl2br($data['content']) ?></p>
-            <?php
-            }
-            ?>
-            </div>
-          </div>
-          <div class="item carousel-item">
-            <img src="" alt="">
-            <div class="carousel-caption">
-              <h3>Dernière idée entreprise</h3>
-              <p>Voir les derniers posts des utilisateurs, donnez votre avis ou reagissez.</p>
-            </div>
-          </div>
-          <div class="item carousel-item">
-            <img src="" alt="">
-            <div class="carousel-caption">
-              <h3>Dernière idée politique</h3>
-              <p>Voir les derniers posts des utilisateurs, donnez votre avis ou reagissez.</p>
-            </div>
-          </div>
-        </div>
-        <!-- End Carousel Inner -->
-        <ul class="nav nav-pills nav-justified">
-          <li data-target="#myCarousel" data-slide-to="1" class="nav-item"><a href="#" class="nav-link"><strong>Theme du jour</strong> </a></li>
-          <li data-target="#myCarousel" data-slide-to="2" class="nav-item"><a href="#" class="nav-link"><strong>Derniere idée entreprise</strong> </a></li>
-          <li data-target="#myCarousel" data-slide-to="3" class="nav-item"><a href="#" class="nav-link"><strong>Derniere idée politique</strong> </a></li>
-          <li data-target="#myCarousel" data-slide-to="4" class="nav-item"><a href="#" class="nav-link"><strong>Derniere idée scenario</strong> </a></li>
-        </ul>
+  <div id="carrousel"> 
+    <a href="index.php?action=themeV&id=4">         
+      <div class="text-slide">
+        <?php
+        while ($data = $theme->fetch())
+        {
+        ?>                  
+        <h3>Theme du jour</h3>
+        <p><?= nl2br($data['content']) ?></p>
+        <?php
+        }
+        ?>
       </div>
-    </div>
+    </a>
+    <a href="">                          
+      <div class="text-slide">                                 
+        <h3>Les dernieres idée</h3>
+        <p>
+          consultez les derniers posts ou publiez une idée dans les differentes categories. 
+        </p>                
+      </div> 
+    </a>        
+    <a href="">                          
+      <div class="text-slide">                                 
+        <h3>Dernière idée politique</h3>
+        <p>
+          Donnez votre avis, reagissez et participer aux idées.
+        </p>                
+      </div> 
+    </a>    
   </div>
-</div>
+
+  <div class="controls"> 
+    <span class="prev">Precedent</span> <span class="next">Suivant</span> 
+  </div>
 </body>
 <?php $content = ob_get_clean(); ?>
 <?php require('templateFront.html'); ?>

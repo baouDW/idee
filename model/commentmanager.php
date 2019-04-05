@@ -1,4 +1,7 @@
 <?php
+
+//namespace idee;
+
 require_once("Managers.php");
 
 class CommentsManager extends Managers

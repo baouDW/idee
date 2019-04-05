@@ -1,19 +1,11 @@
 <?php
 session_start();
-//require('./model/commentmanager.php');
-//require('./model/postsmanager.php');
-//require('./model/signalmanager.php');
-//require('./model/usersmanager.php');
+require('./model/commentmanager.php');
+require('./model/postsmanager.php');
+require('./model/signalmanager.php');
+require('./model/usersmanager.php');
 
-
-function chargerClasse($classe)
-{
-  require $classe . '.php'; // On inclut la classe correspondante au paramètre passé.
-}
-
-spl_autoload_register('chargerClasse'); // On enregistre la fonction en autoload pour qu'elle soit appelée dès qu'on instanciera une classe non déclarée.
-
-
+//require './model/vendor/autoload.php';
 
 
 function accueil(){

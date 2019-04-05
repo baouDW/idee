@@ -1,5 +1,8 @@
-
 <?php
+
+//namespace idee;
+
+
 require_once("Managers.php");
 
 class PostsManager extends Managers
