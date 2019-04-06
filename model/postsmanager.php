@@ -8,36 +8,69 @@ require_once("Managers.php");
 class PostsManager extends Managers
 {
 
+//Compte du nombre de posts
+public function nbrPostsWorld()
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT COUNT(*) as nbr FROM monde');
+
+        return $req;
+    }
+
+    public function nbrPostsEntreprise()
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT COUNT(*) as nbr FROM entreprise');
+
+        return $req;
+    }
+
+    public function nbrPostsPolitique()
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT COUNT(*) as nbr FROM politique');
+
+        return $req;
+    }
+
+    public function nbrPostsStory()
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT COUNT(*) as nbr FROM story');
+
+        return $req;
+    }
+
     //Get post-------------------------------
 
-    public function getWorldPosts()
+    public function getWorldPosts($page)
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM monde ORDER BY creation_date DESC LIMIT 0, 5');
+        $req = $db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM monde ORDER BY creation_date DESC LIMIT '.(($page-1)*4).', 4');
 
         return $req;
     }
 
-    public function getEntreprisePosts()
+    public function getEntreprisePosts($page)
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM entreprise ORDER BY creation_date DESC LIMIT 0, 5');
+        $req = $db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM entreprise ORDER BY creation_date DESC LIMIT '.(($page-1)*4).', 4');
 
         return $req;
     }
 
-    public function getPolitiquePosts()
+    public function getPolitiquePosts($page)
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM politique ORDER BY creation_date DESC LIMIT 0, 5');
+        $req = $db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM politique ORDER BY creation_date DESC LIMIT '.(($page-1)*4).', 4');
 
         return $req;
     }
 
-    public function getStoryPosts()
+    public function getStoryPosts($page)
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM story ORDER BY creation_date DESC LIMIT 0, 5');
+        $req = $db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM story ORDER BY creation_date DESC LIMIT '.(($page-1)*4).', 4');
 
         return $req;
     }

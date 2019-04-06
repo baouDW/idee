@@ -13,25 +13,29 @@ function accueil(){
 	$theme= $postmanager->getTheme();
 	require('./view/frontend/accueilView.php');
 }
-function listWorldPosts(){
+function listWorldPosts($page){
 	$postmanager = new PostsManager();
-	$worldposts= $postmanager->getWorldPosts();
+	$worldposts= $postmanager->getWorldPosts($page);
 	$theme= $postmanager->getTheme();
+	$nbrpost= $postmanager->nbrPostsWorld();
 	require('./view/frontend/worldPostsView.php');
 }
-function listeentreprise(){
+function listeentreprise($page){
 	$postmanager = new PostsManager();
-	$entrepriseposts= $postmanager->getEntreprisePosts();
+	$entrepriseposts= $postmanager->getEntreprisePosts($page);
+	$nbrpost= $postmanager->nbrPostsEntreprise();
 	require('./view/frontend/entreprisePostsView.php');
 }
-function listepolitique(){
+function listepolitique($page){
 	$postmanager = new PostsManager();
-	$politiqueposts= $postmanager->getPolitiquePosts();
+	$politiqueposts= $postmanager->getPolitiquePosts($page);
+	$nbrpost= $postmanager->nbrPostsPolitique();
 	require('./view/frontend/politiquePostsView.php');
 }
-function listestory(){
+function listestory($page){
 	$postmanager = new PostsManager();
-	$storyposts= $postmanager->getStoryPosts();
+	$storyposts= $postmanager->getStoryPosts($page);
+	$nbrpost= $postmanager->nbrPostsStory();
 	require('./view/frontend/storyPostsView.php');
 }
 function insertworldP(){

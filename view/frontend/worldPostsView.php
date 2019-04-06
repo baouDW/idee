@@ -52,6 +52,16 @@ body
       $worldposts->closeCursor();
       ?>
 
+      <?php
+      $donner = $nbrpost->fetch();
+      $nbrpage= ceil($donner['nbr']/4);
+      for ($i=1; $i<=$nbrpage; $i++){        
+      ?>
+        <a href="http://localhost/idee/index.php?action=listworldpost&page=<?= $i?>"><?= $i ?>/</a> 
+        
+      <?php
+        }
+      ?>
       
       
 

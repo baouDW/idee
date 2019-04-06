@@ -485,22 +485,42 @@ try{
         }
 
         elseif ($_GET['action'] == 'listworldpost') {
-           listWorldPosts();        
+           if ((isset($_GET['page'])) && ($_GET['page'] > 0))
+                {
+                    listWorldPosts($_GET['page']);
+                } else{
+                    listWorldPosts(1);
+                };        
             
         }
 
         elseif ($_GET['action'] == 'listeentreprise') {
-           listeentreprise();        
+           if ((isset($_GET['page'])) && ($_GET['page'] > 0))
+                {
+                    listeentreprise($_GET['page']);
+                } else{
+                    listeentreprise(1);
+                }                
             
         }
 
         elseif ($_GET['action'] == 'listepolitique') {
-           listepolitique();        
+           if ((isset($_GET['page'])) && ($_GET['page'] > 0))
+                {
+                    listepolitique($_GET['page']);
+                } else{
+                    listepolitique(1);
+                }        
             
         }
 
         elseif ($_GET['action'] == 'listestory') {
-           listestory();        
+           if ((isset($_GET['page'])) && ($_GET['page'] > 0))
+                {
+                    listestory($_GET['page']);
+                } else{
+                    listestory(1);
+                }        
             
         }
 

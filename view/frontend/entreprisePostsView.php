@@ -16,6 +16,16 @@ body
       <h1 class="mt-4 mb-3">Les dernières idées entreprise
       </h1>
 
+
+       
+      
+              
+        
+      
+
+
+
+      
       <ol class="breadcrumb">
         Les dernières penssées
       </ol>
@@ -52,23 +62,20 @@ body
       $entrepriseposts->closeCursor();
       ?>
 
-      
-      
+      <?php
 
-      <!-- Pagination 
-      <ul class="pagination justify-content-center mb-4">
-        <li class="page-item">
-          <a class="page-link" href="#">&larr; Precedent</a>
-        </li>
-        <li class="page-item disabled">
-          <a class="page-link" href="#">Suivant &rarr;</a>
-        </li>
-      </ul>
-    </div>
-    -->
-  <!-- /.container -->
-
-  
+      $donner = $nbrpost->fetch();
+      $nbrpage= ceil($donner['nbr']/4);      
+      
+      for ($i=1; $i<=$nbrpage; $i++){
+        
+      ?>
+        <a href="http://localhost/idee/index.php?action=listeentreprise&page=<?= $i?>"><?= $i ?>/</a> 
+        
+      <?php
+        }
+      ?>     
+       
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>

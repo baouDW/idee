@@ -52,22 +52,16 @@ body
       $storyposts->closeCursor();
       ?>
 
-      
-      
-
-      <!-- Pagination 
-      <ul class="pagination justify-content-center mb-4">
-        <li class="page-item">
-          <a class="page-link" href="#">&larr; Precedent</a>
-        </li>
-        <li class="page-item disabled">
-          <a class="page-link" href="#">Suivant &rarr;</a>
-        </li>
-      </ul>
-    </div>
-    -->
-  <!-- /.container -->
-
+      <?php
+      $donner = $nbrpost->fetch();
+      $nbrpage= ceil($donner['nbr']/4);         
+      for ($i=1; $i<=$nbrpage; $i++){        
+      ?>
+        <a href="http://localhost/idee/index.php?action=listestory&page=<?= $i?>"><?= $i ?>/</a> 
+        
+      <?php
+        }
+      ?>
   
 
   <!-- Bootstrap core JavaScript -->
