@@ -63,12 +63,9 @@ body
       ?>
 
       <?php
-
       $donner = $nbrpost->fetch();
-      $nbrpage= ceil($donner['nbr']/4);      
-      
-      for ($i=1; $i<=$nbrpage; $i++){
-        
+      $nbrpage= ceil($donner['nbr']/4);         
+      for ($i=1; $i<=$nbrpage; $i++){        
       ?>
         <a href="http://localhost/idee/index.php?action=listeentreprise&page=<?= $i?>"><?= $i ?>/</a> 
         
