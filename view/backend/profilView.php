@@ -8,6 +8,7 @@
     <title>Upload d'une image </title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
@@ -42,8 +43,17 @@
 	        <center>
 	        	<p>
 	        		<strong>Signature: </strong>
+	        		<a class="upsignature" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
 	        		<br>
-	            	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.
+	        			<div class="signature">
+	        				<form method="post" action="index.php?action=upsignature&id=<?=$resultat['id']?>">
+	        					<textarea placeholder="Ecrivez votre signature" name="sign"></textarea>
+	        					<br>
+	        					<input type="submit" name="submit">
+	        				</form>
+	        			</div>
+	        		<br>
+	            	<?=$resultat['signature']?>;
 	        	</p>
 	        	<br>
 	        </center>
@@ -79,6 +89,12 @@
 	$('.buttontest').one('click',function(){ 
         $('.add-pic').show('slow/400/fast');
 	});
+
+	$('.signature').hide();
+	$('.upsignature').one('click',function(){ 
+        $('.signature').show('slow/400/fast');
+	});
+
 </script>
 
 

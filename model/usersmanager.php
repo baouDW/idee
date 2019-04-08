@@ -31,7 +31,7 @@ class UsersManager extends Managers
     public function getOneUser($pseudo)
     {
         $db = $this->dbConnect();
-        $user = $db->prepare('SELECT nom, prenom, pseudo, email, date_inscription FROM membres WHERE pseudo = :pseudo');    
+        $user = $db->prepare('SELECT id, nom, prenom, pseudo, email, date_inscription, signature FROM membres WHERE pseudo = :pseudo');    
         $user->execute(array(
         'pseudo' => $pseudo));
         $resultat = $user->fetch();
@@ -56,6 +56,15 @@ class UsersManager extends Managers
         return $resultat;    
     }
 
+    public function addSignature($signature, $id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('UPDATE membres SET signature = :signature WHERE id= :id');
+        $req->execute(array(
+        'signature' => $signature,
+        'id' => $id
+        ));    
+    }
 
     public function updateLike($nbrlikes, $id)
     {

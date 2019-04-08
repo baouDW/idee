@@ -160,7 +160,11 @@ function updatestory(){
 	header('Location: ./index.php?action=adminaccess');
 }
 
-
+function upSignature(){
+	$usermanager = new UsersManager();
+	$post= $usermanager->addSignature($_POST['sign'], $_GET['id']);
+	header('Location: ./index.php?action=profilview');
+}
 
 
 

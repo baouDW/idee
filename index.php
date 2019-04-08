@@ -211,12 +211,22 @@ try{
             }
         }
 
-        elseif ($_GET['action'] == 'insertworldPost') {
-            if (isset($_POST['titre']) && isset($_POST['texte'])) {
-                insertworldP();
+        elseif ($_GET['action'] == 'modifstory') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                updatestory();
             }
             else {
-                throw new Exception('Erreur : aucun titre envoyé ou texte');
+                throw new Exception('Erreur : aucun identifiant de billet envoyé');
+            }
+        }
+
+        elseif ($_GET['action'] == 'upsignature') {
+            if (isset($_POST['sign']) && strlen($_POST['sign'])<255) 
+            {
+                upSignature();
+            }
+            else {
+                throw new Exception('Erreur : texte trop long (255 caractere autorisé)');
             }
         }
 
