@@ -484,6 +484,12 @@ try{
             
         }
 
+        elseif ($_GET['action'] == 'profilview') {       
+                profilView();                            
+            
+        }
+
+
         elseif ($_GET['action'] == 'listworldpost') {
            if ((isset($_GET['page'])) && ($_GET['page'] > 0))
                 {
@@ -526,6 +532,44 @@ try{
 
         elseif ($_GET['action'] == 'jaimes') {
            updatejaime();        
+            
+        }
+
+        elseif ($_GET['action'] == 'sendimage') {
+
+            if (isset($_POST['submit']))
+                {
+                    //echo "ya un fichier";
+                if ($_FILES['monfichier']['error'])
+                    {
+                        echo "<p>une erreur est survenue</p>";
+                        die;
+                    }        
+                $fileSize = $_FILES['monfichier']['size'];
+                $maxSize = 1023680;
+                if ($fileSize > $maxSize)
+                    {
+                        echo "<p>Fichier trop gros</p>";
+                        die;
+                    }              
+                $fileExt = strtolower(substr(strrchr($_FILES['monfichier']['name'], '.'),1));   
+                $extention_accepter = array('jpg', 'jpeg', 'gif', 'png');
+                if (!in_array($fileExt,$extention_accepter))
+                    {
+                        echo "<p>Extension incorrecte</p>";
+                    }                 
+                //$nom = "user_avatars/".$_SESSION['pseudo'].".$fileExt";
+                //$nom = "view/backend/user_avatars/".$_SESSION['pseudo'].".jpg";
+                $nom = "public/user_image/".$_SESSION['pseudo'].".jpg";
+                $resultat = move_uploaded_file($_FILES['monfichier']['tmp_name'],$nom);
+                if (!$resultat) 
+                    {
+                        echo "Transfert echoué";
+
+                    }
+
+                    profilView();
+            }       
             
         }
         

@@ -123,6 +123,13 @@ function createTheme(){
 	require('./view/backend/createthemeView.php');
 }
 
+function profilView(){
+	$usermanager = new UsersManager();
+	$pseudo=$_SESSION['pseudo'];
+	$resultat = $usermanager->getOneUser($pseudo);
+	require('./view/backend/profilView.php');
+}
+
 // modifier les posts--------------------------------
 function update(){
 	$postmanager = new PostsManager();
@@ -455,7 +462,7 @@ function signup(){
 function login(){
 	$usermanager = new UsersManager();
 	$postmanager = new PostsManager();
-	$posts= $postmanager->getWorldPosts();
+	//$posts= $postmanager->getWorldPosts();
 	$pseudoo=$_SESSION['pseudo'];/*
 	$req= $postmanager->getUserPosts($pseudoo);*/
 	$wposts= $postmanager->getWordlUserPosts($pseudoo);
@@ -503,7 +510,7 @@ function login(){
 }
 function adminaccess(){
 	$postmanager = new PostsManager();
-	$posts= $postmanager->getWorldPosts();
+	//$posts= $postmanager->getWorldPosts();
 	$pseudoo=$_SESSION['pseudo'];/*
 	$req= $manager->getUserPosts($pseudoo);*/
 	$wposts= $postmanager->getWordlUserPosts($pseudoo);

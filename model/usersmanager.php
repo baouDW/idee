@@ -28,6 +28,16 @@ class UsersManager extends Managers
         return $user;
     }
 
+    public function getOneUser($pseudo)
+    {
+        $db = $this->dbConnect();
+        $user = $db->prepare('SELECT nom, prenom, pseudo, email, date_inscription FROM membres WHERE pseudo = :pseudo');    
+        $user->execute(array(
+        'pseudo' => $pseudo));
+        $resultat = $user->fetch();
+        return $resultat;
+    }
+
     public function verifUser($pseudo){
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT id, pass FROM membres WHERE pseudo = :pseudo');

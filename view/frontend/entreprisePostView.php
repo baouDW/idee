@@ -46,7 +46,7 @@
             </p>
           </div>
           
-          <div class="avis-item"><a class=signaler href="./index.php?action=signalEntreprise&amp;id=<?= $post['id'] ?>">signaler</a>
+          <div class="avis-item"><a class="signaler" href="./index.php?action=signalEntreprise&amp;id=<?= $post['id'] ?>">signaler</a>
           </div>
           <hr>
           <?php
@@ -84,11 +84,11 @@
           {
           ?>
             <div class="media mb-4">
-              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+              <img class="d-flex mr-3 rounded-circle" src="public/user_image/<?=$comment['author']?>.jpg" alt="" width="80" height="80" border="0">
               <div class="media-body">
                 <h5 class="mt-0"><?= htmlspecialchars($comment['author']) ?></h5>
                 <?= nl2br(htmlspecialchars($comment['comment'])) ?>
-              </div><a class=signaler href="./index.php?action=signalEntrepriseCo&amp;id=<?= $comment['id'] ?>">Signaler</a>
+              </div><a class="signaler" href="./index.php?action=signalEntrepriseCo&amp;id=<?= $comment['id'] ?>">Signaler</a>
             </div>     
             <hr>     
             <?php
@@ -106,7 +106,6 @@
 
       </div>
       <!-- /.row -->
-
     </div>
     <!-- /.container -->
 

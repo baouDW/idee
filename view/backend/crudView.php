@@ -224,6 +224,7 @@
                     <div class="col-sm-6">
 						<h2>Posts</h2>
 					</div>
+					
 					<!-- <div class="col-sm-6">
 						<a href="./index.php?action=createView" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Ecrire un post</span></a>												
 					</div> -->
