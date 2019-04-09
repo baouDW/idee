@@ -1,6 +1,6 @@
 <?php
 
-//namespace idee;
+namespace idee;
 
 require_once("Managers.php");
 

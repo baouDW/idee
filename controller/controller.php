@@ -1,15 +1,15 @@
 <?php
 session_start();
-require('./model/commentmanager.php');
-require('./model/postsmanager.php');
-require('./model/signalmanager.php');
-require('./model/usersmanager.php');
+//require('./model/CommentManager.php');
+//require('./model/PostsManager.php');
+//require('./model/SignalManager.php');
+//require('./model/UsersManager.php');
 
-//require './model/vendor/autoload.php';
+require './vendor/autoload.php';
 
 
 function accueil(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$theme= $postmanager->getTheme();
 	require('./view/frontend/accueilView.php');
 }
