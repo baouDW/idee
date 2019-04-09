@@ -90,7 +90,7 @@ ob_start();
           ?>
           <!-- Single Comment -->
           <div class="media mb-4">
-            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+            <img class="d-flex mr-3 rounded-circle" src="public/user_image/<?=$comment['author']?>.jpg" alt="" width="80" height="80" border="0">
             <div class="media-body">
               <h5 class="mt-0"><?= htmlspecialchars($comment['author']) ?></h5>
               <?= nl2br(htmlspecialchars($comment['comment'])) ?>

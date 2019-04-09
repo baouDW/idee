@@ -78,7 +78,7 @@
             {
             ?>
             <li class="nav-item">
-              <a class="nav-link" href="index.php?action=themeV&amp;id=<?= $data['id'] ?>">theme du jour</a>
+              <a class="nav-link" href="index.php?action=themeV&amp;id=<?= htmlspecialchars($data['id']) ?>">theme du jour</a>
             </li>
             <?php
             }

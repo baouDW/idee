@@ -14,52 +14,52 @@ function accueil(){
 	require('./view/frontend/accueilView.php');
 }
 function listWorldPosts($page){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$worldposts= $postmanager->getWorldPosts($page);
 	$theme= $postmanager->getTheme();
 	$nbrpost= $postmanager->nbrPostsWorld();
 	require('./view/frontend/worldPostsView.php');
 }
 function listeentreprise($page){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$entrepriseposts= $postmanager->getEntreprisePosts($page);
 	$nbrpost= $postmanager->nbrPostsEntreprise();
 	require('./view/frontend/entreprisePostsView.php');
 }
 function listepolitique($page){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$politiqueposts= $postmanager->getPolitiquePosts($page);
 	$nbrpost= $postmanager->nbrPostsPolitique();
 	require('./view/frontend/politiquePostsView.php');
 }
 function listestory($page){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$storyposts= $postmanager->getStoryPosts($page);
 	$nbrpost= $postmanager->nbrPostsStory();
 	require('./view/frontend/storyPostsView.php');
 }
 function insertworldP(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$insertPost= $postmanager->insertWorldPost($_POST['titre'], $_POST['texte'], $_SESSION['pseudo']);	
 	header('Location: ./index.php?action=createworldView');
 }
 function insertentrepriseP(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$insertPost= $postmanager->insertEntreprisePost($_POST['titre'], $_POST['texte'], $_SESSION['pseudo']);	
 	header('Location: ./index.php?action=createentrepriseView');
 }
 function insertpolitiqueP(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$insertPost= $postmanager->insertPolitiquePost($_POST['titre'], $_POST['texte'], $_SESSION['pseudo']);	
 	header('Location: ./index.php?action=createpolitiqueView');
 }
 function insertstoryP(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$insertPost= $postmanager->insertStoryPost($_POST['titre'], $_POST['texte'], $_SESSION['pseudo']);	
 	header('Location: ./index.php?action=createstoryView');
 }
 function insertT(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$insertTheme= $postmanager->insertTheme($_POST['texte']);	
 	header('Location: ' . $_SERVER['HTTP_REFERER'] );
 }
@@ -68,25 +68,25 @@ function insertT(){
 
 // Aller a la page pour modifier les posts-----------
 function updateworldView(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$post= $postmanager->getWorldPost($_GET['id']);
 	require('./view/backend/updateView.php');
 }
 
 function updateentrepriseView(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$post= $postmanager->getEntreprisePost($_GET['id']);
 	require('./view/backend/updateView.php');
 }
 
 function updatepolitiqueView(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$post= $postmanager->getPolitiquePost($_GET['id']);
 	require('./view/backend/updateView.php');
 }
 
 function updatestoryView(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$post= $postmanager->getStoryPost($_GET['id']);
 	require('./view/backend/updateView.php');
 }
@@ -94,37 +94,37 @@ function updatestoryView(){
 
 // crée les posts-----------------------------------
 function createworldView(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$pseudoo=$_SESSION['pseudo'];
 	$posts= $postmanager->getWordlUserPosts($pseudoo);
 	require('./view/backend/createworldView.php');
 }
 function createentrepriseView(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$pseudoo=$_SESSION['pseudo'];
 	$posts= $postmanager->getEntrepriseUserPosts($pseudoo);
 	require('./view/backend/createentrepriseView.php');
 }
 function createpolitiqueView(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$pseudoo=$_SESSION['pseudo'];
 	$posts= $postmanager->getPolitiqueUserPosts($pseudoo);
 	require('./view/backend/createpolitiqueView.php');
 }
 function createstoryView(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$pseudoo=$_SESSION['pseudo'];
 	$posts= $postmanager->getStoryUserPosts($pseudoo);
 	require('./view/backend/createstoryView.php');
 }
 function createTheme(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$theme= $postmanager->getTheme();
 	require('./view/backend/createthemeView.php');
 }
 
 function profilView(){
-	$usermanager = new UsersManager();
+	$usermanager = new idee\UsersManager();
 	$pseudo=$_SESSION['pseudo'];
 	$resultat = $usermanager->getOneUser($pseudo);
 	require('./view/backend/profilView.php');
@@ -132,36 +132,37 @@ function profilView(){
 
 // modifier les posts--------------------------------
 function update(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$update= $postmanager->UptdatePost($_POST['titre'], $_POST['texte'], $_GET['id']);
 	header('Location: ./index.php?action=adminaccess');
 }
 function updateworld(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$post= $postmanager->UptdatePost($_POST['titre'], $_POST['texte'], $_GET['id']);
-	header('Location: ./index.php?action=adminaccess');
+	//header('Location: ./index.php?action=adminaccess');
+	header('Location: ' . $_SERVER['HTTP_REFERER'] );
 }
 
 function updateentreprise(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$post= $postmanager->UptdateEntreprisePost($_POST['titre'], $_POST['texte'], $_GET['id']);
 	header('Location: ./index.php?action=adminaccess');
 }
 
 function updatepolitique(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$post= $postmanager->UptdatePolitiquePost($_POST['titre'], $_POST['texte'], $_GET['id']);
 	header('Location: ./index.php?action=adminaccess');
 }
 
 function updatestory(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$post= $postmanager->UptdateStoryPost($_POST['titre'], $_POST['texte'], $_GET['id']);
 	header('Location: ./index.php?action=adminaccess');
 }
 
 function upSignature(){
-	$usermanager = new UsersManager();
+	$usermanager = new idee\UsersManager();
 	$post= $usermanager->addSignature($_POST['sign'], $_GET['id']);
 	header('Location: ./index.php?action=profilview');
 }
@@ -179,7 +180,7 @@ function upSignature(){
 
 function addWorldComment()
 {
-	$commentmanager = new CommentsManager();
+	$commentmanager = new idee\CommentsManager();
     $affectedLines = $commentmanager->worldPostComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment']);
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter le commentaire !');
@@ -190,7 +191,7 @@ function addWorldComment()
 }
 function addEntrepriseComment()
 {
-	$commentmanager = new CommentsManager();
+	$commentmanager = new idee\CommentsManager();
     $affectedLines = $commentmanager->EntreprisePostComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment']);
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter le commentaire !');
@@ -202,7 +203,7 @@ function addEntrepriseComment()
 
 function addPolitiqueComment()
 {
-	$commentmanager = new CommentsManager();
+	$commentmanager = new idee\CommentsManager();
     $affectedLines = $commentmanager->politiquePostComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment']);
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter le commentaire !');
@@ -214,7 +215,7 @@ function addPolitiqueComment()
 
 function addStoryComment()
 {
-	$commentmanager = new CommentsManager();
+	$commentmanager = new idee\CommentsManager();
     $affectedLines = $commentmanager->storyPostComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment']);
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter le commentaire !');
@@ -226,7 +227,7 @@ function addStoryComment()
 
 function addthemeComment()
 {
-	$commentmanager = new CommentsManager();
+	$commentmanager = new idee\CommentsManager();
     $affectedLines = $commentmanager->themeComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment']);
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter le commentaire !');
@@ -237,7 +238,7 @@ function addthemeComment()
 }
 function addvidComment()
 {
-	$commentmanager = new CommentsManager();
+	$commentmanager = new idee\CommentsManager();
     $affectedLines = $commentmanager->vidComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment']);
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter le commentaire !');
@@ -253,60 +254,60 @@ function addvidComment()
 //Signalements--------------------------------------
 
 function signalMonde(){
-	$signalmanager = new SignalManager();
+	$signalmanager = new idee\SignalManager();
 	$SignalementPost= $signalmanager->SignalementMonde($_GET['id']);
 	header('Location: ' . $_SERVER['HTTP_REFERER'] );
 }
 
 function signalWorldCo(){
-	$signalmanager = new SignalManager();
+	$signalmanager = new idee\SignalManager();
 	$SignalementPost= $signalmanager->SignalementWorldCom($_GET['id']);
 	header('Location: ' . $_SERVER['HTTP_REFERER'] );
 }
 
 function signalEntreprise(){
-	$signalmanager = new SignalManager();
+	$signalmanager = new idee\SignalManager();
 	$SignalementPost= $signalmanager->SignalementEntreprise($_GET['id']);
 	header('Location: ' . $_SERVER['HTTP_REFERER'] );
 }
 
 function signalEntrepriseCo(){
-	$signalmanager = new SignalManager();
+	$signalmanager = new idee\SignalManager();
 	$SignalementPost= $signalmanager->SignalementEntrepriseCom($_GET['id']);
 	header('Location: ' . $_SERVER['HTTP_REFERER'] );
 }
 
 function signalPolitique(){
-	$signalmanager = new SignalManager();
+	$signalmanager = new idee\SignalManager();
 	$SignalementPost= $signalmanager->SignalementPolitique($_GET['id']);
 	header('Location: ' . $_SERVER['HTTP_REFERER'] );
 }
 
 function signalPolitiqueCo(){
-	$signalmanager = new SignalManager();
+	$signalmanager = new idee\SignalManager();
 	$SignalementPost= $signalmanager->SignalementPolitiqueCom($_GET['id']);
 	header('Location: ' . $_SERVER['HTTP_REFERER'] );
 }
 
 function signalStory(){
-	$signalmanager = new SignalManager();
+	$signalmanager = new idee\SignalManager();
 	$SignalementPost= $signalmanager->SignalementStory($_GET['id']);
 	header('Location: ' . $_SERVER['HTTP_REFERER'] );
 }
 
 function signalStoryCo(){
-	$signalmanager = new SignalManager();
+	$signalmanager = new idee\SignalManager();
 	$SignalementPost= $signalmanager->SignalementStoryCom($_GET['id']);
 	header('Location: ' . $_SERVER['HTTP_REFERER'] );
 }
 
 function signalthemeC(){
-	$signalmanager = new SignalManager();
+	$signalmanager = new idee\SignalManager();
 	$SignalemenThemeC= $signalmanager->SignalThemeCom($_GET['id']);
 	header('Location: ' . $_SERVER['HTTP_REFERER'] );
 }
 function signalvidC(){
-	$signalmanager = new SignalManager();
+	$signalmanager = new idee\SignalManager();
 	$SignalemenVidC= $signalmanager->SignalVidCom($_GET['id']);
 	header('Location: ' . $_SERVER['HTTP_REFERER'] );
 }
@@ -317,31 +318,31 @@ function signalvidC(){
 
 //suppression de posts----------------------------------
 function delete(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$delete= $postmanager->deletePost($_GET['id']);
 	header('Location: ./index.php?action=adminaccess');
 }
 
 function deletewolrd(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$deletewolrd= $postmanager->deleteWorldPost($_GET['id']);
 	header('Location: ./index.php?action=adminaccess');
 }
 
 function deleteentreprise(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$deleteentreprise= $postmanager->deleteEntreprisePost($_GET['id']);
 	header('Location: ./index.php?action=adminaccess');
 }
 
 function deletepolitique(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$deletepolitique= $postmanager->deletePolitiquePost($_GET['id']);
 	header('Location: ./index.php?action=adminaccess');
 }
 
 function deletestory(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$deletestory= $postmanager->deleteStoryPost($_GET['id']);
 	header('Location: ./index.php?action=adminaccess');
 }
@@ -349,21 +350,21 @@ function deletestory(){
 
 
 function worldPosts(){
-	$postmanager = new PostsManager();
-	$commentmanager = new CommentsManager();
+	$postmanager = new idee\PostsManager();
+	$commentmanager = new idee\CommentsManager();
 	$post= $postmanager->getWorldPost($_GET['id']);
 	$comments= $commentmanager->getWorldComments($_GET['id']);
 	require('./view/frontend/worldPostView.php');
 }
 function entreprisePost(){
-	$postmanager = new PostsManager();
-	$commentmanager = new CommentsManager();
+	$postmanager = new idee\PostsManager();
+	$commentmanager = new idee\CommentsManager();
 	$post= $postmanager->getEntreprisePost($_GET['id']);
 	$comments= $commentmanager->getEntrepriseComments($_GET['id']);
 	require('./view/frontend/entreprisePostView.php');
 }
 function refreshEntreprisePost(){
-	$commentmanager = new CommentsManager();
+	$commentmanager = new idee\CommentsManager();
 	$rcomments= $commentmanager->getEntrepriseComments(44);
 
 	while ($rcomment = $rcomments->fetch())
@@ -387,51 +388,51 @@ function refreshEntreprisePost(){
 
 //----------------------------------------------
 function politiquePost(){
-	$postmanager = new PostsManager();
-	$commentmanager = new CommentsManager();
+	$postmanager = new idee\PostsManager();
+	$commentmanager = new idee\CommentsManager();
 	$post= $postmanager->getPolitiquePost($_GET['id']);
 	$comments= $commentmanager->getPolitiqueComments($_GET['id']);
 	require('./view/frontend/politiquePostView.php');
 }
 function storyPost(){
-	$postmanager = new PostsManager();
-	$commentmanager = new CommentsManager();	
+	$postmanager = new idee\PostsManager();
+	$commentmanager = new idee\CommentsManager();	
 	$post= $postmanager->getStoryPost($_GET['id']);
 	$comments= $commentmanager->getStoryComments($_GET['id']);
 	require('./view/frontend/storyPostView.php');
 }
 function themeV(){
-	$postmanager = new PostsManager();
-	$commentmanager = new CommentsManager();	
+	$postmanager = new idee\PostsManager();
+	$commentmanager = new idee\CommentsManager();	
 	$theme= $postmanager->getTheme();
 	$themeCom=$commentmanager->getCommentsTheme($_GET['id']);
 	require('./view/frontend/themeJView.php');
 }
 
 function commentsAdmin(){
-	$postmanager = new PostsManager();
-	$commentmanager = new CommentsManager();	
+	$postmanager = new idee\PostsManager();
+	$commentmanager = new idee\CommentsManager();	
 	$post= $postmanager->getWorldPost($_GET['id']);
 	$comments= $commentmanager->getWorldComments($_GET['id']);
 	require('./view/backend/commentView.php');
 }
 function entrepriseCommentsAdmin(){
-	$postmanager = new PostsManager();
-	$commentmanager = new CommentsManager();	
+	$postmanager = new idee\PostsManager();
+	$commentmanager = new idee\CommentsManager();	
 	$post= $postmanager->getEntreprisePost($_GET['id']);
 	$comments= $commentmanager->getEntrepriseComments($_GET['id']);
 	require('./view/backend/commentView.php');
 }
 function politiqueCommentsAdmin(){
-	$postmanager = new PostsManager();
-	$commentmanager = new CommentsManager();	
+	$postmanager = new idee\PostsManager();
+	$commentmanager = new idee\CommentsManager();	
 	$post= $postmanager->getPolitiquePost($_GET['id']);
 	$comments= $commentmanager->getPolitiqueComments($_GET['id']);
 	require('./view/backend/commentView.php');
 }
 function storyCommentsAdmin(){
-	$postmanager = new PostsManager();
-	$commentmanager = new CommentsManager();	
+	$postmanager = new idee\PostsManager();
+	$commentmanager = new idee\CommentsManager();	
 	$post= $postmanager->getStoryPost($_GET['id']);
 	$comments= $commentmanager->getStoryComments($_GET['id']);
 	require('./view/backend/commentView.php');
@@ -442,13 +443,13 @@ function storyCommentsAdmin(){
 
 //------------------------------------------------------
 function membreView(){
-	$usermanager = new UsersManager();
+	$usermanager = new idee\UsersManager();
 	$user = $usermanager->getUser();
 	require('./view/backend/userView.php');
 }
 
 function signup(){
-	$usermanager = new UsersManagerUsersManager();
+	$usermanager = new idee\UsersManagerUsersManager();
 	$pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
 	$verifPseudo= $usermanager->verifPseudo($_POST['pseudo']);
 	if ($verifPseudo)
@@ -464,8 +465,8 @@ function signup(){
 	
 }
 function login(){
-	$usermanager = new UsersManager();
-	$postmanager = new PostsManager();
+	$usermanager = new idee\UsersManager();
+	$postmanager = new idee\PostsManager();
 	//$posts= $postmanager->getWorldPosts();
 	$pseudoo=$_SESSION['pseudo'];/*
 	$req= $postmanager->getUserPosts($pseudoo);*/
@@ -488,12 +489,14 @@ function login(){
 	        session_start();
 	        $_SESSION['id'] = $verifuser['id'];
 	        $_SESSION['pseudo'] = $_POST['pseudo'];
-	        require('./view/backend/crudView.php');
+	        //require('./view/backend/crudView.php');
+	        header('Location: ./index.php');
 	    }
 	    elseif (($isPasswordCorrect) && ($_POST['pseudo'] == 'admin') && (isset($_POST['rapel']))) {
 	    	setcookie('id', $verifuser['id'], time() + 365*24*3600, null, null, false, true); 
 			setcookie('pseudo', $_POST['pseudo'], time() + 365*24*3600, null, null, false, true);
-			require('/view/backend/crudView.php');
+			//require('/view/backend/crudView.php');
+			header('Location: ./index.php');
 	    }
 	    elseif (($isPasswordCorrect) && (!isset($_POST['rapel']))){
 	    	session_start();
@@ -513,18 +516,18 @@ function login(){
 	
 }
 function adminaccess(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	//$posts= $postmanager->getWorldPosts();
 	$pseudoo=$_SESSION['pseudo'];/*
 	$req= $manager->getUserPosts($pseudoo);*/
-	$wposts= $postmanager->getWordlUserPosts($pseudoo);
-	$eposts= $postmanager->getEntrepriseUserPosts($pseudoo);
-	$pposts= $postmanager->getPolitiqueUserPosts($pseudoo);
-	$sposts= $postmanager->getStoryUserPosts($pseudoo);
+	$wposts= $postmanager->getAllWorldPosts();
+	$eposts= $postmanager->getAllEntreprisePosts();
+	$pposts= $postmanager->getAllPolitiquePosts();
+	$sposts= $postmanager->getAllStoryPosts();
 	require('./view/backend/crudView.php');
 }
 function useraccess(){
-	$postmanager = new PostsManager();
+	$postmanager = new idee\PostsManager();
 	$pseudoo=$_SESSION['pseudo'];
 	/*$req= $manager->getUserPosts($pseudoo);*/
 	$wposts= $postmanager->getWordlUserPosts($pseudoo);
@@ -545,7 +548,7 @@ function deconexion(){
 	header('Location: ./index.php');
 }
 function updatejaime(){
-	$usermanager = new UsersManager();
+	$usermanager = new idee\UsersManager();
 	$usermanager->updateLike($_GET['nbrjaime'], $_GET['id']);
 	echo $_GET['nbrjaime'];	
 }

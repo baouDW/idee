@@ -41,7 +41,7 @@ public function nbrPostsWorld()
         return $req;
     }
 
-    //Get post-------------------------------
+    //Get post frontend-------------------------------
 
     public function getWorldPosts($page)
     {
@@ -83,7 +83,7 @@ public function nbrPostsWorld()
         return $req;
     }
 
-
+    //get posts for user-----------------------------------------
     public function getWordlUserPosts($pseudo)
     {
         $db = $this->dbConnect();
@@ -124,6 +124,8 @@ public function nbrPostsWorld()
         
     }
 
+    //Get one post---------------------------------------------
+
     public function getWorldPost($postId)
     {
         $db = $this->dbConnect();
@@ -162,6 +164,40 @@ public function nbrPostsWorld()
         $post = $req->fetch();
 
         return $post;
+    }
+
+    //Get all post for admin-------------------------------
+
+    public function getAllWorldPosts()
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM monde ORDER BY creation_date DESC LIMIT 0, 5');
+
+        return $req;
+    }
+
+    public function getAllEntreprisePosts()
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM entreprise ORDER BY creation_date DESC LIMIT 0, 5');
+
+        return $req;
+    }
+
+    public function getAllPolitiquePosts()
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM politique ORDER BY creation_date DESC LIMIT 0, 5');
+
+        return $req;
+    }
+
+    public function getAllStoryPosts()
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM story ORDER BY creation_date DESC LIMIT 0, 5');
+
+        return $req;
     }
 
 

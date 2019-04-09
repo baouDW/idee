@@ -23,15 +23,15 @@
     <div class="container">
       <h1 class="title-cat">Idée d'entreprise</h1>
       <!-- Page Heading/Breadcrumbs -->
-      <h1 class="mt-4 mb-3"><?= $post['title'] ?>
+      <h1 class="mt-4 mb-3"><?= htmlspecialchars($post['title']) ?>
         <small>de
-          <a href="#"><?= $post['author'] ?></a>
+          <a href="#"><?= htmlspecialchars($post['author']) ?></a>
         </small>
       </h1>
       <!-- Date/Time -->
           
       <ol class="breadcrumb">
-        <?= $post['creation_date_fr'] ?>
+        <?= htmlspecialchars($post['creation_date_fr']) ?>
       </ol>
 
       <div class="row">
@@ -42,7 +42,7 @@
 
             <!-- Post Content -->
             <p class="lead">
-              <?= $post['content']?>              
+              <?= htmlspecialchars($post['content'])?>              
             </p>
           </div>
           
@@ -79,22 +79,22 @@
           <button class="refresh btn btn-primary">rafraichir les commentaires</button>
           <!-- Single Comment -->
           <div class="allcomment">
-            <?php
-          while ($comment = $comments->fetch())
-          {
-          ?>
-            <div class="media mb-4">
-              <img class="d-flex mr-3 rounded-circle" src="public/user_image/<?=$comment['author']?>.jpg" alt="" width="80" height="80" border="0">
-              <div class="media-body">
-                <h5 class="mt-0"><?= htmlspecialchars($comment['author']) ?></h5>
-                <?= nl2br(htmlspecialchars($comment['comment'])) ?>
-              </div><a class="signaler" href="./index.php?action=signalEntrepriseCo&amp;id=<?= $comment['id'] ?>">Signaler</a>
-            </div>     
-            <hr>     
-            <?php
-            }
+              <?php
+            while ($comment = $comments->fetch())
+            {
             ?>
-            </div>
+              <div class="media mb-4">
+                <img class="d-flex mr-3 rounded-circle" src="public/user_image/<?=$comment['author']?>.jpg" alt="" width="80" height="80" border="0">
+                <div class="media-body">
+                  <h5 class="mt-0"><?= htmlspecialchars($comment['author']) ?></h5>
+                  <?= nl2br(htmlspecialchars($comment['comment'])) ?>
+                </div><a class="signaler" href="./index.php?action=signalEntrepriseCo&amp;id=<?= $comment['id'] ?>">Signaler</a>
+              </div>     
+              <hr>     
+              <?php
+              }
+              ?>
+          </div>
             <?php $content = ob_get_clean(); ?>
             
             <?php require('templateFront.html'); ?>

@@ -30,13 +30,13 @@
 				</center>
 		        <h3><?= $_SESSION['pseudo'] ?></h3>
 		        <span><strong>Date d'inscription: </strong></span>
-		        <span><?= $resultat['date_inscription']?></span><br>
+		        <span><?= htmlspecialchars($resultat['date_inscription'])?></span><br>
 		        <span><strong>Nom: </strong></span>
-		        <span><?= $resultat['nom']?></span><br>
+		        <span><?= htmlspecialchars($resultat['nom'])?></span><br>
 		        <span><strong>Prenom: </strong></span>
-		        <span><?= $resultat['prenom']?></span><br>
+		        <span><?= htmlspecialchars($resultat['prenom'])?></span><br>
 		        <span><strong>Email: </strong></span>
-		        <span><?= $resultat['email']?></span><br>
+		        <span><?= htmlspecialchars($resultat['email'])?></span><br>
 		    </center>
 		    
 	        <hr>
@@ -53,7 +53,7 @@
 	        				</form>
 	        			</div>
 	        		<br>
-	            	<?=$resultat['signature']?>;
+	            	<?=htmlspecialchars($resultat['signature'])?>;
 	        	</p>
 	        	<br>
 	        </center>

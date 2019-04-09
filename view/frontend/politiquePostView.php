@@ -23,15 +23,15 @@
     <div class="container">
       <h1 class="title-cat">Idée d'entreprise</h1>
       <!-- Page Heading/Breadcrumbs -->
-      <h1 class="mt-4 mb-3"><?= $post['title'] ?>
+      <h1 class="mt-4 mb-3"><?= htmlspecialchars($post['title']) ?>
         <small>de
-          <a href="#"><?= $post['author'] ?></a>
+          <a href="#"><?= htmlspecialchars($post['author']) ?></a>
         </small>
       </h1>
       <!-- Date/Time -->
           
       <ol class="breadcrumb">
-        <?= $post['creation_date_fr'] ?>
+        <?= htmlspecialchars($post['creation_date_fr']) ?>
       </ol>
 
       <div class="row">
@@ -42,7 +42,7 @@
 
             <!-- Post Content -->
             <p class="lead">
-              <?= $post['content']?>              
+              <?= htmlspecialchars($post['content']) ?>              
             </p>
           </div>
           <div class="avis-item"><a class="signaler" href="./index.php?action=signalPolitique&amp;id=<?= $post['id'] ?>">signaler</a>
