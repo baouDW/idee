@@ -290,7 +290,7 @@ try{
                 }
             }
             else {
-                throw new Exception('Erreur : aucun identifiant de billet envoyé');
+                throw new Exception('Erreur : aucun identifiant envoyé');
             }
         }
 
@@ -304,7 +304,7 @@ try{
                 }
             }
             else {
-                throw new Exception('Erreur : aucun identifiant de billet envoyé');
+                throw new Exception('Erreur : aucun identifiant envoyé');
             }
         }
 
@@ -318,7 +318,7 @@ try{
                 }
             }
             else {
-                throw new Exception('Erreur : aucun identifiant de billet envoyé');
+                throw new Exception('Erreur : aucun identifiant envoyé');
             }
         }
 
@@ -332,23 +332,9 @@ try{
                 }
             }
             else {
-                throw new Exception('Erreur : aucun identifiant de billet envoyé');
+                throw new Exception('Erreur : aucun identifiant envoyé');
             }
         }
-
-        // elseif ($_GET['action'] == 'addvidComment') {
-        //     if (isset($_GET['id']) && $_GET['id'] > 0) {
-        //         if (!empty($_POST['comment'])) {
-        //             addvidComment();
-        //         }
-        //         else {
-        //             throw new Exception('Erreur : tous les champs ne sont pas remplis !');
-        //         }
-        //     }
-        //     else {
-        //         throw new Exception('Erreur : aucun identifiant de billet envoyé');
-        //     }
-        // }
 
 
         elseif ($_GET['action'] == 'commadmin') {
@@ -356,7 +342,7 @@ try{
                 commentsAdmin();
             }
             else {
-                throw new Exception('erreur');
+                throw new Exception('Erreur : aucun identifiant envoyé');
             }
         }
 
@@ -365,7 +351,7 @@ try{
                 entrepriseCommentsAdmin();
             }
             else {
-                throw new Exception('erreur');
+                throw new Exception('Erreur : aucun identifiant envoyé');
             }
         }
 
@@ -374,7 +360,7 @@ try{
                 politiqueCommentsAdmin();
             }
             else {
-                throw new Exception('erreur');
+                throw new Exception('Erreur : aucun identifiant envoyé');
             }
         }
 
@@ -383,7 +369,7 @@ try{
                 storyCommentsAdmin();
             }
             else {
-                throw new Exception('erreur');
+                throw new Exception('Erreur : aucun identifiant envoyé');
             }
         }
 

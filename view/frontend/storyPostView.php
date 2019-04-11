@@ -81,13 +81,20 @@
             {
             ?>
             <!-- Single Comment -->
+            <div class ="singlecom">
             <div class="media mb-4">
               <img class="d-flex mr-3 rounded-circle" src="public/user_image/<?=$comment['author']?>.jpg" alt="" width="80" height="80" border="0">
               <div class="media-body">
                 <h5 class="mt-0"><?= htmlspecialchars($comment['author']) ?></h5>
                 <?= nl2br(htmlspecialchars($comment['comment'])) ?>
               </div><a class="signaler" href="./index.php?action=signalStoryCo&amp;id=<?= $comment['id'] ?>">Signaler</a>
-            </div>
+              </div>
+              <hr>
+                <span class="signaturecom"><?= nl2br(htmlspecialchars($comment['signature'])) ?></span>
+            
+            <hr> 
+          </div>
+             
               <?php
               }
               ?>

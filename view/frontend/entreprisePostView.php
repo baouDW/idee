@@ -83,6 +83,7 @@
             while ($comment = $comments->fetch())
             {
             ?>
+            <div class ="singlecom">
               <div class="media mb-4">
                 <img class="d-flex mr-3 rounded-circle" src="public/user_image/<?=$comment['author']?>.jpg" alt="" width="80" height="80" border="0">
                 <div class="media-body">
@@ -90,7 +91,9 @@
                   <?= nl2br(htmlspecialchars($comment['comment'])) ?>
                 </div><a class="signaler" href="./index.php?action=signalEntrepriseCo&amp;id=<?= $comment['id'] ?>">Signaler</a>
               </div>     
-              <hr>     
+              <hr> 
+              <span class="signaturecom"><?= nl2br(htmlspecialchars($comment['signature'])) ?></span> 
+              </div> 
               <?php
               }
               ?>

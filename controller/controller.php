@@ -181,7 +181,9 @@ function upSignature(){
 function addWorldComment()
 {
 	$commentmanager = new idee\CommentsManager();
-    $affectedLines = $commentmanager->worldPostComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment']);
+	$usermanager = new idee\UsersManager();
+	$user= $usermanager-> getOneUser($_SESSION['pseudo']);
+    $affectedLines = $commentmanager->worldPostComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment'], $user['signature']);
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter le commentaire !');
     }
@@ -192,7 +194,9 @@ function addWorldComment()
 function addEntrepriseComment()
 {
 	$commentmanager = new idee\CommentsManager();
-    $affectedLines = $commentmanager->EntreprisePostComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment']);
+	$usermanager = new idee\UsersManager();
+	$user= $usermanager-> getOneUser($_SESSION['pseudo']);
+    $affectedLines = $commentmanager->EntreprisePostComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment'], $user['signature']);
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter le commentaire !');
     }
@@ -204,7 +208,9 @@ function addEntrepriseComment()
 function addPolitiqueComment()
 {
 	$commentmanager = new idee\CommentsManager();
-    $affectedLines = $commentmanager->politiquePostComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment']);
+	$usermanager = new idee\UsersManager();
+	$user= $usermanager-> getOneUser($_SESSION['pseudo']);
+    $affectedLines = $commentmanager->politiquePostComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment'], $user['signature']);
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter le commentaire !');
     }
@@ -216,7 +222,9 @@ function addPolitiqueComment()
 function addStoryComment()
 {
 	$commentmanager = new idee\CommentsManager();
-    $affectedLines = $commentmanager->storyPostComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment']);
+	$usermanager = new idee\UsersManager();
+	$user= $usermanager-> getOneUser($_SESSION['pseudo']);
+    $affectedLines = $commentmanager->storyPostComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment'], $user['signature']);
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter le commentaire !');
     }
@@ -228,7 +236,9 @@ function addStoryComment()
 function addthemeComment()
 {
 	$commentmanager = new idee\CommentsManager();
-    $affectedLines = $commentmanager->themeComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment']);
+	$usermanager = new idee\UsersManager();
+	$user= $usermanager-> getOneUser($_SESSION['pseudo']);
+    $affectedLines = $commentmanager->themeComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment'], $user['signature']);
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter le commentaire !');
     }
@@ -360,7 +370,7 @@ function entreprisePost(){
 	$postmanager = new idee\PostsManager();
 	$commentmanager = new idee\CommentsManager();
 	$post= $postmanager->getEntreprisePost($_GET['id']);
-	$comments= $commentmanager->getEntrepriseComments($_GET['id']);
+	$comments= $commentmanager->getEntrepriseComments($_GET['id']);	
 	require('./view/frontend/entreprisePostView.php');
 }
 function refreshEntreprisePost(){
@@ -396,7 +406,7 @@ function politiquePost(){
 }
 function storyPost(){
 	$postmanager = new idee\PostsManager();
-	$commentmanager = new idee\CommentsManager();	
+	$commentmanager = new idee\CommentsManager();;	
 	$post= $postmanager->getStoryPost($_GET['id']);
 	$comments= $commentmanager->getStoryComments($_GET['id']);
 	require('./view/frontend/storyPostView.php');
