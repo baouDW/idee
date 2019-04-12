@@ -113,9 +113,9 @@ class CommentsManager extends Managers
     }
 
     public function themeComment($postId, $author, $comment, $signature)
-    {
+    {    
         $db = $this->dbConnect();
-        $comments = $db->prepare('INSERT INTO `themecomment` (`id`, `post_id`, `author`, `comment`, `comment_date`, `signalement`) VALUES (NULL, :post_id, :author, :comment, CURRENT_TIMESTAMP, "non", :signature)'); 
+        $comments = $db->prepare('INSERT INTO `themecomment` (`id`, `post_id`, `author`, `comment`, `comment_date`, `signalement`, `signature`) VALUES (NULL, :post_id, :author, :comment, CURRENT_TIMESTAMP, "non", :signature)'); 
         $affectedLines = true;
         $comments->execute(array(
         'post_id' => $postId,

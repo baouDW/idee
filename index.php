@@ -38,9 +38,13 @@ try{
             }
         }
 
-        elseif ($_GET['action'] == 'refreshEntreprisepost') {
+        elseif (($_GET['action'] == 'refreshEntreprisepost') && isset($_GET['id'])){
             refreshEntreprisepost();             
         }
+
+        //elseif ($_GET['action'] == 'refreshEntreprisepost') {
+           // refreshEntreprisepost();             
+        //}
         
 
         elseif ($_GET['action'] == 'politiquepost') {
@@ -520,6 +524,11 @@ try{
                 } else{
                     listestory(1);
                 }        
+            
+        }
+
+        elseif ($_GET['action'] == 'acctheme') {
+            acctheme();
             
         }
 

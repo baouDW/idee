@@ -100,24 +100,19 @@
           </div>
             <?php $content = ob_get_clean(); ?>
             
-            <?php require('templateFront.html'); ?>
-          
+            <?php require('templateFront.html'); ?>          
 
-        </div>
-
-        
-
+        </div>           
+          <button id="charger">Charger et traiter les données</button>
+          <div id="r">Cliquez sur "Charger et traiter les données" pour lancer la lecture et le traitement des données JSON</div>
       </div>
+
+          <span class="idphp" style="visibility: hidden;"><?=$post['id']?></span>
       <!-- /.row -->
     </div>
     <!-- /.container -->
 
-    <?php 
-     echo $_SERVER['REMOTE_ADDR'];
-    echo $_GET['id'];
-     echo $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-      ?>
-
+    
     <!-- Bootstrap core JavaScript -->
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="public/js/avis.js"></script>
@@ -126,18 +121,32 @@
 
 
     <script type="text/javascript">
+      var idphp= $('.idphp').text();
 
+var param ='action=refreshEntreprisepost&id='+idphp;
+console.log(idphp);
 
-
-    $('.refresh').on('click',function(){ 
+    //$('.refresh').on('click',function(){ 
       
-      $('.allcomment').text('');
-      var param = 'action=refreshEntreprisepost';
-      $('.allcomment').load('index.php',param);
+      //$('.allcomment').text('');
+      //var param = 'action=refreshEntreprisepost';
+      //$('.allcomment').load('index.php',param);
       //$.post('refresh.php',function(data){
         //$('.media').html(data);
-      });
+      //});
         
+
+        $(function() {
+          $('#charger').click(function() {
+            //$('#r').text('');
+            $.getJSON('http://autre-php/javascript-web-srv/refresh.json', function(donnees) {
+              $('#r').html('<p><b>Nom</b> : ' + donnees.nom + '</p>');
+              $('#r').append('<p><b>Age</b> : ' + donnees.age + '</p>');
+              $('#r').append('<p><b>Ville</b> : ' + donnees.ville + '</p>');
+              $('#r').append('<p><b>Domaine de compétences</b> : ' + donnees.domaine + '</p>');
+            });
+          });  
+        });
     
     </script>
 

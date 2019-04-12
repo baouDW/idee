@@ -38,6 +38,12 @@ function listestory($page){
 	$nbrpost= $postmanager->nbrPostsStory();
 	require('./view/frontend/storyPostsView.php');
 }
+
+function acctheme(){
+	// $postmanager = new idee\PostsManager();
+	// $storyposts= $postmanager->getTheme();	
+	require('./view/frontend/accthemeView.php');
+}
 function insertworldP(){
 	$postmanager = new idee\PostsManager();
 	$insertPost= $postmanager->insertWorldPost($_POST['titre'], $_POST['texte'], $_SESSION['pseudo']);	
@@ -246,17 +252,7 @@ function addthemeComment()
     	header('Location: ' . $_SERVER['HTTP_REFERER'] );
     }
 }
-function addvidComment()
-{
-	$commentmanager = new idee\CommentsManager();
-    $affectedLines = $commentmanager->vidComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment']);
-    if ($affectedLines === false) {
-        throw new Exception('Impossible d\'ajouter le commentaire !');
-    }
-    else {
-    	header('Location: ' . $_SERVER['HTTP_REFERER'] );
-    }
-}
+
 
 
 

@@ -16,12 +16,12 @@
 
 #carrousel
 {
-    position:relative;
-    height:400px;
-    width:700px;
-    margin:auto;
-    margin-top: 10%;
-    background-color:white ;
+  position:relative;
+  height:400px;
+  width:700px;
+  margin:auto;
+  margin-top: 10%;
+  background-color:white ;
 }
 
 
@@ -32,7 +32,12 @@
 .controls
 {
   text-align: center;
-}  
+}
+.masthead
+{
+  margin-top: -25px;
+  height: 600px;
+}
 
 </style>
 
@@ -108,41 +113,22 @@ slideImg();
 </head>
 <?php ob_start(); ?>
 <body>
-  <div id="carrousel"> 
-    <a href="index.php?action=themeV&id=4">         
-      <div class="text-slide">
-        <?php
-        while ($data = $theme->fetch())
-        {
-        ?>                  
-        <h3>Theme du jour</h3>
-        <p><?= nl2br($data['content']) ?></p>
-        <?php
-        }
-        ?>
+  <!-- Page Header -->
+  <div class="masthead" style="background-image: url('public/img/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Clean Blog</h1>
+            <span class="subheading">A Blog Theme by Start Bootstrap</span>
+            <p>consultez les derniers posts ou publiez une idée dans les differentes categories.</p>
+          </div>
+        </div>
       </div>
-    </a>
-    <a href="">                          
-      <div class="text-slide">                                 
-        <h3>Les dernieres idée</h3>
-        <p>
-          consultez les derniers posts ou publiez une idée dans les differentes categories. 
-        </p>                
-      </div> 
-    </a>        
-    <a href="">                          
-      <div class="text-slide">                                 
-        <h3>Dernière idée politique</h3>
-        <p>
-          Donnez votre avis, reagissez et participer aux idées.
-        </p>                
-      </div> 
-    </a>    
+    </div>
   </div>
-
-  <div class="controls"> 
-    <span class="prev">Precedent</span> <span class="next">Suivant</span> 
-  </div>
+  
 </body>
 <?php $content = ob_get_clean(); ?>
 <?php require('templateFront.html'); ?>

@@ -1,7 +1,7 @@
-<?php $theme= $postmanager->getTheme(); ?>
+
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
   <head>
 
@@ -27,7 +27,20 @@
 <style type="text/css">
   body
     {
-      background-color: #5c3c3c;
+      background-color: #fff;
+    }
+    .nav-item:hover
+    {
+      border: solid;
+      font-size:22px; 
+      font-weight: bold; 
+    } 
+    #mainNav .navbar-nav > li.nav-item > a :hover
+    {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: capitalize;
     }
 </style>
   <body>
@@ -43,7 +56,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
 
-            <li class="nav-item bonjour">
+            <li class="bonjour">
               <em class="">
                 Bonjour <?php
                 if (isset($_COOKIE['pseudo'])){
@@ -73,17 +86,11 @@
             </li>
 
 
-            <?php
-            while ($data = $theme->fetch())
-            {
-            ?>
+            
             <li class="nav-item">
-              <a class="nav-link" href="index.php?action=themeV&amp;id=<?= htmlspecialchars($data['id']) ?>">theme du jour</a>
+              <a class="nav-link" href="index.php?action=acctheme">theme du jour</a>
             </li>
-            <?php
-            }
-            $theme->closeCursor();
-            ?>            
+                       
           
 
 
