@@ -298,31 +298,31 @@ function signalthemeC(){
 function delete(){
 	$postmanager = new idee\PostsManager();
 	$delete= $postmanager->deletePost($_GET['id']);
-	header('Location: ./index.php?action=adminaccess');
+	header('Location: ' . $_SERVER['HTTP_REFERER'] );;
 }
 
 function deletewolrd(){
 	$postmanager = new idee\PostsManager();
 	$deletewolrd= $postmanager->deleteWorldPost($_GET['id']);
-	header('Location: ./index.php?action=adminaccess');
+	header('Location: ' . $_SERVER['HTTP_REFERER'] );;
 }
 
 function deleteentreprise(){
 	$postmanager = new idee\PostsManager();
 	$deleteentreprise= $postmanager->deleteEntreprisePost($_GET['id']);
-	header('Location: ./index.php?action=adminaccess');
+	header('Location: ' . $_SERVER['HTTP_REFERER'] );;
 }
 
 function deletepolitique(){
 	$postmanager = new idee\PostsManager();
 	$deletepolitique= $postmanager->deletePolitiquePost($_GET['id']);
-	header('Location: ./index.php?action=adminaccess');
+	header('Location: ' . $_SERVER['HTTP_REFERER'] );;
 }
 
 function deletestory(){
 	$postmanager = new idee\PostsManager();
 	$deletestory= $postmanager->deleteStoryPost($_GET['id']);
-	header('Location: ./index.php?action=adminaccess');
+	header('Location: ' . $_SERVER['HTTP_REFERER'] );;
 }
 
 function worldPosts(){
@@ -479,6 +479,7 @@ function adminaccess(){
 	$pposts= $postmanager->getAllPolitiquePosts();
 	$sposts= $postmanager->getAllStoryPosts();
 	require('./view/backend/crudView.php');
+	
 }
 function useraccess(){
 	$postmanager = new idee\PostsManager();

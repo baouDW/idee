@@ -19,7 +19,7 @@ try{
             deletestory();
         }
 
-        elseif ($_GET['action'] == 'comm') {
+        elseif ($_GET['action'] == 'worldpost') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 worldPosts();
             }
@@ -36,10 +36,6 @@ try{
             else {
                 throw new Exception('Erreur : aucun identifiant de billet envoyé');
             }
-        }
-
-        elseif (($_GET['action'] == 'refreshEntreprisepost') && isset($_GET['id'])){
-            refreshEntreprisepost();             
         }
         
 
@@ -468,7 +464,7 @@ try{
         }
 
 
-        elseif ($_GET['action'] == 'listworldpost') {
+        elseif ($_GET['action'] == 'listeworld') {
            if ((isset($_GET['page'])) && ($_GET['page'] > 0))
                 {
                     listWorldPosts($_GET['page']);

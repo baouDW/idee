@@ -1,21 +1,14 @@
 <!DOCTYPE html>
-<!--
-Template Name: Basend
-Author: <a href="http://www.os-templates.com/">OS Templates</a>
-Author URI: http://www.os-templates.com/
-Licence: Free to use under our free template licence terms
-Licence URI: http://www.os-templates.com/template-terms
--->
 <html lang="fr">
 <head>
 <title><?= $title ?></title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
-<link rel="icon" type="image/ico" href="favicon.ico" />
+<link href="public/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<link rel="icon" type="image/ico" href="public/images/favicon.ico" />
 </head>
 <body id="top">
-<div class="bgded overlay" style="background-image:url('images/demo/backgrounds/03.jpg');"> 
+<div class="bgded overlay" style="background-image:url('public/images/demo/backgrounds/06.jpg');"> 
   <div class="wrapper row1">
     <header id="header" class="hoc clear">      
       <div id="logo" class="fl_left">
@@ -26,28 +19,13 @@ Licence URI: http://www.os-templates.com/template-terms
           <li class="active"><a href="index.php">Home</a></li>
           <li><a class="drop" href="#">Idée</a>
             <ul>
-              <li><a href="index.php?action=listworldpost">Planete</a></li>
+              <li><a href="index.php?action=listeworld">Planete</a></li>
               <li><a href="index.php?action=listeentreprise">Entreprise</a></li>
               <li><a href="index.php?action=listepolitique">Politique</a></li>
               <li><a href="index.php?action=listestory">Scenario : films/roman</a></li>
               <li><a href="index.php?action=acctheme">theme du jour</a></li>
             </ul>
           </li>
-          <!-- <li><a class="drop" href="#">Dropdown</a>
-            <ul>
-              <li><a href="#">Level 2</a></li>
-              <li><a class="drop" href="#">Level 2 + Drop</a>
-                <ul>
-                  <li><a href="#">Level 3</a></li>
-                  <li><a href="#">Level 3</a></li>
-                  <li><a href="#">Level 3</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Level 2</a></li>
-            </ul>
-          </li> -->
-          <!-- <li><a href="#">Link Text</a></li>
-          <li><a href="#">Link Text</a></li> -->
           <?php
             if (isset($_SESSION['pseudo']) OR (isset($_COOKIE['pseudo'])))
             {          
@@ -106,7 +84,7 @@ Licence URI: http://www.os-templates.com/template-terms
   <div><?= $content ?></div>
 <!-- ########################################################### -->
 
-<div class="wrapper row4 bgded overlay" style="background-image:url('images/demo/backgrounds/02.jpg');">
+<div class="wrapper row4 bgded overlay" style="background-image:url('public/images/demo/backgrounds/etoile.jpg');">
   <footer id="footer" class="hoc clear">     
     <div class="one_third first">
       <h6 class="heading">Pense le monde</h6>
@@ -152,14 +130,14 @@ Licence URI: http://www.os-templates.com/template-terms
 </div>
 <div class="wrapper row5">
   <div id="copyright" class="hoc clear"> 
-    <p class="fl_left">Copyright &copy; 2016 - All Rights Reserved - <a href="#">Domain Name</a></p>
+    <p class="fl_left">Copyright &copy; 2019 - All Rights Reserved - <a href="#">Projet DWJ 2019</a></p>
     <p class="fl_right">Template by <a target="_blank" href="http://www.os-templates.com/" title="Free Website Templates">OS Template</a></p>
   </div>
 </div>
 <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
 <!-- JAVASCRIPTS -->
-<script src="layout/scripts/jquery.min.js"></script>
-<script src="layout/scripts/jquery.backtotop.js"></script>
-<script src="layout/scripts/jquery.mobilemenu.js"></script>
+<script src="public/layout/scripts/jquery.min.js"></script>
+<script src="public/layout/scripts/jquery.backtotop.js"></script>
+<script src="public/layout/scripts/jquery.mobilemenu.js"></script>
 </body>
 </html>

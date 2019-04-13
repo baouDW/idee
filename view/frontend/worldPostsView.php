@@ -30,7 +30,7 @@ body
             <div class="col-lg-6">
               <h2 ><?= $data['title'] ?></h2>
               <p ><?= substr($data['content'], 0, 100); ?></p>
-              <a href="index.php?id=<?= $data['id'] ?>&action=comm" >Lire la suite &rarr;</a>
+              <a href="index.php?id=<?= $data['id'] ?>&action=worldpost" >Lire la suite &rarr;</a>
             </div>
           </div>
         </div>

@@ -1,63 +1,40 @@
 <?php $title = 'Idée politique'; ?>
 <?php ob_start(); ?>
-    <!-- Page Content -->
-    <style type="text/css">
-      .post
-      {
-        border: solid;
-        text-align: center;
-        padding: 20px;
-        background-color: white;
-      }
-      .avis
-      {
-        display: flex;
-        justify-content: space-around;
-      }
-      .avis-item
-      {
-        margin: 10px;
-      }
-    </style>
-    <div class="container">
-      <h1 class="title-cat">Idée politique</h1>
-      <h1 class="mt-4 mb-3"><?= htmlspecialchars($post['title']) ?>
-        <small>de
-          <a href="#"><?= htmlspecialchars($post['author']) ?></a>
-        </small>
-      </h1>
-      <ol class="breadcrumb">
-        <?= htmlspecialchars($post['creation_date_fr']) ?>
-      </ol>
-      <div class="row">
-        <!-- Post Content Column -->
-        <div class="col-lg-12">
-          <div class="post">        
-            <!-- Post Content -->
-            <p class="lead">
-              <?= htmlspecialchars($post['content']) ?>       
-            </p>
-          </div>
-          <div class="avis-item"><a class="signaler" href="./index.php?action=signalPolitique&amp;id=<?= $post['id'] ?>">signaler</a>
-          </div>         
-          <hr>
-          <?php
+<div class="bgded overlay" style="background-image:url('././public/images/demo/backgrounds/05.jpg');"> 
+  <section id="breadcrumb" class="hoc clear"> 
+    <h6 class="heading">Idée politique</h6>
+    <ul>
+      <li><a href="index.php">Accueil</a></li>
+      <li><a href="http://localhost/idee/index.php?action=listepolitique">Liste politique</a></li>
+      <li><a href="index.php?id=<?= $_GET['id'] ?>&action=politiquepost"><?= htmlspecialchars($post['title']) ?></a></li>
+    </ul>
+  </section>
+</div>
+<div class="wrapper row3">
+  <main class="hoc container clear"> 
+    <div class="content"> 
+      <h1><?= htmlspecialchars($post['title']) ?> de <?= htmlspecialchars($post['author']) ?></h1>
+      <span>Le <?= htmlspecialchars($post['creation_date_fr']) ?></span>
+      <img class="imgr borderedbox inspace-5" src="././public/images/demo/livre.jpg" alt="">
+      <p><?= htmlspecialchars($post['content'])?> </p>      
+      <div id="comments">
+        <?php
           if (isset($_SESSION['pseudo']) OR isset($_COOKIE['pseudo']))
           {
           ?>
-          <!-- Comments Form -->
-          <div class="card my-4">
-            <h5 class="card-header">Ecrire un commentaire:</h5>
-            <div class="card-body">
-              <form action="./index.php?action=addPolitiqueComment&amp;id=<?= $post['id'] ?>" method="post">
-                <div class="form-group">
-                  <textarea name="comment" id="comment" class="form-control" rows="3"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
-            </div>
+          <br>
+        <h2>Ecrire un commentaire</h2>
+        <form action="./index.php?action=addPolitiqueComment&amp;id=<?= $post['id'] ?>" method="post">
+          <div class="block clear">
+            <label for="comment">Votre Commentaire</label>
+            <textarea name="comment" id="comment" cols="25" rows="10"></textarea>
           </div>
-          <?php
+          <div>
+            <input type="submit" name="submit" value="Envoyer">
+            &nbsp;            
+          </div>
+        </form>
+        <?php
           }
           else
           {
@@ -65,32 +42,39 @@
           <a href="view/frontend/loginView.php">veuillez vous identifier pour ecrire un commentaire</a>
           <?php
           }
-          ?>
-          <div class="allcomment">
+          ?> 
+      </div>
+        <h2>Commentaires</h2>
+        <ul>
             <?php
             while ($comment = $comments->fetch())
             {
             ?>
-            <!-- Single Comment -->
-            <div class ="singlecom">
-            <div class="media mb-4">
-              <img class="d-flex mr-3 rounded-circle" src="public/user_image/<?=$comment['author']?>.jpg" alt="" width="80" height="80" border="0">
-              <div class="media-body">
-                <h5 class="mt-0"><?= htmlspecialchars($comment['author']) ?></h5>
-                <?= nl2br(htmlspecialchars($comment['comment']))  ?>
-              </div><a class="signaler" href="./index.php?action=signalPolitiqueCo&amp;id=<?= $comment['id'] ?>">Signaler</a>
-            </div>
-            <hr> 
-            <span class="signaturecom"><?= nl2br(htmlspecialchars($comment['signature'])) ?></span>
-            </div> 
+          <li>
+            <article>
+              <header>
+                <figure class="avatar"><img class="img-prof" src="public/user_image/<?=$comment['author']?>.jpg" width="80" height="80" border="0" alt=""></figure>
+                <address>
+                By <a href="#"><?= htmlspecialchars($comment['author']) ?></a>
+                </address>
+                <p>Le <?=$comment['comment_date_fr']?></p>
+              </header>
+              <div class="comcont">
+                <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+                <a class="signaler" href="./index.php?action=signalPolitiqueCo&amp;id=<?= $comment['id'] ?>">Signaler</a>
+                <hr> 
+              <span class="signaturecom"><strong>Signature:</strong> <?= nl2br(htmlspecialchars($comment['signature'])) ?></span>
+              <hr>
+              </div>
+            </article>
+          </li> 
               <?php
               }
               ?>
-          </div>
-            <?php $content = ob_get_clean(); ?>         
-            <?php require('templateFront.html'); ?>     
-        </div>  
-      </div>
-    </div>     
-  </body>
-</html>
+        </ul>
+    </div>
+    <div class="clear"></div>
+  </main>
+</div>       
+<?php $content = ob_get_clean(); ?>            
+<?php require('templateFront.html'); ?> 
