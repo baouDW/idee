@@ -41,10 +41,6 @@ try{
         elseif (($_GET['action'] == 'refreshEntreprisepost') && isset($_GET['id'])){
             refreshEntreprisepost();             
         }
-
-        //elseif ($_GET['action'] == 'refreshEntreprisepost') {
-           // refreshEntreprisepost();             
-        //}
         
 
         elseif ($_GET['action'] == 'politiquepost') {
@@ -67,10 +63,6 @@ try{
 
         elseif ($_GET['action'] == 'themeV') {
             themeV();
-        }
-
-        elseif ($_GET['action'] == 'videoView') {
-            videoView();
         }
 
         
@@ -158,17 +150,6 @@ try{
             if (isset($_GET['id']))
             {
                 signalthemeC();
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
-            }
-        }
-
-
-        elseif ($_GET['action'] == 'signalvidcomm') {
-            if (isset($_GET['id']))
-            {
-                signalvidC();
             }
             else {
                 throw new Exception('Erreur : aucun identifiant de commentaire envoyé');

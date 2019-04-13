@@ -1,8 +1,7 @@
+<?php $title = 'Theme du jour'; ?>
 <?php
-
 ob_start();
 ?>
-
 
 <style type="text/css">
     body
@@ -134,8 +133,6 @@ function apelWiki(keyword){
                 var result=data;
                 $("#showdata").show();
                 $("#res_row").empty();
-                //$("#res_row").append("<tr>");
-
                 for (i=1;i<result[1].length;i++){
                   
                     $("#res_row").append("<div><div class='well'><a href="+result[3][i]+"><h2>" + result[1][i]+ "</h2>" + "<p>" + result[2][i] + "</p></a></div></div>");
@@ -145,31 +142,17 @@ function apelWiki(keyword){
             error: function (error) 
                   {
                     alert(JSON.stringify(error));
-                  }
-                 
+                  }                 
   });
 
 }
  
 function search()
 {
-  var fetch= $("#fetch").val();
+ var fetch= $("#fetch").val();
  apelWiki (fetch);
  }
 
-
-function verifUrl(str)
- {
-     var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
-      if(!regex .test(str))
-       {
-          return false;
-       } 
-      else
-       {
-        return true;
-       }
-}
 </script>
 </body>
 

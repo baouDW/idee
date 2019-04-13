@@ -1,9 +1,5 @@
 <?php
 session_start();
-//require('./model/CommentManager.php');
-//require('./model/PostsManager.php');
-//require('./model/SignalManager.php');
-//require('./model/UsersManager.php');
 
 require './vendor/autoload.php';
 
@@ -39,9 +35,7 @@ function listestory($page){
 	require('./view/frontend/storyPostsView.php');
 }
 
-function acctheme(){
-	// $postmanager = new idee\PostsManager();
-	// $storyposts= $postmanager->getTheme();	
+function acctheme(){	
 	require('./view/frontend/accthemeView.php');
 }
 function insertworldP(){
@@ -173,15 +167,6 @@ function upSignature(){
 	header('Location: ./index.php?action=profilview');
 }
 
-
-
-
-
-
-
-
-
-
 //ajout de commentaire---------------------------------
 
 function addWorldComment()
@@ -253,10 +238,6 @@ function addthemeComment()
     }
 }
 
-
-
-
-
 //Signalements--------------------------------------
 
 function signalMonde(){
@@ -312,15 +293,6 @@ function signalthemeC(){
 	$SignalemenThemeC= $signalmanager->SignalThemeCom($_GET['id']);
 	header('Location: ' . $_SERVER['HTTP_REFERER'] );
 }
-function signalvidC(){
-	$signalmanager = new idee\SignalManager();
-	$SignalemenVidC= $signalmanager->SignalVidCom($_GET['id']);
-	header('Location: ' . $_SERVER['HTTP_REFERER'] );
-}
-
-
-
-
 
 //suppression de posts----------------------------------
 function delete(){
@@ -353,8 +325,6 @@ function deletestory(){
 	header('Location: ./index.php?action=adminaccess');
 }
 
-
-
 function worldPosts(){
 	$postmanager = new idee\PostsManager();
 	$commentmanager = new idee\CommentsManager();
@@ -369,28 +339,6 @@ function entreprisePost(){
 	$comments= $commentmanager->getEntrepriseComments($_GET['id']);	
 	require('./view/frontend/entreprisePostView.php');
 }
-function refreshEntreprisePost(){
-	$commentmanager = new idee\CommentsManager();
-	$rcomments= $commentmanager->getEntrepriseComments(44);
-
-	while ($rcomment = $rcomments->fetch())
-        {          
-        echo 
-        "<div class=\"media mb-4\">
-        	<img class=\"d-flex mr-3 rounded-circle\" src=\"http://placehold.it/50x50\" alt=\"\">
-        	<div class=\"media-body\">
-        		<h5 class=\"mt-0\"/>". htmlspecialchars($rcomment['author'])."</h5></br>".
-        		nl2br(htmlspecialchars($rcomment['comment'])).
-        	"</div>
-        	<a class=signaler href=\"./index.php?action=signalEntrepriseCo&amp;id=". $rcomment['id']. "\">Signaler</a>
-        </div><hr>";
-    }	
-}
-
-
-
-
-
 
 //----------------------------------------------
 function politiquePost(){

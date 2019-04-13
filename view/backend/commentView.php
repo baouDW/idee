@@ -114,7 +114,7 @@
 		vertical-align: middle;
 		margin-right: 10px;
 	}
-    .pagination {
+    /*.pagination {
         float: right;
         margin: 0 0 5px;
     }
@@ -145,7 +145,7 @@
     .pagination li i {
         font-size: 16px;
         padding-top: 6px
-    }
+    }*/
     .hint-text {
         float: left;
         margin-top: 10px;
@@ -224,9 +224,7 @@
                         <td><?= $comment['comment_date_fr'] ?></td>
                         <td><?= htmlspecialchars($comment['comment']) ?></td>
                         <td><?= $comment['signalement'] ?></td>			
-                        <td>
-                            
-                            <!--<a href="./index.php?id=<?= $comment['id'] ?>&action=delcomm" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>-->
+                        <td>                                             
                         </td>
                     </tr>
 					    

@@ -1,11 +1,9 @@
-<?php 
-//session_start();
-?>
+<?php $title = 'Profil'; ?>
 <?php ob_start(); ?>
 <!DOCTYPE>
 <html>
   <head>
-    <title>Upload d'une image </title>
+    <title>Profil</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">

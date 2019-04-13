@@ -1,28 +1,22 @@
-
+<?php $title = 'Idée politique'; ?>
 
 <style type="text/css">
 body
     {
       background-color: #5c3c3c;
-    }
-  
+    }  
 </style>
 
 <?php ob_start(); ?>
     <!-- Page Content -->
     <div class="container">
-
       <!-- Page Heading/Breadcrumbs -->
       <h1 class="mt-4 mb-3">Les dernières idées politiques
       </h1>
-
       <ol class="breadcrumb">
         Les dernières penssées
-      </ol>
-      
-
+      </ol>    
       <?php
-
       while ($data = $politiqueposts->fetch())
       {
       ?> 
@@ -51,7 +45,6 @@ body
       }
       $politiqueposts->closeCursor();
       ?>
-
       
       <?php
       $donner = $nbrpost->fetch();
@@ -62,14 +55,7 @@ body
         
       <?php
         }
-      ?>
-
-  
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+      ?> 
 
 <?php $content = ob_get_clean(); ?>
 <?php require('templateFront.html'); ?>

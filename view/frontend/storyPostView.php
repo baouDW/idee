@@ -1,8 +1,6 @@
-
+<?php $title = 'Idée histoire'; ?>
 <?php ob_start(); ?>
-    <!-- Page Content -->
     <style type="text/css">
-
       .post
       {
         border: solid;
@@ -22,27 +20,21 @@
     </style>
     <div class="container">
       <h1 class="title-cat">Idée d'histoire</h1>
-      <!-- Page Heading/Breadcrumbs -->
       <h1 class="mt-4 mb-3"><?= htmlspecialchars($post['title']) ?>
         <small>de
           <a href="#"><?= htmlspecialchars($post['author']) ?></a>
         </small>
-      </h1>
-      <!-- Date/Time -->
-          
+      </h1>          
       <ol class="breadcrumb">
         <?= htmlspecialchars($post['creation_date_fr']) ?>
       </ol>
-
       <div class="row">
-
         <!-- Post Content Column -->
         <div class="col-lg-12">
-          <div class="post">         
-
+          <div class="post">       
             <!-- Post Content -->
             <p class="lead">
-              <?= htmlspecialchars($post['content'])?>              
+              <?= htmlspecialchars($post['content'])?>         
             </p>
           </div>          
             <p>                                     
@@ -74,7 +66,6 @@
           <?php
           }
           ?>
-
           <div class="allcomment">
             <?php
             while ($comment = $comments->fetch())
@@ -90,39 +81,17 @@
               </div><a class="signaler" href="./index.php?action=signalStoryCo&amp;id=<?= $comment['id'] ?>">Signaler</a>
               </div>
               <hr>
-                <span class="signaturecom"><?= nl2br(htmlspecialchars($comment['signature'])) ?></span>
-            
+                <span class="signaturecom"><?= nl2br(htmlspecialchars($comment['signature'])) ?></span>            
             <hr> 
-          </div>
-             
+          </div>             
               <?php
               }
               ?>
           </div>
-            <?php $content = ob_get_clean(); ?>
-            
-            <?php require('templateFront.html'); ?>
-          
-
-        </div>
-
-        
-
+            <?php $content = ob_get_clean(); ?>            
+            <?php require('templateFront.html'); ?>        
+        </div>      
       </div>
-      <!-- /.row -->
-
-    </div>
-    <!-- /.container -->
-
-    
-    <!-- Bootstrap core JavaScript -->
-    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script src="public/js/avis.js"></script>
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-
-    
-    
+    </div>   
   </body>
 </html>

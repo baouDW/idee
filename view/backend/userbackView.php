@@ -1,5 +1,5 @@
 
-
+<?php $title = 'Mon espace'; ?>
 <?php ob_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -113,8 +113,7 @@
 		border-radius: 50%;
 		vertical-align: middle;
 		margin-right: 10px;
-	}
-    
+	}    
     
     }
     .hint-text {
@@ -224,25 +223,19 @@
                     <div class="col-sm-6">
 						<h2>Mes publications </h2>
 					</div>
-					<!-- <div class="col-sm-6">
-						<a href="./index.php?action=createView" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Ecrire un post</span></a>												
-					</div> -->
                 </div>
             </div>            
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-						<th class="none">
-							
+						<th class="none">							
 						</th>
                         <th>Titre</th>
                         <th>Date</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody>
-
-                	
+                <tbody>                	
                 	<!-- world posts -->
                 	<?php
 					while ($data = $wposts->fetch())
@@ -255,20 +248,17 @@
                         	<a href="index.php?id=<?= $data['id'] ?>&action=comm"><?= $data['title'] ?>
                         </td>
                         <td>
-                        	<?= $data['creation_date_fr'] ?>           		
+                        	<?= $data['creation_date_fr'] ?>         	
                         </td>
                         <td>
                         	<a href="./index.php?action=upview&id=<?= $data['id'] ?>" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                             <a href="index.php?id=<?= $data['id'] ?>&action=suppr" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                        </td>				
-                        
-                    </tr>
-					    
+                        </td>				                        
+                    </tr>					    
 					<?php
 					}
 					$wposts->closeCursor();
 					?>     
-
 					<!-- entreprise posts -->
 					<?php
 					while ($edata = $eposts->fetch())
@@ -282,15 +272,12 @@
                         <td>
                         	<a href="./index.php?action=upentrepriseview&id=<?= $edata['id'] ?>" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                             <a href="index.php?id=<?= $edata['id'] ?>&action=supprentreprise" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                        </td>				
-                        
-                    </tr>
-					    
+                        </td>				                        
+                    </tr>					    
 					<?php
 					}
 					$eposts->closeCursor();
 					?>  
-
 					<!-- politique posts -->
 					<?php
 					while ($pdata = $pposts->fetch())
@@ -304,15 +291,12 @@
                         <td>
                         	<a href="./index.php?action=uppolitiqueview&id=<?= $pdata['id'] ?>" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                             <a href="index.php?id=<?= $pdata['id'] ?>&action=supprpolitique" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                        </td>				
-                        
-                    </tr>
-					    
+                        </td>				                        
+                    </tr>					    
 					<?php
 					}
 					$pposts->closeCursor();
 					?> 
-
 					<!-- story posts -->
 					<?php
 					while ($sdata = $sposts->fetch())
@@ -326,17 +310,14 @@
                         <td>
                         	<a href="./index.php?action=upstoryview&id=<?= $sdata['id'] ?>" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                             <a href="index.php?id=<?= $sdata['id'] ?>&action=supprstory" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                        </td>				
-                        
-                    </tr>
-					    
+                        </td>				                        
+                    </tr>					    
 					<?php
 					}
 					$sposts->closeCursor();
 					?> 
                 </tbody>
-            </table>
-			
+            </table>			
         </div>
     </div>	
     <?php $content = ob_get_clean(); ?>

@@ -1,28 +1,20 @@
 
-
+<?php $title = 'Idée monde'; ?>
 <style type="text/css">
 body
     {
       background-color: #5c3c3c;
-    }
-  
+    }  
 </style>
-
 <?php ob_start(); ?>
     <!-- Page Content -->
-    <div class="container">
-
-      <!-- Page Heading/Breadcrumbs -->
+    <div class="container">      
       <h1 class="mt-4 mb-3">Les dernières penssées pour le monde
       </h1>
-
       <ol class="breadcrumb">
         Les dernières penssées
-      </ol>
-      
-
+      </ol>      
       <?php
-
       while ($data = $worldposts->fetch())
       {
       ?> 
@@ -51,41 +43,15 @@ body
       }
       $worldposts->closeCursor();
       ?>
-
       <?php
       $donner = $nbrpost->fetch();
       $nbrpage= ceil($donner['nbr']/4);
       for ($i=1; $i<=$nbrpage; $i++){        
       ?>
-        <a href="http://localhost/idee/index.php?action=listworldpost&page=<?= $i?>"><?= $i ?>/</a> 
-        
+        <a href="http://localhost/idee/index.php?action=listworldpost&page=<?= $i?>"><?= $i ?>/</a>         
       <?php
         }
       ?>
-      
-      
-
-      <!-- 
-      Pagination 
-      <ul class="pagination justify-content-center mb-4">
-        <li class="page-item">
-          <a class="page-link" href="#">&larr; Precedent</a>
-        </li>
-        <li class="page-item disabled">
-          <a class="page-link" href="#">Suivant &rarr;</a>
-        </li>
-      </ul>
-    </div>
-    -->
-  <!-- /.container -->
-
-  
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-
 <?php $content = ob_get_clean(); ?>
 <?php require('templateFront.html'); ?>
 

@@ -5,13 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Accueil</title>
+<link rel="icon" type="image/ico" href="favicon.ico" />
 <link href="https://fonts.googleapis.com/css?family=Oswald:300,400|Roboto:300,400,700" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
+</head>
+<?php $title = 'accueil'; ?>
 <style type="text/css">
 
 #carrousel
@@ -38,10 +39,7 @@
   margin-top: -25px;
   height: 600px;
 }
-
 </style>
-
-
 
 <script type="text/javascript">
   $(document).ready(function(){
@@ -54,8 +52,6 @@
 
   $img.css('display', 'none');
   $currentImg.css('display', 'block');
-
-
 
   $('.next').click(function(){ 
 
@@ -113,21 +109,59 @@ slideImg();
 </head>
 <?php ob_start(); ?>
 <body>
-  <!-- Page Header -->
-  <div class="masthead" style="background-image: url('public/img/home-bg.jpg')">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="site-heading">
-            <h1>Clean Blog</h1>
-            <span class="subheading">A Blog Theme by Start Bootstrap</span>
-            <p>consultez les derniers posts ou publiez une idée dans les differentes categories.</p>
-          </div>
-        </div>
-      </div>
+  <div class="bgded overlay" style="background-image:url('images/demo/backgrounds/06.jpg');"> 
+   <section id="pageintro" class="hoc clear">
+    <div> 
+      <!-- ################################################################################################ -->
+      <h2 class="heading">Inspire le monde</h2>
+      <p>Venez partager vos idée et inspirez le monde</p>
+      <footer><a class="btn" href="index.php?action=acctheme">Theme du jour</a></footer>
+      <!-- ################################################################################################ -->
     </div>
-  </div>
+  </section>
+  <!-- ################################################################################################ -->
+</div>
+<!-- End Top Background Image Wrapper -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row2">
+  <section class="hoc container clear"> 
+    <!-- ################################################################################################ -->
+    <div class="sectiontitle">
+      <h6 class="heading">Categories</h6>
+      <p>Accedez aux differentes sections du site.</p>
+    </div>
+    <ul class="nospace group services">
+      <li class="one_quarter first">
+        <article><a href="#"><i class="fa fa-3x fa-500px"></i></a>
+          <h6 class="heading font-x1"><a href="index.php?action=listworldpost">Histoires</a></h6>
+          <p>Partager vos idées de livre, scenarios, films et de romans</p>
+        </article>
+      </li>
+      <li class="one_quarter">
+        <article><a href="#"><i class="fa fa-3x fa-lastfm"></i></a>
+          <h6 class="heading font-x1"><a href="index.php?action=listeentreprise">Entreprise</a></h6>
+          <p>Partager vos idées d'entreprise innovante ou testez votre idée en la presentant a la communauté</p>
+        </article>
+      </li>
+      <li class="one_quarter">
+        <article><a href="#"><i class="fa fa-3x fa-puzzle-piece"></i></a>
+          <h6 class="heading font-x1"><a href="index.php?action=listepolitique">Politique</a></h6>
+          <p>Recreez la politique en partageant des idées nouvelles</p>
+        </article>
+      </li>
+      <li class="one_quarter">
+        <article><a href="#"><i class="fa fa-3x fa-ravelry"></i></a>
+          <h6 class="heading font-x1"><a href="index.php?action=listestory">Planete</a></h6>
+          <p>Proposez et venez debatre d'idée pour un monde meilleur.</p>
+        </article>
+      </li>
+    </ul>
+    <!-- ################################################################################################ -->
+    <div class="clear"></div>
+  </section>
+</div>
   
 </body>
 <?php $content = ob_get_clean(); ?>

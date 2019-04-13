@@ -1,28 +1,19 @@
-
-
+<?php $title = 'Idée histoire'; ?>
 <style type="text/css">
 body
     {
       background-color: #5c3c3c;
-    }
-  
+    }  
 </style>
-
 <?php ob_start(); ?>
     <!-- Page Content -->
-    <div class="container">
-
-      <!-- Page Heading/Breadcrumbs -->
+    <div class="container">      
       <h1 class="mt-4 mb-3">Les dernières idées d'histoires
       </h1>
-
       <ol class="breadcrumb">
         Les dernières penssées
-      </ol>
-      
-
+      </ol>    
       <?php
-
       while ($data = $storyposts->fetch())
       {
       ?> 
@@ -51,23 +42,14 @@ body
       }
       $storyposts->closeCursor();
       ?>
-
       <?php
       $donner = $nbrpost->fetch();
       $nbrpage= ceil($donner['nbr']/4);         
       for ($i=1; $i<=$nbrpage; $i++){        
       ?>
-        <a href="http://localhost/idee/index.php?action=listestory&page=<?= $i?>"><?= $i ?>/</a> 
-        
+        <a href="http://localhost/idee/index.php?action=listestory&page=<?= $i?>"><?= $i ?>/</a>         
       <?php
         }
       ?>
-  
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-
 <?php $content = ob_get_clean(); ?>
 <?php require('templateFront.html'); ?>

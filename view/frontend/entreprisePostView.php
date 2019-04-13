@@ -1,72 +1,72 @@
-
+<?php $title = 'Idée entreprise'; ?>
 <?php ob_start(); ?>
-    <!-- Page Content -->
-    <style type="text/css">
+ <!-- Top Background Image Wrapper -->
+<div class="bgded overlay" style="background-image:url('http://www.panoram-art.com/galerie/voyage/6451-voyage-maroc-Ciel-marocain-panorama-sentucq.h.jpg');"> 
+  <!-- ################################################################################################ -->
+  
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <section id="breadcrumb" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <h6 class="heading">Idée entreprise</h6>
+    <!-- ################################################################################################ -->
+    <ul>
+      <li><a href="#">Accueil</a></li>
+      <li><a href="#">Liste Entreprise</a></li>
+      <li><a href="#"><?= htmlspecialchars($post['title']) ?></a></li>
+    </ul>
+    <!-- ################################################################################################ -->
+  </section>
+  <!-- ################################################################################################ -->
+</div>
+<!-- End Top Background Image Wrapper -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row3">
+  <main class="hoc container clear"> 
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    <div class="content"> 
+      <!-- ################################################################################################ -->
+      <h1><?= htmlspecialchars($post['title']) ?> de <?= htmlspecialchars($post['author']) ?></h1>
+      <span>Le <?= htmlspecialchars($post['creation_date_fr']) ?></span>
+      <img class="imgr borderedbox inspace-5" src="././images/demo/livre.jpg" alt="">
+      <p><?= htmlspecialchars($post['content'])?> </p>
+      
+      <div id="comments">
 
-      .post
-      {
-        border: solid;
-        text-align: center;
-        padding: 20px;
-        background-color: white;
-      }
-      .avis
-      {
-        display: flex;
-        justify-content: space-around;
-      }
-      .avis-item
-      {
-        margin: 10px;
-      }
-    </style>
-    <div class="container">
-      <h1 class="title-cat">Idée d'entreprise</h1>
-      <!-- Page Heading/Breadcrumbs -->
-      <h1 class="mt-4 mb-3"><?= htmlspecialchars($post['title']) ?>
-        <small>de
-          <a href="#"><?= htmlspecialchars($post['author']) ?></a>
-        </small>
-      </h1>
-      <!-- Date/Time -->
-          
-      <ol class="breadcrumb">
-        <?= htmlspecialchars($post['creation_date_fr']) ?>
-      </ol>
-
-      <div class="row">
-
-        <!-- Post Content Column -->
-        <div class="col-lg-12">
-          <div class="post">         
-
-            <!-- Post Content -->
-            <p class="lead">
-              <?= htmlspecialchars($post['content'])?>              
-            </p>
-          </div>
-          
-          <div class="avis-item"><a class="signaler" href="./index.php?action=signalEntreprise&amp;id=<?= $post['id'] ?>">signaler</a>
-          </div>
-          <hr>
-          <?php
+        <?php
           if (isset($_SESSION['pseudo']) OR isset($_COOKIE['pseudo']))
           {
           ?>
-          <!-- Comments Form -->
-          <div class="card my-4">
-            <h5 class="card-header">Ecrire un commentaire:</h5>
-            <div class="card-body">
-              <form action="./index.php?action=addEntrepriseComment&amp;id=<?= $post['id'] ?>" method="post">
-                <div class="form-group">
-                  <textarea name="comment" id="comment" class="form-control" rows="3"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
-              
-            </div>
+        <h2>Ecrire un commentaire</h2>
+        <form action="./index.php?action=addEntrepriseComment&amp;id=<?= $post['id'] ?>" method="post">
+          <!-- <div class="one_third first">
+            <label for="name">Name <span>*</span></label>
+            <input type="text" name="name" id="name" value="" size="22" required>
           </div>
-          <?php
+          <div class="one_third">
+            <label for="email">Mail <span>*</span></label>
+            <input type="email" name="email" id="email" value="" size="22" required>
+          </div>
+          <div class="one_third">
+            <label for="url">Website</label>
+            <input type="url" name="url" id="url" value="" size="22">
+          </div> -->
+          <div class="block clear">
+            <label for="comment">Votre Commentaire</label>
+            <textarea name="comment" id="comment" cols="25" rows="10"></textarea>
+          </div>
+          <div>
+            <input type="submit" name="submit" value="Envoyer">
+            &nbsp;
+            
+          </div>
+        </form>
+
+        <?php
           }
           else
           {
@@ -74,82 +74,53 @@
           <a href="view/frontend/loginView.php">veuillez vous identifier pour ecrire un commentaire</a>
           <?php
           }
-          ?>
-          
-          <button class="refresh btn btn-primary">rafraichir les commentaires</button>
-          <!-- Single Comment -->
-          <div class="allcomment">
-              <?php
+          ?> 
+
+      </div>
+
+
+
+        <h2>Commentaires</h2>
+        <ul>
+            <?php
             while ($comment = $comments->fetch())
             {
             ?>
-            <div class ="singlecom">
-              <div class="media mb-4">
-                <img class="d-flex mr-3 rounded-circle" src="public/user_image/<?=$comment['author']?>.jpg" alt="" width="80" height="80" border="0">
-                <div class="media-body">
-                  <h5 class="mt-0"><?= htmlspecialchars($comment['author']) ?></h5>
-                  <?= nl2br(htmlspecialchars($comment['comment'])) ?>
-                </div><a class="signaler" href="./index.php?action=signalEntrepriseCo&amp;id=<?= $comment['id'] ?>">Signaler</a>
-              </div>     
-              <hr> 
-              <span class="signaturecom"><?= nl2br(htmlspecialchars($comment['signature'])) ?></span> 
-              </div> 
+          <li>
+            <article>
+              <header>
+                <figure class="avatar"><img class="img-prof" src="public/user_image/<?=$comment['author']?>.jpg" width="80" height="80" border="0" alt=""></figure>
+                <address>
+                By <a href="#"><?= htmlspecialchars($comment['author']) ?></a>
+                </address>
+                <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
+              </header>
+              <div class="comcont">
+                <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+                <a class="signaler" href="./index.php?action=signalEntrepriseCo&amp;id=<?= $comment['id'] ?>">Signaler</a>
+                <hr> 
+              <span class="signaturecom"><strong>Signature:</strong> <?= nl2br(htmlspecialchars($comment['signature'])) ?></span>
+
+              <hr>
+              </div>
+            </article>
+          </li> 
               <?php
               }
               ?>
-          </div>
-            <?php $content = ob_get_clean(); ?>
-            
-            <?php require('templateFront.html'); ?>          
-
-        </div>           
-          <button id="charger">Charger et traiter les données</button>
-          <div id="r">Cliquez sur "Charger et traiter les données" pour lancer la lecture et le traitement des données JSON</div>
-      </div>
-
-          <span class="idphp" style="visibility: hidden;"><?=$post['id']?></span>
-      <!-- /.row -->
+        </ul>
     </div>
-    <!-- /.container -->
+    <div class="clear"></div>
+  </main>
+</div>
 
+  
     
-    <!-- Bootstrap core JavaScript -->
-    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script src="public/js/avis.js"></script>
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-
-    <script type="text/javascript">
-      var idphp= $('.idphp').text();
-
-var param ='action=refreshEntreprisepost&id='+idphp;
-console.log(idphp);
-
-    //$('.refresh').on('click',function(){ 
       
-      //$('.allcomment').text('');
-      //var param = 'action=refreshEntreprisepost';
-      //$('.allcomment').load('index.php',param);
-      //$.post('refresh.php',function(data){
-        //$('.media').html(data);
-      //});
-        
-
-        $(function() {
-          $('#charger').click(function() {
-            //$('#r').text('');
-            $.getJSON('http://autre-php/javascript-web-srv/refresh.json', function(donnees) {
-              $('#r').html('<p><b>Nom</b> : ' + donnees.nom + '</p>');
-              $('#r').append('<p><b>Age</b> : ' + donnees.age + '</p>');
-              $('#r').append('<p><b>Ville</b> : ' + donnees.ville + '</p>');
-              $('#r').append('<p><b>Domaine de compétences</b> : ' + donnees.domaine + '</p>');
-            });
-          });  
-        });
+      
+<?php $content = ob_get_clean(); ?>            
+<?php require('templateFront.html'); ?>         
+         
+      
     
-    </script>
-
-    
-  </body>
-</html>

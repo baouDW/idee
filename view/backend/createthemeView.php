@@ -1,4 +1,4 @@
-
+<?php $title = 'ecrire theme'; ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -20,17 +20,14 @@
 <?php ob_start(); ?>
 
 <div class="space">
-    <form method="post" action="index.php?action=insertTheme">
-
-        
+    <form method="post" action="index.php?action=insertTheme">        
         <p>
            <label for="titre">
           Titre
            </label>
            <br />           
            <input type="text" name="titre">       
-       </p>
-       
+       </p>       
        <p>
            <label for="texte">
           Texte
@@ -46,24 +43,21 @@
 while ($data = $theme->fetch())
 {
 ?>    
-     <div class="space">
-        <h3>
-           
-        </h3>
-                
-        <p>
-            <?= nl2br($data['content']) ?>            
-        </p>
-    </div> 
+ <div class="space">
+    <h3>
+       
+    </h3>
+            
+    <p>
+        <?= nl2br($data['content']) ?>            
+    </p>
+</div> 
 <?php
 }
 $theme->closeCursor();
 ?> 
-
-
 <?php $content = ob_get_clean(); ?>
 <?php require('templateBackend.php'); ?>
-
   </body>
 </html>
 
