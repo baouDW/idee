@@ -1,5 +1,4 @@
-<?php $title = 'Profil'; ?>
-<?php ob_start(); ?>
+<!-- 
 <!DOCTYPE>
 <html>
   <head>
@@ -9,7 +8,9 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  </head>
+  </head> -->
+  <?php $title = 'Profil'; ?>
+<?php ob_start(); ?>
   <body>
   	<div class="container">	    
 	    <div>
@@ -35,8 +36,7 @@
 		        <span><?= htmlspecialchars($resultat['prenom'])?></span><br>
 		        <span><strong>Email: </strong></span>
 		        <span><?= htmlspecialchars($resultat['email'])?></span><br>
-		    </center>
-		    
+		    </center>		    
 	        <hr>
 	        <center>
 	        	<p>
@@ -58,26 +58,16 @@
 	    </div>                         
     </div>
 </div>
-
-
-
-
-
-
-<center>
+<!-- <center>
 	<div class="add-pic">
 	  	<h2>Ajoutez une photo de profil</h2>
-	 	<form method="post" enctype="multipart/form-data">
-	     
+	 	<form method="post" enctype="multipart/form-data">	     
 	     <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
 	     <input type="file" name="monfichier" id="mon_fichier" /><br />
 	     <input type="submit" name="submit" value="Envoyer" />
 		</form>
 	</div>
-</center>
-
-
-
+</center> -->
 <?php $content = ob_get_clean(); ?>
 <?php require('templateBackend.php'); ?>
 

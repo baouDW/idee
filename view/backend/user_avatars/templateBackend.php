@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><?= $title ?></title>
+  <link rel="stylesheet" href="public/css/templateback.css">  
+  <link rel="icon" type="image/ico" href="favicon.ico" />
+    <style type="text/css">
+      body
+      {
+        
+      }
+    </style>
+</head>
+<body>
+  <div class="contain">
+    <div class="menu-back">
+      <a href="index.php" class="item-menu-back">pense le monde</a>
+      <em class="bjr">
+        Bonjour <?php
+        if (isset($_COOKIE['pseudo'])){
+                  echo $_COOKIE['pseudo'];
+        }elseif (isset($_SESSION['pseudo'])){
+                  echo $_SESSION['pseudo'];
+        }  
+        ?>                  
+      </em>
+    </div>
+    <div class="menu-back">
+      <a href="index.php" class="item-menu-back">Accueil</a>
+      <a href="index.php?action=deconexion" class="item-menu-back">Déconnexion</a>
+    </div>
+  </div>
+  <div class="menu-lat">
+    <div class="contain-lateral">
+      <div class="item-lateral">
+        <a href="index.php?action=profilview&pseudo=<?= $_SESSION['pseudo'] ?>">Mon profil</a>
+      </div>
+      <?php
+      if (isset($_SESSION['pseudo']) && $_SESSION['pseudo'] == "admin" OR isset($_COOKIES['pseudo']) && $_COOKIES['pseudo'] == "admin")
+      {
+      ?>
+      <div class="item-lateral">
+        <a href="index.php?action=adminaccess">Publications</a>
+      </div>
+      <?php
+      }else{ ?>
+      <div class="item-lateral">
+        <a href="index.php?action=useraccess">Mes publications</a>
+      </div>
+      <?php
+      }
+      ?>
+      <div class="item-lateral">
+        <a href="./index.php?action=createworldView">Ecrire une idée world</a>
+      </div>
+      <div class="item-lateral">
+        <a href="./index.php?action=createentrepriseView">Ecrire une idée d'entreprise</a>
+      </div>
+      <div class="item-lateral">
+        <a href="./index.php?action=createpolitiqueView">Ecrire une idée politique</a>
+      </div>
+      <div class="item-lateral">
+        <a href="./index.php?action=createstoryView">Ecrire une idée d'histoire</a>
+      </div>
+      <?php
+      if (isset($_SESSION['pseudo']) && $_SESSION['pseudo'] == "admin" OR isset($_COOKIES['pseudo']) && $_COOKIES['pseudo'] == "admin")
+      {      
+      ?>
+      <div class="item-lateral">
+        <a href="./index.php?action=createTheme">Ecrire theme du jour</a>
+      </div>
+      
+      <div class="item-lateral">
+        <a href="index.php?action=membreView">Membres</a>
+      </div>
+      <?php
+      }
+      ?>
+    </div>
+    <div class="">
+      <?= $content ?>
+    </div>
+  </div>
+</body>
+</html>   
