@@ -23,9 +23,9 @@ body
       {
       ?> 
       <!-- Blog Post -->
-      <div class="card mb-4">
+      <div class="card mb-4 post-preview">
         <div class="card-body">
-          <div class="row post-preview">
+          <div class="row">
             <div class="col-lg-6">
               <a href="#">
                 <img class="img-fluid rounded img-post" src="public/images/book.jpg" alt="">

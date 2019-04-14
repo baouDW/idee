@@ -264,7 +264,7 @@ td{border-width:0 1px;}
 
 /* Colours
 --------------------------------------------------------------------------------------------------------------- */
-body{color:#CBCBCB; background-color:#191919;}
+body{color:#000; background-color:#fff;}
 a{color:#A2B70D;}
 a:active, a:focus{background:transparent;}/* IE10 + 11 Bugfix - prevents grey background */
 hr, .borderedbox{border-color:#D7D7D7;}
@@ -279,7 +279,7 @@ input:focus, textarea:focus, *:required:focus{border-color:#A2B70D;}
 
 
 /* Rows */
-.row1{color:#FFFFFF; background-color:rgba(0,0,0,.60);}
+.row1{color:#FFFFFF; background-color:rgb(0, 0, 0);}
 .row2{color:#191919; background-color:#F6F6F6;}
 .row3{color:#191919; background-color:#FFFFFF;}
 .row4{color:#CBCBCB;}
@@ -317,7 +317,7 @@ input:focus, textarea:focus, *:required:focus{border-color:#A2B70D;}
 /* Navigation */
 #mainav li a{color:inherit;}
 #mainav .active a, #mainav a:hover, #mainav li:hover > a{color:#A2B70D; background-color:inherit;}
-#mainav li li a, #mainav .active li a{color:#FFFFFF; background-color:rgba(0,0,0,.5); border-color:rgba(0,0,0,.1);}
+#mainav li li a, #mainav .active li a{color:#FFFFFF; background-color:rgb(0, 0, 0); border-color:rgba(0,0,0,.1);}
 #mainav li li:hover > a, #mainav .active .active > a{color:#FFFFFF; background-color:#A2B70D;}
 #mainav form select{color:#FFFFFF; background-color:#000000; border-color:rgba(255,255,255,.2);}
 
