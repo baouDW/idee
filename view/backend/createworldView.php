@@ -1,18 +1,18 @@
-<?php $title = 'Ecrire un article'; ?>
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="../public/css/tinycss.css">
-    <script src="../public/js/editeur.js"></script>    
-  </head>
-  <body>
-    <style>
-      .space
-      {
-        margin-left: 50px;
-      }
-    </style>
+<head>
+  <meta charset="utf-8" />
+  <title>Ecrire une idée</title>
+  <link rel="stylesheet" href="../public/css/tinycss.css">
+  <script src="../public/js/editeur.js"></script> 
+  <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+  <script>tinymce.init({ selector:'textarea' });</script>  
+</head>
+<style>
+.space
+{
+  margin-left: 50px;
+}
+</style>
+<?php $title = 'Ecrire une idée'; ?>
 <?php ob_start(); ?>
 <h1>Ecrire une nouvelle idée pour le monde</h1>
 <div class="space">
@@ -54,8 +54,6 @@ $posts->closeCursor();
 ?> 
 <?php $content = ob_get_clean(); ?>
 <?php require('templateBackend.php'); ?>
-  </body>
-</html>
 
 
 

@@ -2,18 +2,22 @@
 <?php $title = 'Idée monde'; ?>
 <style type="text/css">
 body
-    {
-      background-color: #5c3c3c;
-    }  
+{
+  background-color: #fff;
+}  
+.post-preview
+{
+  display: flex;
+  margin-bottom: 30px;
+  border: solid;
+  width: 80%;
+}
 </style>
 <?php ob_start(); ?>
     <!-- Page Content -->
     <div class="container">      
       <h1 class="mt-4 mb-3">Les dernières penssées pour le monde
-      </h1>
-      <ol class="breadcrumb">
-        Les dernières penssées
-      </ol>      
+      </h1>            
       <?php
       while ($data = $worldposts->fetch())
       {
@@ -21,10 +25,10 @@ body
       <!-- Blog Post -->
       <div class="card mb-4">
         <div class="card-body">
-          <div class="row">
+          <div class="row post-preview">
             <div class="col-lg-6">
               <a href="#">
-                <img class="img-fluid rounded img-post" src="view/frontend/images/book.jpg" alt="">
+                <img class="img-fluid rounded img-post" src="public/images/book.jpg" alt="">
               </a>
             </div>
             <div class="col-lg-6">

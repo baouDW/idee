@@ -1,15 +1,5 @@
-<!-- 
-<!DOCTYPE>
-<html>
-  <head>
-    <title>Profil</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  </head> -->
-  <?php $title = 'Profil'; ?>
+
+<?php $title = 'Profil'; ?>
 <?php ob_start(); ?>
   <body>
   	<div class="container">	    
@@ -58,21 +48,13 @@
 	    </div>                         
     </div>
 </div>
-<!-- <center>
-	<div class="add-pic">
-	  	<h2>Ajoutez une photo de profil</h2>
-	 	<form method="post" enctype="multipart/form-data">	     
-	     <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
-	     <input type="file" name="monfichier" id="mon_fichier" /><br />
-	     <input type="submit" name="submit" value="Envoyer" />
-		</form>
-	</div>
-</center> -->
 <?php $content = ob_get_clean(); ?>
 <?php require('templateBackend.php'); ?>
 
 
 <script type="text/javascript">
+$(function(){
+
 	$('.add-pic').hide();
 	$('.buttontest').one('click',function(){ 
         $('.add-pic').show('slow/400/fast');
@@ -82,7 +64,7 @@
 	$('.upsignature').one('click',function(){ 
         $('.signature').show('slow/400/fast');
 	});
-
+});
 </script>
 
 

@@ -1,21 +1,20 @@
 <?php $title = 'ecrire theme'; ?>
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Ecrire un chapitre</title>
-    <link rel="stylesheet" href="../public/css/tinycss.css">
-    <script src="../public/js/editeur.js"></script> 
-    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-    <script>tinymce.init({ selector:'textarea' });</script>   
-  </head>
-  <body>
-    <style>
-      .space
-      {
-        margin-left: 50px;
-      }
-    </style>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Ecrire une idée</title>
+  <link rel="stylesheet" href="../public/css/tinycss.css">
+  <script src="../public/js/editeur.js"></script> 
+  <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+  <script>tinymce.init({ selector:'textarea' });</script>   
+</head>
+<body>
+<style>
+  .space
+  {
+    margin-left: 50px;
+  }
+</style>
 
 <?php ob_start(); ?>
 
@@ -58,8 +57,6 @@ $theme->closeCursor();
 ?> 
 <?php $content = ob_get_clean(); ?>
 <?php require('templateBackend.php'); ?>
-  </body>
-</html>
 
 
 

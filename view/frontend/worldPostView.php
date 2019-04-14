@@ -13,7 +13,7 @@
 <div class="wrapper row3">
   <main class="hoc container clear"> 
     <div class="content"> 
-      <h1><?= htmlspecialchars($post['title']) ?> de <?= htmlspecialchars($post['author']) ?></h1>
+      <h1><?= htmlspecialchars($post['title']) ?></h1>de <?= htmlspecialchars($post['author']) ?>
       <span>Le <?= htmlspecialchars($post['creation_date_fr']) ?></span>
       <img class="imgr borderedbox inspace-5" src="././public/images/demo/livre.jpg" alt="">
       <p><?= htmlspecialchars($post['content'])?> </p>      

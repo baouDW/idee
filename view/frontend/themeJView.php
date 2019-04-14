@@ -1,5 +1,15 @@
 <?php $title = 'Theme du jour'; ?>
 <?php ob_start(); ?>
+<style type="text/css">
+.well
+{
+  color: black;
+}
+.well:hover
+{
+  color: #A2B70D;
+}
+</style>
 <div class="bgded overlay" style="background-image:url('././images/demo/backgrounds/05.jpg');"> 
   <section id="breadcrumb" class="hoc clear"> 
     <h6 class="heading">Theme du jour</h6>
@@ -20,7 +30,6 @@
       <div class="texte">
         <h1>Theme du jour</h1>
         <span>Le <?= $data['creation_date_fr'] ?></span>
-        <!-- <img class="imgr borderedbox inspace-5" src="././images/demo/livre.jpg" alt=""> -->
         <p><?=$data['content']?> </p> 
       </div>
       <?php
@@ -134,7 +143,7 @@ function apelWiki(keyword){
                 $("#res_row").empty();
                 for (i=1;i<result[1].length;i++){
                   
-                    $("#res_row").append("<div><div class='well'><a href="+result[3][i]+"><h2>" + result[1][i]+ "</h2>" + "<p>" + result[2][i] + "</p></a></div></div>");
+                    $("#res_row").append("<div><div><a class='well 'href="+result[3][i]+"><h2>" + result[1][i]+ "</h2>" + "<p>" + result[2][i] + "</p></a></div></div>");
                 }
                 $("#res_row").append("</tr>");
               },
