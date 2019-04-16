@@ -20,7 +20,7 @@
     <ul class="nospace group services">
       <li class="one_quarter first">
         <article><a href="#"><i class="fa fa-3x fa-500px"></i></a>
-          <h6 class="heading font-x1"><a href="index.php?action=listworldpost">Histoires</a></h6>
+          <h6 class="heading font-x1"><a href="index.php?action=listestory">Histoires</a></h6>
           <p>Partager vos idées de livre, scenarios, films et de romans</p>
         </article>
       </li>
@@ -38,7 +38,7 @@
       </li>
       <li class="one_quarter">
         <article><a href="#"><i class="fa fa-3x fa-ravelry"></i></a>
-          <h6 class="heading font-x1"><a href="index.php?action=listestory">Planete</a></h6>
+          <h6 class="heading font-x1"><a href="index.php?action=listeworld">Planete</a></h6>
           <p>Proposez et venez debatre d'idée pour un monde meilleur.</p>
         </article>
       </li>
