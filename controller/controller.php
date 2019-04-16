@@ -35,7 +35,9 @@ function listestory($page){
 	require('./view/frontend/storyPostsView.php');
 }
 
-function acctheme(){	
+function acctheme(){
+	$postmanager = new idee\PostsManager();
+	$themeposts= $postmanager->getTheme();	
 	require('./view/frontend/accthemeView.php');
 }
 function insertworldP(){
@@ -139,7 +141,6 @@ function update(){
 function updateworld(){
 	$postmanager = new idee\PostsManager();
 	$post= $postmanager->UptdatePost($_POST['titre'], $_POST['texte'], $_GET['id']);
-	//header('Location: ./index.php?action=adminaccess');
 	header('Location: ' . $_SERVER['HTTP_REFERER'] );
 }
 
@@ -358,7 +359,7 @@ function storyPost(){
 function themeV(){
 	$postmanager = new idee\PostsManager();
 	$commentmanager = new idee\CommentsManager();	
-	$theme= $postmanager->getTheme();
+	$theme= $postmanager->getThemePost($_GET['id']);
 	$themeCom=$commentmanager->getCommentsTheme($_GET['id']);
 	require('./view/frontend/themeJView.php');
 }
@@ -421,9 +422,7 @@ function signup(){
 function login(){
 	$usermanager = new idee\UsersManager();
 	$postmanager = new idee\PostsManager();
-	//$posts= $postmanager->getWorldPosts();
-	$pseudoo=$_SESSION['pseudo'];/*
-	$req= $postmanager->getUserPosts($pseudoo);*/
+	$pseudoo=$_SESSION['pseudo'];
 	$wposts= $postmanager->getWordlUserPosts($pseudoo);
 	$eposts= $postmanager->getEntrepriseUserPosts($pseudoo);
 	$pposts= $postmanager->getPolitiqueUserPosts($pseudoo);
@@ -443,13 +442,11 @@ function login(){
 	        session_start();
 	        $_SESSION['id'] = $verifuser['id'];
 	        $_SESSION['pseudo'] = $_POST['pseudo'];
-	        //require('./view/backend/crudView.php');
 	        header('Location: ./index.php');
 	    }
 	    elseif (($isPasswordCorrect) && ($_POST['pseudo'] == 'admin') && (isset($_POST['rapel']))) {
 	    	setcookie('id', $verifuser['id'], time() + 365*24*3600, null, null, false, true); 
 			setcookie('pseudo', $_POST['pseudo'], time() + 365*24*3600, null, null, false, true);
-			//require('/view/backend/crudView.php');
 			header('Location: ./index.php');
 	    }
 	    elseif (($isPasswordCorrect) && (!isset($_POST['rapel']))){
@@ -471,9 +468,7 @@ function login(){
 }
 function adminaccess(){
 	$postmanager = new idee\PostsManager();
-	//$posts= $postmanager->getWorldPosts();
-	$pseudoo=$_SESSION['pseudo'];/*
-	$req= $manager->getUserPosts($pseudoo);*/
+	$pseudoo=$_SESSION['pseudo'];
 	$wposts= $postmanager->getAllWorldPosts();
 	$eposts= $postmanager->getAllEntreprisePosts();
 	$pposts= $postmanager->getAllPolitiquePosts();
@@ -484,7 +479,6 @@ function adminaccess(){
 function useraccess(){
 	$postmanager = new idee\PostsManager();
 	$pseudoo=$_SESSION['pseudo'];
-	/*$req= $manager->getUserPosts($pseudoo);*/
 	$wposts= $postmanager->getWordlUserPosts($pseudoo);
 	$eposts= $postmanager->getEntrepriseUserPosts($pseudoo);
 	$pposts= $postmanager->getPolitiqueUserPosts($pseudoo);

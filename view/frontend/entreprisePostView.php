@@ -5,7 +5,7 @@
     <h6 class="heading">Idée entreprise</h6>
     <ul>
       <li><a href="index.php">Accueil</a></li>
-      <li><a href="http://localhost/idee/index.php?action=listeentreprise">Liste Entreprise</a></li>
+      <li><a href="index.php?action=listeentreprise">Liste Entreprise</a></li>
       <li><a href="index.php?id=<?= $_GET['id'] ?>&action=entreprisepost"><?= htmlspecialchars($post['title']) ?></a></li>
     </ul>
   </section>
@@ -46,10 +46,10 @@
       </div>
         <h2>Commentaires</h2>
         <ul>
-            <?php
-            while ($comment = $comments->fetch())
-            {
-            ?>
+          <?php
+          while ($comment = $comments->fetch())
+          {
+          ?>
           <li>
             <article>
               <header>
@@ -68,9 +68,9 @@
               </div>
             </article>
           </li> 
-              <?php
-              }
-              ?>
+            <?php
+            }
+            ?>
         </ul>
     </div>
     <div class="clear"></div>

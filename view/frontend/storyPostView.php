@@ -5,7 +5,7 @@
     <h6 class="heading">Idée histoire</h6>
     <ul>
       <li><a href="index.php">Accueil</a></li>
-      <li><a href="http://localhost/idee/index.php?action=listestory">Liste story</a></li>
+      <li><a href="index.php?action=listestory">Liste story</a></li>
       <li><a href="index.php?id=<?= $_GET['id'] ?>&action=storypost"><?= htmlspecialchars($post['title']) ?></a></li>
     </ul>
   </section>
@@ -50,24 +50,24 @@
             while ($comment = $comments->fetch())
             {
             ?>
-          <li>
-            <article>
-              <header>
-                <figure class="avatar"><img class="img-prof" src="public/user_image/<?=$comment['author']?>.jpg" width="80" height="80" border="0" alt=""></figure>
-                <address>
-                By <a href="#"><?= htmlspecialchars($comment['author']) ?></a>
-                </address>
-                <p>Le <?=$comment['comment_date_fr']?></p>
-              </header>
-              <div class="comcont">
-                <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-                <a class="signaler" href="./index.php?action=signalStoryCo&amp;id=<?= $comment['id'] ?>">Signaler</a>
-                <hr> 
-              <span class="signaturecom"><strong>Signature:</strong> <?= nl2br(htmlspecialchars($comment['signature'])) ?></span>
-              <hr>
-              </div>
-            </article>
-          </li> 
+            <li>
+              <article>
+                <header>
+                  <figure class="avatar"><img class="img-prof" src="public/user_image/<?=$comment['author']?>.jpg" width="80" height="80" border="0" alt=""></figure>
+                  <address>
+                  By <a href="#"><?= htmlspecialchars($comment['author']) ?></a>
+                  </address>
+                  <p>Le <?=$comment['comment_date_fr']?></p>
+                </header>
+                <div class="comcont">
+                  <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+                  <a class="signaler" href="./index.php?action=signalStoryCo&amp;id=<?= $comment['id'] ?>">Signaler</a>
+                  <hr> 
+                <span class="signaturecom"><strong>Signature:</strong> <?= nl2br(htmlspecialchars($comment['signature'])) ?></span>
+                <hr>
+                </div>
+              </article>
+            </li> 
               <?php
               }
               ?>

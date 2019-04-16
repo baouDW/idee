@@ -5,7 +5,7 @@
     <h6 class="heading">Idée pour le monde</h6>
     <ul>
       <li><a href="index.php">Accueil</a></li>
-      <li><a href="http://localhost/idee/index.php?action=listeworld">Liste world</a></li>
+      <li><a href="index.php?action=listeworld">Liste world</a></li>
       <li><a href="index.php?id=<?= $_GET['id'] ?>&action=worldpost"><?= htmlspecialchars($post['title']) ?></a></li>
     </ul>
   </section>

@@ -1,12 +1,13 @@
 
 <?php ob_start(); ?>
 <style>
-  .space
-  {
-    margin-left: 50px;
-  }
+.space
+{
+  margin-left: 50px;
+}
 </style>
 <div class="space">
+  <!-- Action du formulaire en fonction du poste a modifier -->
   <?php 
   if ($_GET['action'] == 'upentrepriseview'){
    ?> 
@@ -25,20 +26,20 @@
     <form method="post" action="index.php?id=<?php echo $_GET['id'] ?>&action=modif">
     <?php
   }
-   ?>    
+    ?>    
       <p>
-         <label for="titre">
-        Titre
-         </label>
-         <br />           
-         <input type="text" name="titre" value="<?php echo $post['title'] ?>">       
+       <label for="titre">
+          Titre
+       </label>
+       <br />           
+       <input type="text" name="titre" value="<?php echo $post['title'] ?>">       
      </p>
      <p>
-         <label for="texte">
-        Texte
-         </label>
-         <br />           
-         <textarea name="texte" id="texte" rows="10" cols="50" ><?php echo strip_tags($post['content']) ?></textarea>       
+       <label for="texte">
+          Texte
+       </label>
+       <br />           
+       <textarea name="texte" id="texte" rows="10" cols="50" ><?php echo strip_tags($post['content']) ?></textarea>     
      </p>
      <p><input type="submit" name="ajouter"></p>
     </form>

@@ -58,7 +58,12 @@ try{
         }
 
         elseif ($_GET['action'] == 'themeV') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
             themeV();
+            }
+            else {
+                throw new Exception('Erreur : aucun identifiant de billet envoyé');
+            }
         }
 
         
