@@ -30,15 +30,15 @@
               <td class= "none">              
               </td>
               <td>
-                <a href="index.php?id=<?= $data['id'] ?>&action=comm"><?= $data['title'] ?>
+                <a href="index.php?id=<?= $data['id'] ?>&action=worldpost"><?= $data['title'] ?>
               </td>
               <td>
                 <?= $data['creation_date_fr'] ?>          
               </td>
               <td>
-                <a href="./index.php?action=upview&id=<?= $data['id'] ?>" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+                <a href="./index.php?action=upview&id=<?= $data['id'] ?>" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
                 </a>
-                <a href="index.php?id=<?= $data['id'] ?>&action=suppr" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                <a href="index.php?id=<?= $data['id'] ?>&action=suppr" class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
                 </a>
               </td>                               
             </tr>             
@@ -57,9 +57,9 @@
               <td><a href="index.php?id=<?= $edata['id'] ?>&action=entreprisepost"><?= $edata['title'] ?></td>
               <td><?= $edata['creation_date_fr'] ?></td>
               <td>
-                <a href="./index.php?action=upentrepriseview&id=<?= $edata['id'] ?>" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+                <a href="./index.php?action=upentrepriseview&id=<?= $edata['id'] ?>" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
                 </a>
-                <a href="index.php?id=<?= $edata['id'] ?>&action=supprentreprise" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                <a href="index.php?id=<?= $edata['id'] ?>&action=supprentreprise" class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
                 </a>
               </td>                               
             </tr>             
@@ -80,8 +80,8 @@
               </td>
               <td><?= $pdata['creation_date_fr'] ?></td>
               <td>
-                <a href="./index.php?action=uppolitiqueview&id=<?= $pdata['id'] ?>" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                <a href="index.php?id=<?= $pdata['id'] ?>&action=supprpolitique" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                <a href="./index.php?action=uppolitiqueview&id=<?= $pdata['id'] ?>" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                <a href="index.php?id=<?= $pdata['id'] ?>&action=supprpolitique" class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
               </td>                               
             </tr>             
             <?php
@@ -99,8 +99,8 @@
               <td><a href="index.php?id=<?= $sdata['id'] ?>&action=storypost"><?= $sdata['title'] ?></td>
               <td><?= $sdata['creation_date_fr'] ?></td>
               <td>
-                <a href="./index.php?action=upstoryview&id=<?= $sdata['id'] ?>" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                  <a href="index.php?id=<?= $sdata['id'] ?>&action=supprstory" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                <a href="./index.php?action=upstoryview&id=<?= $sdata['id'] ?>" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                  <a href="index.php?id=<?= $sdata['id'] ?>&action=supprstory" class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
               </td>                               
             </tr>             
             <?php

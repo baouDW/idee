@@ -41,7 +41,7 @@
        <br />           
        <textarea name="texte" id="texte" rows="10" cols="50" ><?php echo strip_tags($post['content']) ?></textarea>     
      </p>
-     <p><input type="submit" name="ajouter"></p>
+     <p><input type="submit" name="ajouter" value="modifier"></p>
     </form>
 </div>
 <?php $content = ob_get_clean(); ?>

@@ -9,7 +9,7 @@ class PostsManager extends Managers
 {
 
 //Compte du nombre de posts
-public function nbrPostsWorld()
+    public function nbrPostsWorld()
     {
         $db = $this->dbConnect();
         $req = $db->query('SELECT COUNT(*) as nbr FROM monde');

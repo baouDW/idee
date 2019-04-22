@@ -1,567 +1,592 @@
 <?php
+session_start();
+require 'controller/UserController.php';
+require 'controller/CrudController.php';
+require 'controller/ViewController.php';
 
-require('controller/controller.php');
+//require 'vendor/autoload.php';
+
+$crudcontroller = new CrudController;
+$viewcontroller = new ViewController;
+$usercontroller = new UserController;
+
 try{
-    if (isset($_GET['action'])) {
-        if ($_GET['action'] == 'suppr') {
-            deletewolrd();
-        }
+    if (isset($_GET['action'])) {        
+        switch ($_GET['action']) 
+        { 
 
-        elseif ($_GET['action'] == 'supprentreprise') {
-            deleteentreprise();
-        }
+            case 'suppr': 
+                $crudcontroller->deletewolrd();
+            break;
 
-        elseif ($_GET['action'] == 'supprpolitique') {
-            deletepolitique();
-        }
+            case 'supprentreprise':
+                $crudcontroller->deleteentreprise();
 
-        elseif ($_GET['action'] == 'supprstory') {
-            deletestory();
-        }
+            break;
 
-        elseif ($_GET['action'] == 'worldpost') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                worldPosts();
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant de billet envoyé');
-            }
-        }
+            case 'supprpolitique':
+                $crudcontroller->deletepolitique();
+            break;
 
-
-        elseif ($_GET['action'] == 'entreprisepost') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                entreprisePost();
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant de billet envoyé');
-            }
-        }
-        
-
-        elseif ($_GET['action'] == 'politiquepost') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                politiquePost();
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant de billet envoyé');
-            }
-        }
-
-        elseif ($_GET['action'] == 'storypost') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                storyPost();
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant de billet envoyé');
-            }
-        }
-
-        elseif ($_GET['action'] == 'themeV') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-            themeV();
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant de billet envoyé');
-            }
-        }
-
-        
-        elseif ($_GET['action'] == 'signalMonde') {
-            if (isset($_GET['id']))
-            {
-                signalMonde();
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
-            }
-        }
-
-        elseif ($_GET['action'] == 'signalWorldCo') {
-            if (isset($_GET['id']))
-            {
-                signalWorldCo();
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
-            }
-        }
-
-        elseif ($_GET['action'] == 'signalEntreprise') {
-            if (isset($_GET['id']))
-            {
-                signalEntreprise();
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
-            }
-        }
-
-        elseif ($_GET['action'] == 'signalEntrepriseCo') {
-            if (isset($_GET['id']))
-            {
-                signalEntrepriseCo();
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
-            }
-        }
-
-        elseif ($_GET['action'] == 'signalPolitique') {
-            if (isset($_GET['id']))
-            {
-                signalPolitique();
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
-            }
-        }
-
-        elseif ($_GET['action'] == 'signalPolitiqueCo') {
-            if (isset($_GET['id']))
-            {
-                signalPolitiqueCo();
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
-            }
-        }
-
-        elseif ($_GET['action'] == 'signalStory') {
-            if (isset($_GET['id']))
-            {
-                signalStory();
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
-            }
-        }
-
-        elseif ($_GET['action'] == 'signalStoryCo') {
-            if (isset($_GET['id']))
-            {
-                signalStoryCo();
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
-            }
-        }
-
-        elseif ($_GET['action'] == 'signalthemecomm') {
-            if (isset($_GET['id']))
-            {
-                signalthemeC();
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
-            }
-        }
-
-
-        elseif ($_GET['action'] == 'modif') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                updateworld();
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant de billet envoyé');
-            }
-        }
-
-        elseif ($_GET['action'] == 'modifentreprise') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                updateentreprise();
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant de billet envoyé');
-            }
-        }
-
-        elseif ($_GET['action'] == 'modifpolitique') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                updatepolitique();
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant de billet envoyé');
-            }
-        }
-
-        elseif ($_GET['action'] == 'modifstory') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                updatestory();
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant de billet envoyé');
-            }
-        }
-
-        elseif ($_GET['action'] == 'modifstory') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                updatestory();
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant de billet envoyé');
-            }
-        }
-
-        elseif ($_GET['action'] == 'upsignature') {
-            if (isset($_POST['sign']) && strlen($_POST['sign'])<255) 
-            {
-                upSignature();
-            }
-            else {
-                throw new Exception('Erreur : texte trop long (255 caractere autorisé)');
-            }
-        }
-
-        elseif ($_GET['action'] == 'insertentreprisePost') {
-            if (isset($_POST['titre']) && isset($_POST['texte'])) {
-                insertentrepriseP();
-            }
-            else {
-                throw new Exception('Erreur : aucun titre envoyé ou texte');
-            }
-        }
-
-
-        elseif ($_GET['action'] == 'insertpolitiquePost') {
-            if (isset($_POST['titre']) && isset($_POST['texte'])) {
-                insertpolitiqueP();
-            }
-            else {
-                throw new Exception('Erreur : aucun titre envoyé ou texte');
-            }
-        }
-
-
-        elseif ($_GET['action'] == 'insertstoryPost') {
-            if (isset($_POST['titre']) && isset($_POST['texte'])) {
-                insertstoryP();
-            }
-            else {
-                throw new Exception('Erreur : aucun titre envoyé ou texte');
-            }
-        }
-
-
-        elseif ($_GET['action'] == 'insertTheme') {
-            if (isset($_POST['texte'])) {
-                insertT();
-            }
-            else {
-                throw new Exception('Erreur : aucun titre envoyé ou texte');
-            }
-        }
-
-        elseif ($_GET['action'] == 'addWorldComment') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                if (!empty($_POST['comment'])) {
-                    addWorldComment();
+            case 'supprstory':
+                $crudcontroller->deletestory();
+            break;
+            
+            case "worldpost": 
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                        $viewcontroller->worldPosts();
+                }else {
+                    throw new Exception('Erreur : aucun identifiant de billet envoyé');
+                }
+            break;        
+            
+            
+            case 'entreprisepost':
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    $viewcontroller->entreprisePost();
                 }
                 else {
-                    throw new Exception('Erreur : tous les champs ne sont pas remplis !');
-                }
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant de billet envoyé');
-            }
-        }
+                    throw new Exception('Erreur : aucun identifiant de billet envoyé');
+                } 
+            break;               
 
-        elseif ($_GET['action'] == 'addEntrepriseComment') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                if (!empty($_POST['comment'])) {
-                    addEntrepriseComment();
+            case 'politiquepost':
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    $viewcontroller->politiquePost();
                 }
                 else {
-                    throw new Exception('Erreur : tous les champs ne sont pas remplis !');
-                }
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant envoyé');
-            }
-        }
+                    throw new Exception('Erreur : aucun identifiant de billet envoyé');
+                } 
+            break;       
 
-        elseif ($_GET['action'] == 'addPolitiqueComment') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                if (!empty($_POST['comment'])) {
-                    addPolitiqueComment();
+            case 'storypost':
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    $viewcontroller->storyPost();
                 }
                 else {
-                    throw new Exception('Erreur : tous les champs ne sont pas remplis !');
+                    throw new Exception('Erreur : aucun identifiant de billet envoyé');
                 }
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant envoyé');
-            }
-        }
+            break;
+            
 
-        elseif ($_GET['action'] == 'addStoryComment') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                if (!empty($_POST['comment'])) {
-                    addStoryComment();
+            case 'themeV':
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    $viewcontroller->themeV();
                 }
                 else {
-                    throw new Exception('Erreur : tous les champs ne sont pas remplis !');
+                    throw new Exception('Erreur : aucun identifiant de billet envoyé');
                 }
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant envoyé');
-            }
-        }
+            break;
 
-        elseif ($_GET['action'] == 'addthemeComment') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                if (!empty($_POST['comment'])) {
-                    addthemeComment();
+            
+            case 'signalMonde':
+                if (isset($_GET['id']))
+                {
+                    $usercontroller->signalMonde();
                 }
                 else {
-                    throw new Exception('Erreur : tous les champs ne sont pas remplis !');
+                    throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
                 }
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant envoyé');
-            }
-        }
+            break;
 
-
-        elseif ($_GET['action'] == 'commadmin') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                commentsAdmin();
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant envoyé');
-            }
-        }
-
-        elseif ($_GET['action'] == 'entrepriseCommadmin') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                entrepriseCommentsAdmin();
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant envoyé');
-            }
-        }
-
-        elseif ($_GET['action'] == 'politiqueCommadmin') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                politiqueCommentsAdmin();
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant envoyé');
-            }
-        }
-
-        elseif ($_GET['action'] == 'storyCommadmin') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                storyCommentsAdmin();
-            }
-            else {
-                throw new Exception('Erreur : aucun identifiant envoyé');
-            }
-        }
-
-        elseif ($_GET['action'] == 'delcomm') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-               delcomm();
-            }
-            else {
-                throw new Exception('id manquant');
-            }
-        }
-
-        elseif ($_GET['action'] == 'inscription') {
-            if (!empty($_POST['Nom']) && !empty($_POST['Prenom']) && !empty($_POST['pseudo']) && ($_POST['password'] == $_POST['confirm_password']) && (preg_match("#@#", $_POST['email'])))
-            {    
-                signup();
-            }
-            elseif (($_POST['password'] !== $_POST['confirm_password'])){
-                header('Location: view/frontend/signUpView.php?diferent=diferent');
-            }
-            elseif (!preg_match("#@#", $_POST['email'])){
-                header('Location: view/frontend/signUpView.php?mail=mail');
-            }else{
-                throw new Exception("Tout les champs ne sont pas correctement remplis");
-            }
-        }
-
-        elseif ($_GET['action'] == 'login') {
-            
-            if (isset($_POST['pseudo']) && isset($_POST['pass'])) {           
-                login();
-            }
-            else { 
-                throw new Exception( 'id et ou mdp manquant <p><a href="view/signUpView.php">Retour</a></p>') ;
-            }
-        }
-
-        elseif ($_GET['action'] == 'adminaccess') {
-            if ((isset($_SESSION['pseudo'])) && ($_SESSION['pseudo'] == 'admin'))
+            case 'signalWorldCo':
+                if (isset($_GET['id']))
                 {
-                    adminaccess();
+                    $usercontroller->signalWorldCo();
                 }
-            
-        }
-
-        elseif ($_GET['action'] == 'useraccess') {
-            if ((isset($_SESSION['pseudo'])) && ($_SESSION['pseudo'] !== 'admin'))
-                {
-                    useraccess();
+                else {
+                    throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
                 }
-            
-        }
+            break;
 
-        elseif ($_GET['action'] == 'deconexion') {
-            deconexion();
-            
-        }
-
-        elseif ($_GET['action'] == 'membreView') {
-           membreView();        
-            
-        }
-        elseif ($_GET['action'] == 'upview') {
-           updateworldView();        
-            
-        }
-
-        elseif ($_GET['action'] == 'upentrepriseview') {
-           updateentrepriseView();        
-            
-        }
-
-        elseif ($_GET['action'] == 'uppolitiqueview') {
-           updatepolitiqueView();        
-            
-        }
-
-        elseif ($_GET['action'] == 'upstoryview') {
-           updatestoryView();        
-            
-        }
-
-        elseif ($_GET['action'] == 'createworldView') {
-           createworldView();        
-            
-        }
-
-        elseif ($_GET['action'] == 'createentrepriseView') {
-           createentrepriseView();        
-            
-        }
-
-        elseif ($_GET['action'] == 'createpolitiqueView') {
-           createpolitiqueView();        
-            
-        }
-
-        elseif ($_GET['action'] == 'createstoryView') {
-           createstoryView();        
-            
-        }
-
-        elseif ($_GET['action'] == 'createTheme') {
-           createTheme();        
-            
-        }
-
-        elseif ($_GET['action'] == 'profilview') {       
-                profilView();                            
-            
-        }
-
-
-        elseif ($_GET['action'] == 'listeworld') {
-           if ((isset($_GET['page'])) && ($_GET['page'] > 0))
+            case 'signalEntreprise':
+                if (isset($_GET['id']))
                 {
-                    listWorldPosts($_GET['page']);
-                } else{
-                    listWorldPosts(1);
-                };        
-            
-        }
+                    $usercontroller->signalEntreprise();
+                }
+                else {
+                    throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
+                }
+            break;
 
-        elseif ($_GET['action'] == 'listeentreprise') {
-           if ((isset($_GET['page'])) && ($_GET['page'] > 0))
+            case 'signalEntrepriseCo':
+                if (isset($_GET['id']))
                 {
-                    listeentreprise($_GET['page']);
-                } else{
-                    listeentreprise(1);
-                }                
-            
-        }
+                    $usercontroller->signalEntrepriseCo();
+                }
+                else {
+                    throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
+                }
+            break;
 
-        elseif ($_GET['action'] == 'listepolitique') {
-           if ((isset($_GET['page'])) && ($_GET['page'] > 0))
+            case 'signalPolitique':
+                if (isset($_GET['id']))
                 {
-                    listepolitique($_GET['page']);
-                } else{
-                    listepolitique(1);
-                }        
-            
-        }
+                    $usercontroller->signalPolitique();
+                }
+                else {
+                    throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
+                }
+            break;
 
-        elseif ($_GET['action'] == 'listestory') {
-           if ((isset($_GET['page'])) && ($_GET['page'] > 0))
+            case 'signalPolitiqueCo':
+                if (isset($_GET['id']))
                 {
-                    listestory($_GET['page']);
-                } else{
-                    listestory(1);
-                }        
-            
-        }
+                    $usercontroller->signalPolitiqueCo();
+                }
+                else {
+                    throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
+                }
+            break;
 
-        elseif ($_GET['action'] == 'acctheme') {
-            acctheme();
-            
-        }
-
-        elseif ($_GET['action'] == 'jaimes') {
-           updatejaime();        
-            
-        }
-
-        elseif ($_GET['action'] == 'sendimage') {
-
-            if (isset($_POST['submit']))
+            case 'signalStory':
+                if (isset($_GET['id']))
                 {
-                    //echo "ya un fichier";
-                if ($_FILES['monfichier']['error'])
-                    {
-                        echo "<p>une erreur est survenue</p>";
-                        die;
-                    }        
-                $fileSize = $_FILES['monfichier']['size'];
-                $maxSize = 1023680;
-                if ($fileSize > $maxSize)
-                    {
-                        echo "<p>Fichier trop gros</p>";
-                        die;
-                    }              
-                $fileExt = strtolower(substr(strrchr($_FILES['monfichier']['name'], '.'),1));   
-                $extention_accepter = array('jpg', 'jpeg', 'gif', 'png');
-                if (!in_array($fileExt,$extention_accepter))
-                    {
-                        echo "<p>Extension incorrecte</p>";
-                    }                 
-                //$nom = "user_avatars/".$_SESSION['pseudo'].".$fileExt";
-                //$nom = "view/backend/user_avatars/".$_SESSION['pseudo'].".jpg";
-                $nom = "public/user_image/".$_SESSION['pseudo'].".jpg";
-                $resultat = move_uploaded_file($_FILES['monfichier']['tmp_name'],$nom);
-                if (!$resultat) 
-                    {
-                        echo "Transfert echoué";
+                    $usercontroller->signalStory();
+                }
+                else {
+                    throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
+                }
+            break;
 
+            case 'signalStoryCo':
+                if (isset($_GET['id']))
+                {
+                    $usercontroller->signalStoryCo();
+                }
+                else {
+                    throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
+                }
+            break;
+
+            case 'signalthemecomm':
+                if (isset($_GET['id']))
+                {
+                    $usercontroller->signalthemeC();
+                }
+                else {
+                    throw new Exception('Erreur : aucun identifiant de commentaire envoyé');
+                }
+            break;
+
+
+            case 'modif':
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    $crudcontroller->updateworld();
+                }
+                else {
+                    throw new Exception('Erreur : aucun identifiant de billet envoyé');
+                }
+            break;
+
+            case 'modifentreprise':
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    $crudcontroller->updateentreprise();
+                }
+                else {
+                    throw new Exception('Erreur : aucun identifiant de billet envoyé');
+                }
+            break;
+
+            case 'modifpolitique':
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    $crudcontroller->updatepolitique();
+                }
+                else {
+                    throw new Exception('Erreur : aucun identifiant de billet envoyé');
+                }
+            break;
+
+            case 'modifstory':
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    $crudcontroller->updatestory();
+                }
+                else {
+                    throw new Exception('Erreur : aucun identifiant de billet envoyé');
+                }
+            break;
+
+            case 'modifstory':
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    $crudcontroller->updatestory();
+                }
+                else {
+                    throw new Exception('Erreur : aucun identifiant de billet envoyé');
+                }
+            break;
+
+            case 'upsignature':
+                if (isset($_POST['sign']) && strlen($_POST['sign'])<255) 
+                {
+                    $crudcontroller->upSignature();
+                }
+                else {
+                    throw new Exception('Erreur : texte trop long (255 caractere autorisé)');
+                }
+            break;
+
+            case 'insertworldPost':
+                if (isset($_POST['titre']) && isset($_POST['texte'])) {
+                    $crudcontroller->insertworldP();
+                }
+                else {
+                    throw new Exception('Erreur : aucun titre envoyé ou texte');
+                }
+            break;
+
+            case 'insertentreprisePost':
+                if (isset($_POST['titre']) && isset($_POST['texte'])) {
+                    $crudcontroller->insertentrepriseP();
+                }
+                else {
+                    throw new Exception('Erreur : aucun titre envoyé ou texte');
+                }
+            break;
+
+
+            case 'insertpolitiquePost':
+                if (isset($_POST['titre']) && isset($_POST['texte'])) {
+                    $crudcontroller->insertpolitiqueP();
+                }
+                else {
+                    throw new Exception('Erreur : aucun titre envoyé ou texte');
+                }
+            break;
+
+
+            case 'insertstoryPost':
+                if (isset($_POST['titre']) && isset($_POST['texte'])) {
+                    $crudcontroller->insertstoryP();
+                }
+                else {
+                    throw new Exception('Erreur : aucun titre envoyé ou texte');
+                }
+            break;
+
+
+            case 'insertTheme':
+                if (isset($_POST['texte'])) {
+                    $crudcontroller->insertT();
+                }
+                else {
+                    throw new Exception('Erreur : aucun titre envoyé ou texte');
+                }
+            break;
+
+            case 'addWorldComment':
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    if (!empty($_POST['comment'])) {
+                        $crudcontroller->addWorldComment();
                     }
+                    else {
+                        throw new Exception('Erreur : tous les champs ne sont pas remplis !');
+                    }
+                }
+                else {
+                    throw new Exception('Erreur : aucun identifiant de billet envoyé');
+                }
+            break;
 
-                    profilView();
-            }       
-            
+            case 'addEntrepriseComment':
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    if (!empty($_POST['comment'])) {
+                        $crudcontroller->addEntrepriseComment();
+                    }
+                    else {
+                        throw new Exception('Erreur : tous les champs ne sont pas remplis !');
+                    }
+                }
+                else {
+                    throw new Exception('Erreur : aucun identifiant envoyé');
+                }
+            break;
+
+            case 'addPolitiqueComment':
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    if (!empty($_POST['comment'])) {
+                        $crudcontroller->addPolitiqueComment();
+                    }
+                    else {
+                        throw new Exception('Erreur : tous les champs ne sont pas remplis !');
+                    }
+                }
+                else {
+                    throw new Exception('Erreur : aucun identifiant envoyé');
+                }
+            break;
+
+            case 'addStoryComment':
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    if (!empty($_POST['comment'])) {
+                        $crudcontroller->addStoryComment();
+                    }
+                    else {
+                        throw new Exception('Erreur : tous les champs ne sont pas remplis !');
+                    }
+                }
+                else {
+                    throw new Exception('Erreur : aucun identifiant envoyé');
+                }
+            break;
+
+            case 'addthemeComment':
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    if (!empty($_POST['comment'])) {
+                        $crudcontroller->addthemeComment();
+                    }
+                    else {
+                        throw new Exception('Erreur : tous les champs ne sont pas remplis !');
+                    }
+                }
+                else {
+                    throw new Exception('Erreur : aucun identifiant envoyé');
+                }
+            break;
+
+
+            case 'commadmin':
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    $viewcontroller->commentsAdmin();
+                }
+                else {
+                    throw new Exception('Erreur : aucun identifiant envoyé');
+                }
+            break;
+
+            case 'entrepriseCommadmin':
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    $viewcontroller->entrepriseCommentsAdmin();
+                }
+                else {
+                    throw new Exception('Erreur : aucun identifiant envoyé');
+                }
+            break;
+
+            case 'politiqueCommadmin':
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    $viewcontroller->politiqueCommentsAdmin();
+                }
+                else {
+                    throw new Exception('Erreur : aucun identifiant envoyé');
+                }
+            break;
+
+            case 'storyCommadmin':
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    $viewcontroller->storyCommentsAdmin();
+                }
+                else {
+                    throw new Exception('Erreur : aucun identifiant envoyé');
+                }
+            break;
+
+            case 'delcomm':
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                   $crudcontroller->delcomm();
+                }
+                else {
+                    throw new Exception('id manquant');
+                }
+            break;
+
+            case 'inscription':
+                if (!empty($_POST['Nom']) && !empty($_POST['Prenom']) && !empty($_POST['pseudo']) && ($_POST['password'] == $_POST['confirm_password']) && (preg_match("#@#", $_POST['email'])))
+                {    
+                    $usercontroller->signup();
+                }
+                elseif (($_POST['password'] !== $_POST['confirm_password'])){
+                    header('Location: view/frontend/signUpView.php?diferent=diferent');
+                }
+                elseif (!preg_match("#@#", $_POST['email'])){
+                    header('Location: view/frontend/signUpView.php?mail=mail');
+                }else{
+                    throw new Exception("Tout les champs ne sont pas correctement remplis");
+                }
+            break;
+
+            case 'login':
+                
+                if (isset($_POST['pseudo']) && isset($_POST['pass'])) {           
+                    $usercontroller->login();
+                }
+                else { 
+                    throw new Exception( 'id et ou mdp manquant <p><a href="view/signUpView.php">Retour</a></p>') ;
+                }
+            break;
+
+            case 'adminaccess':
+                if ((isset($_SESSION['pseudo'])) && ($_SESSION['pseudo'] == 'admin'))
+                    {
+                        $usercontroller->adminaccess();
+                    }
+                
+            break;
+
+            case 'useraccess':
+                if ((isset($_SESSION['pseudo'])) && ($_SESSION['pseudo'] !== 'admin'))
+                    {
+                        $usercontroller->useraccess();
+                    }
+                
+            break;
+
+            case 'deconexion':
+                $usercontroller->deconexion();
+                
+            break;
+
+            case 'membreView':
+               $usercontroller->membreView();        
+                
+            break;
+            case 'upview':
+               $crudcontroller->updateworldView();        
+                
+            break;
+
+            case 'upentrepriseview':
+               $crudcontroller->updateentrepriseView();        
+                
+            break;
+
+            case 'uppolitiqueview':
+               $crudcontroller->updatepolitiqueView();        
+                
+            break;
+
+            case 'upstoryview':
+               $crudcontroller->updatestoryView();        
+                
+            break;
+
+            case 'createworldView':
+               $crudcontroller->createworldView();        
+                
+            break;
+
+            case 'createentrepriseView':
+               $crudcontroller->createentrepriseView();        
+                
+            break;
+
+            case 'createpolitiqueView':
+               $crudcontroller->createpolitiqueView();        
+                
+            break;
+
+            case 'createstoryView':
+               $crudcontroller->createstoryView();        
+                
+            break;
+
+            case 'createTheme':
+               $crudcontroller->createTheme();        
+                
+            break;
+
+            case 'profilview':     
+                    $crudcontroller->profilView();                            
+                
+            break;
+
+
+            case 'listeworld':
+               if ((isset($_GET['page'])) && ($_GET['page'] > 0))
+                    {
+                        $viewcontroller->listWorldPosts($_GET['page']);
+                    } else{
+                        $viewcontroller->listWorldPosts(1);
+                    };        
+                
+            break;
+
+            case 'listeentreprise':
+               if ((isset($_GET['page'])) && ($_GET['page'] > 0))
+                    {
+                        $viewcontroller->listeentreprise($_GET['page']);
+                    } else{
+                        $viewcontroller->listeentreprise(1);
+                    }                
+                
+            break;
+
+            case 'listepolitique':
+               if ((isset($_GET['page'])) && ($_GET['page'] > 0))
+                    {
+                        $viewcontroller->listepolitique($_GET['page']);
+                    } else{
+                        $viewcontroller->listepolitique(1);
+                    }        
+                
+            break;
+
+            case 'listestory':
+               if ((isset($_GET['page'])) && ($_GET['page'] > 0))
+                    {
+                        $viewcontroller->listestory($_GET['page']);
+                    } else{
+                        $viewcontroller->listestory(1);
+                    }        
+                
+            break;
+
+            case 'acctheme':
+                $viewcontroller->acctheme();
+                
+            break;
+
+
+            case 'sendimage':
+            //verifie que le fichier est envoyé
+                if (isset($_POST['submit']))
+                    {
+                    if ($_FILES['monfichier']['error'])
+                        {
+                            echo "<p>une erreur est survenue</p>";
+                            die;
+                        }        
+                    $fileSize = $_FILES['monfichier']['size'];
+                    $maxSize = 1023680;
+                    //Verifie la taille du fichier
+                    if ($fileSize > $maxSize)
+                        {
+                            echo "<p>Fichier trop gros</p>";
+                            die;
+                        }  
+                    //retien l'extention du fichier            
+                    $fileExt = strtolower(substr(strrchr($_FILES['monfichier']['name'], '.'),1));   
+                    $extention_accepter = array('jpg', 'jpeg', 'gif', 'png');
+                    //comparre l'extention aux tableau
+                    if (!in_array($fileExt,$extention_accepter))
+                        {
+                            echo "<p>Extension incorrecte</p>";
+                        }
+                    //Nome le fichier en fonction de l'user
+                    $nom = "public/user_image/".$_SESSION['pseudo'].".jpg";
+                    //deplace le fichier dans le dossier choisi
+                    $resultat = move_uploaded_file($_FILES['monfichier']['tmp_name'],$nom);
+                    if (!$resultat) 
+                        {
+                            echo "Transfert echoué";
+
+                        }
+                        $crudcontroller->profilView();
+                    }                  
+            break;
+
+            case 0:
+                $viewcontroller->accueil();
+                
+            break;     
+
+            default:
+                $viewcontroller->accueil();
         }
-        
-
-    }
-    else {
-        accueil();
-    }
+    
+    }else
+        {
+            $viewcontroller->accueil();
+        }
 }
 catch(Exception $e) {
     echo 'Erreur : ' . $e->getMessage();

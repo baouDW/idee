@@ -38,8 +38,11 @@
   ?>
 
   <?php
+  // compte le nombre de poste ds la base dd
   $donner = $nbrpost->fetch();
-  $nbrpage= ceil($donner['nbr']/4);         
+  // calcule le nombre de page nbr post diviser par 4
+  $nbrpage= ceil($donner['nbr']/4);  
+  //boucle pour afficher la pagination en fonction du nbr de page.       
   for ($i=1; $i<=$nbrpage; $i++){        
   ?>
     <a href="index.php?action=listeentreprise&page=<?= $i?>"><?= $i ?>/</a>         

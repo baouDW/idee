@@ -10,7 +10,7 @@ class UsersManager extends Managers
 
     public function inscription($nom, $prenom, $pseudo, $pass, $email){
         $db = $this->dbConnect();
-        $req = $db->prepare('INSERT INTO membres(nom, prenom, pseudo, pass, email, date_inscription) VALUES(:nom, :prenom, :pseudo, :pass, :email, NOW())');
+        $req = $db->prepare('INSERT INTO membres (nom, prenom, pseudo, pass, email, date_inscription, signature) VALUES (:nom, :prenom, :pseudo, :pass, :email, NOW(), "aucune")');
             $req->execute(array(
             'nom' => $nom,
             'prenom' => $prenom,
@@ -66,14 +66,6 @@ class UsersManager extends Managers
         ));    
     }
 
-    public function updateLike($nbrlikes, $id)
-    {
-        $db = $this->dbConnect();
-        $req = $db->prepare('UPDATE texte SET jaime = :nbrlikes WHERE id=  :id');
-        $req->execute(array(
-        'nbrlikes' => $nbrlikes,
-        'id' => $id
-        ));    
-    }
+    
 
 }

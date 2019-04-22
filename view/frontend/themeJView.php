@@ -34,7 +34,7 @@
       <hr>
       <div class="col-lg-12" id="div">
         <center>
-          <input type="text" id="fetch" style="border: 1px solid #a0a0a0; padding:5px;" placeholder="École de Copenhague" /><br>
+          <input type="text" id="fetch" style="border: 1px solid #a0a0a0; padding:5px;" placeholder="Ecole de Copenhague" /><br>
           <button type="submit" class="btn btn-primary ml-2 p-1"  onclick="search()"> rechercher </button>
           <hr> 
         </center>
@@ -47,7 +47,7 @@
           <hr>
           <center>
             <div class="text-center col-lg-8 " style=" max-height: 400px;  overflow:auto; " >     
-              <!-- balise ou son afficher les resultats -->
+              <!-- balise ou sont affiché les resultats -->
               <div id="res_row" >
               </div>        
             </div>
@@ -130,6 +130,7 @@
  
 function apelWiki(keyword){  
   var url="https://fr.wikipedia.org/w/api.php";
+  //requete Ajax
   $.ajax({
             type:"GET",
             url:url,
@@ -139,10 +140,10 @@ function apelWiki(keyword){
                 var result=data;
                 $("#showdata").show();
                 $("#res_row").empty();
-                for (i=1;i<result[1].length;i++){                  
+                // boucle pour afficher les données de l'api
+                for (i=1;i<result[1].length;i++){                 
                     $("#res_row").append("<div><div><a class='well 'href="+result[3][i]+"><h2>" + result[1][i]+ "</h2>" + "<p>" + result[2][i] + "</p></a></div></div>");
                 }
-                $("#res_row").append("</tr>");
               },
             error: function (error) 
                   {
@@ -154,7 +155,9 @@ function apelWiki(keyword){
  
 function search()
 {
+// Recupere la valeur entré dans l'input  
 var fetch= $("#fetch").val();
+// Lance apelWiki avec la valeur a rechercher
 apelWiki (fetch);
 }
 
