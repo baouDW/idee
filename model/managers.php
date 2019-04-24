@@ -1,13 +1,15 @@
 <?php
 namespace idee;
+
 class Managers
 {
-    protected function dbConnect()
+    public $db;
+
+    public function __construct()
     {
         try
         {
-            $db = new \PDO('mysql:host=localhost;dbname=idee;charset=utf8', 'root', '');
-            return $db;
+            $this->db = new \PDO('mysql:host=localhost;dbname=idee;charset=utf8', 'root', '');
         }
         catch(Exception $e)
         {

@@ -1,122 +1,100 @@
 <?php
-//namespace idee\controller;
+//namespace idee;
+//use idee\PostsManager;
+//require './vendor/autoload.php';
+require_once("Controller.php");
 
-require './vendor/autoload.php';
-
-class ViewController
+class ViewController extends controller
 {
+
 	public function accueil()
 	{
-		$postmanager = new idee\PostsManager();
-		$theme= $postmanager->getTheme();
+		$theme= $this->postmanager->getTheme();
 		require('./view/frontend/accueilView.php');
 	}
 
 	public function listWorldPosts($page){
-		$postmanager = new idee\PostsManager();
-		$worldposts= $postmanager->getWorldPosts($page);
-		$theme= $postmanager->getTheme();
-		$nbrpost= $postmanager->nbrPostsWorld();
+		$worldposts= $this->postmanager->getWorldPosts($page);
+		$theme= $this->postmanager->getTheme();
+		$nbrpost= $this->postmanager->nbrPostsWorld();
 		require('./view/frontend/worldPostsView.php');
 	}
 
 	public function listeentreprise($page){
-		$postmanager = new idee\PostsManager();
-		$entrepriseposts= $postmanager->getEntreprisePosts($page);
-		$nbrpost= $postmanager->nbrPostsEntreprise();
+		$entrepriseposts= $this->postmanager->getEntreprisePosts($page);
+		$nbrpost= $this->postmanager->nbrPostsEntreprise();
 		require('./view/frontend/entreprisePostsView.php');
 	}
 
 	public function listepolitique($page){
-		$postmanager = new idee\PostsManager();
-		$politiqueposts= $postmanager->getPolitiquePosts($page);
-		$nbrpost= $postmanager->nbrPostsPolitique();
+		$politiqueposts= $this->postmanager->getPolitiquePosts($page);
+		$nbrpost= $this->postmanager->nbrPostsPolitique();
 		require('./view/frontend/politiquePostsView.php');
 	}
 
 	public function listestory($page){
-		$postmanager = new idee\PostsManager();
-		$storyposts= $postmanager->getStoryPosts($page);
-		$nbrpost= $postmanager->nbrPostsStory();
+		$storyposts= $this->postmanager->getStoryPosts($page);
+		$nbrpost= $this->postmanager->nbrPostsStory();
 		require('./view/frontend/storyPostsView.php');
 	}
 
 	public function acctheme(){
-		$postmanager = new idee\PostsManager();
-		$themeposts= $postmanager->getTheme();	
+		$themeposts= $this->postmanager->getTheme();	
 		require('./view/frontend/accthemeView.php');
 	}
 
 // -------------------------single post------------------------------
 	public function worldPosts(){
-		$postmanager = new idee\PostsManager();
-		$commentmanager = new idee\CommentsManager();
-		$post= $postmanager->getWorldPost($_GET['id']);
-		$comments= $commentmanager->getWorldComments($_GET['id']);
+		$post= $this->postmanager->getWorldPost($_GET['id']);
+		$comments= $this->commentmanager->getWorldComments($_GET['id']);
 		require('./view/frontend/worldPostView.php');
 	}
 
 	public function entreprisePost(){
-		$postmanager = new idee\PostsManager();
-		$commentmanager = new idee\CommentsManager();
-		$post= $postmanager->getEntreprisePost($_GET['id']);
-		$comments= $commentmanager->getEntrepriseComments($_GET['id']);	
+		$post= $this->postmanager->getEntreprisePost($_GET['id']);
+		$comments= $this->commentmanager->getEntrepriseComments($_GET['id']);	
 		require('./view/frontend/entreprisePostView.php');
 	}
 
 	public function politiquePost(){
-		$postmanager = new idee\PostsManager();
-		$commentmanager = new idee\CommentsManager();
-		$post= $postmanager->getPolitiquePost($_GET['id']);
-		$comments= $commentmanager->getPolitiqueComments($_GET['id']);
+		$post= $this->postmanager->getPolitiquePost($_GET['id']);
+		$comments= $this->commentmanager->getPolitiqueComments($_GET['id']);
 		require('./view/frontend/politiquePostView.php');
 	}
 
-	public function storyPost(){
-		$postmanager = new idee\PostsManager();
-		$commentmanager = new idee\CommentsManager();;	
-		$post= $postmanager->getStoryPost($_GET['id']);
-		$comments= $commentmanager->getStoryComments($_GET['id']);
+	public function storyPost(){	
+		$post= $this->postmanager->getStoryPost($_GET['id']);
+		$comments= $this->commentmanager->getStoryComments($_GET['id']);
 		require('./view/frontend/storyPostView.php');
 	}
 
-	public function themeV(){
-		$postmanager = new idee\PostsManager();
-		$commentmanager = new idee\CommentsManager();	
-		$theme= $postmanager->getThemePost($_GET['id']);
-		$themeCom=$commentmanager->getCommentsTheme($_GET['id']);
+	public function themeV(){	
+		$theme= $this->postmanager->getThemePost($_GET['id']);
+		$themeCom=$this->commentmanager->getCommentsTheme($_GET['id']);
 		require('./view/frontend/themeJView.php');
 	}
 
 //------------------Show comments----------------------------
 	
 
-	public function commentsAdmin(){
-		$postmanager = new idee\PostsManager();
-		$commentmanager = new idee\CommentsManager();	
-		$post= $postmanager->getWorldPost($_GET['id']);
-		$comments= $commentmanager->getWorldComments($_GET['id']);
+	public function commentsAdmin(){	
+		$post= $this->postmanager->getWorldPost($_GET['id']);
+		$comments= $this->commentmanager->getWorldComments($_GET['id']);
 		require('./view/backend/commentView.php');
 	}
-	public function entrepriseCommentsAdmin(){
-		$postmanager = new idee\PostsManager();
-		$commentmanager = new idee\CommentsManager();	
-		$post= $postmanager->getEntreprisePost($_GET['id']);
-		$comments= $commentmanager->getEntrepriseComments($_GET['id']);
+	public function entrepriseCommentsAdmin(){	
+		$post= $this->postmanager->getEntreprisePost($_GET['id']);
+		$comments= $this->commentmanager->getEntrepriseComments($_GET['id']);
 		require('./view/backend/commentView.php');
 	}
-	public function politiqueCommentsAdmin(){
-		$postmanager = new idee\PostsManager();
-		$commentmanager = new idee\CommentsManager();	
-		$post= $postmanager->getPolitiquePost($_GET['id']);
-		$comments= $commentmanager->getPolitiqueComments($_GET['id']);
+	public function politiqueCommentsAdmin(){	
+		$post= $this->postmanager->getPolitiquePost($_GET['id']);
+		$comments= $this->commentmanager->getPolitiqueComments($_GET['id']);
 		require('./view/backend/commentView.php');
 	}
-	public function storyCommentsAdmin(){
-		$postmanager = new idee\PostsManager();
-		$commentmanager = new idee\CommentsManager();	
-		$post= $postmanager->getStoryPost($_GET['id']);
-		$comments= $commentmanager->getStoryComments($_GET['id']);
+	public function storyCommentsAdmin(){	
+		$post= $this->postmanager->getStoryPost($_GET['id']);
+		$comments= $this->commentmanager->getStoryComments($_GET['id']);
 		require('./view/backend/commentView.php');
 	}
 

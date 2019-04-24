@@ -1,11 +1,14 @@
 <?php
 session_start();
-require 'controller/UserController.php';
-require 'controller/CrudController.php';
-require 'controller/ViewController.php';
 
-//require 'vendor/autoload.php';
+//Autochargement des classes
+function chargerClasse($classe)
+{
+  require 'controller/'.$classe. '.php'; 
+}
+spl_autoload_register('chargerClasse'); 
 
+//Instanciations des classes
 $crudcontroller = new CrudController;
 $viewcontroller = new ViewController;
 $usercontroller = new UserController;

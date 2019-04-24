@@ -1,20 +1,20 @@
 <?php
-//namespace idee\controller;
+//namespace idee;
 
-require './vendor/autoload.php';
+//require './vendor/autoload.php';
+require_once("Controller.php");
 
-class UserController
+class UserController extends Controller
 {
+
 	public function membreView(){
-		$usermanager = new idee\UsersManager();
-		$user = $usermanager->getUser();
+		$user = $this->usermanager->getUser();
 		require('./view/backend/userView.php');
 	}
 
 	public function signup(){
-		$usermanager = new idee\UsersManager();
 		$pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
-		$verifPseudo= $usermanager->verifPseudo($_POST['pseudo']);
+		$verifPseudo= $this->usermanager->verifPseudo($_POST['pseudo']);
 		if ($verifPseudo)
 			{          
 	    		
@@ -22,20 +22,18 @@ class UserController
 			}
 		else
 			{
-				$inscription= $usermanager->inscription($_POST['Nom'], $_POST['Prenom'], $_POST['pseudo'], $pass_hache, $_POST['email']);
+				$inscription= $this->usermanager->inscription($_POST['Nom'], $_POST['Prenom'], $_POST['pseudo'], $pass_hache, $_POST['email']);
 				header('Location: ./index.php');
 			}	
 	}
 
 	public function login(){
-		$usermanager = new idee\UsersManager();
-		$postmanager = new idee\PostsManager();
 		$pseudoo=$_SESSION['pseudo'];
-		$wposts= $postmanager->getWordlUserPosts($pseudoo);
-		$eposts= $postmanager->getEntrepriseUserPosts($pseudoo);
-		$pposts= $postmanager->getPolitiqueUserPosts($pseudoo);
-		$sposts= $postmanager->getStoryUserPosts($pseudoo);
-		$verifuser = $usermanager->verifUser($_POST['pseudo']);	
+		$wposts= $this->postmanager->getWordlUserPosts($pseudoo);
+		$eposts= $this->postmanager->getEntrepriseUserPosts($pseudoo);
+		$pposts= $this->postmanager->getPolitiqueUserPosts($pseudoo);
+		$sposts= $this->postmanager->getStoryUserPosts($pseudoo);
+		$verifuser = $this->usermanager->verifUser($_POST['pseudo']);	
 		$isPasswordCorrect = password_verify($_POST['pass'], $verifuser['pass']);
 		
 		if ((!$verifuser) OR (!$isPasswordCorrect))
@@ -76,23 +74,21 @@ class UserController
 	}
 
 	public function adminaccess(){
-		$postmanager = new idee\PostsManager();
 		$pseudoo=$_SESSION['pseudo'];
-		$wposts= $postmanager->getAllWorldPosts();
-		$eposts= $postmanager->getAllEntreprisePosts();
-		$pposts= $postmanager->getAllPolitiquePosts();
-		$sposts= $postmanager->getAllStoryPosts();
+		$wposts= $this->postmanager->getAllWorldPosts();
+		$eposts= $this->postmanager->getAllEntreprisePosts();
+		$pposts= $this->postmanager->getAllPolitiquePosts();
+		$sposts= $this->postmanager->getAllStoryPosts();
 		require('./view/backend/crudView.php');
 		
 	}
 
 	public function useraccess(){
-		$postmanager = new idee\PostsManager();
 		$pseudoo=$_SESSION['pseudo'];
-		$wposts= $postmanager->getWordlUserPosts($pseudoo);
-		$eposts= $postmanager->getEntrepriseUserPosts($pseudoo);
-		$pposts= $postmanager->getPolitiqueUserPosts($pseudoo);
-		$sposts= $postmanager->getStoryUserPosts($pseudoo);
+		$wposts= $this->postmanager->getWordlUserPosts($pseudoo);
+		$eposts= $this->postmanager->getEntrepriseUserPosts($pseudoo);
+		$pposts= $this->postmanager->getPolitiqueUserPosts($pseudoo);
+		$sposts= $this->postmanager->getStoryUserPosts($pseudoo);
 		require('./view/backend/userbackView.php');
 	}
 
@@ -112,56 +108,47 @@ class UserController
 //Signalements--------------------------------------
 
 	public function signalMonde(){
-		$signalmanager = new idee\SignalManager();
-		$SignalementPost= $signalmanager->SignalementMonde($_GET['id']);
+		$SignalementPost= $this->signalmanager->SignalementMonde($_GET['id']);
 		header('Location: ' . $_SERVER['HTTP_REFERER'] );
 	}
 
 	public function signalWorldCo(){
-		$signalmanager = new idee\SignalManager();
-		$SignalementPost= $signalmanager->SignalementWorldCom($_GET['id']);
+		$SignalementPost= $this->signalmanager->SignalementWorldCom($_GET['id']);
 		header('Location: ' . $_SERVER['HTTP_REFERER'] );
 	}
 
 	public function signalEntreprise(){
-		$signalmanager = new idee\SignalManager();
-		$SignalementPost= $signalmanager->SignalementEntreprise($_GET['id']);
+		$SignalementPost= $this->signalmanager->SignalementEntreprise($_GET['id']);
 		header('Location: ' . $_SERVER['HTTP_REFERER'] );
 	}
 
 	public function signalEntrepriseCo(){
-		$signalmanager = new idee\SignalManager();
-		$SignalementPost= $signalmanager->SignalementEntrepriseCom($_GET['id']);
+		$SignalementPost= $this->signalmanager->SignalementEntrepriseCom($_GET['id']);
 		header('Location: ' . $_SERVER['HTTP_REFERER'] );
 	}
 
 	public function signalPolitique(){
-		$signalmanager = new idee\SignalManager();
-		$SignalementPost= $signalmanager->SignalementPolitique($_GET['id']);
+		$SignalementPost= $this->signalmanager->SignalementPolitique($_GET['id']);
 		header('Location: ' . $_SERVER['HTTP_REFERER'] );
 	}
 
 	public function signalPolitiqueCo(){
-		$signalmanager = new idee\SignalManager();
-		$SignalementPost= $signalmanager->SignalementPolitiqueCom($_GET['id']);
+		$SignalementPost= $this->signalmanager->SignalementPolitiqueCom($_GET['id']);
 		header('Location: ' . $_SERVER['HTTP_REFERER'] );
 	}
 
 	public function signalStory(){
-		$signalmanager = new idee\SignalManager();
-		$SignalementPost= $signalmanager->SignalementStory($_GET['id']);
+		$SignalementPost= $this->signalmanager->SignalementStory($_GET['id']);
 		header('Location: ' . $_SERVER['HTTP_REFERER'] );
 	}
 
 	public function signalStoryCo(){
-		$signalmanager = new idee\SignalManager();
-		$SignalementPost= $signalmanager->SignalementStoryCom($_GET['id']);
+		$SignalementPost= $this->signalmanager->SignalementStoryCom($_GET['id']);
 		header('Location: ' . $_SERVER['HTTP_REFERER'] );
 	}
 
 	public function signalthemeC(){
-		$signalmanager = new idee\SignalManager();
-		$SignalemenThemeC= $signalmanager->SignalThemeCom($_GET['id']);
+		$SignalemenThemeC= $this->signalmanager->SignalThemeCom($_GET['id']);
 		header('Location: ' . $_SERVER['HTTP_REFERER'] );
 	}
 

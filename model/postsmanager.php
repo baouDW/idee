@@ -11,32 +11,28 @@ class PostsManager extends Managers
 //Compte du nombre de posts
     public function nbrPostsWorld()
     {
-        $db = $this->dbConnect();
-        $req = $db->query('SELECT COUNT(*) as nbr FROM monde');
+        $req = $this->db->query('SELECT COUNT(*) as nbr FROM monde');
 
         return $req;
     }
 
     public function nbrPostsEntreprise()
     {
-        $db = $this->dbConnect();
-        $req = $db->query('SELECT COUNT(*) as nbr FROM entreprise');
+        $req = $this->db->query('SELECT COUNT(*) as nbr FROM entreprise');
 
         return $req;
     }
 
     public function nbrPostsPolitique()
     {
-        $db = $this->dbConnect();
-        $req = $db->query('SELECT COUNT(*) as nbr FROM politique');
+        $req = $this->db->query('SELECT COUNT(*) as nbr FROM politique');
 
         return $req;
     }
 
     public function nbrPostsStory()
     {
-        $db = $this->dbConnect();
-        $req = $db->query('SELECT COUNT(*) as nbr FROM story');
+        $req = $this->db->query('SELECT COUNT(*) as nbr FROM story');
 
         return $req;
     }
@@ -45,40 +41,35 @@ class PostsManager extends Managers
 
     public function getWorldPosts($page)
     {
-        $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM monde ORDER BY creation_date DESC LIMIT '.(($page-1)*4).', 4');
+        $req = $this->db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM monde ORDER BY creation_date DESC LIMIT '.(($page-1)*4).', 4');
 
         return $req;
     }
 
     public function getEntreprisePosts($page)
     {
-        $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM entreprise ORDER BY creation_date DESC LIMIT '.(($page-1)*4).', 4');
+        $req = $this->db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM entreprise ORDER BY creation_date DESC LIMIT '.(($page-1)*4).', 4');
 
         return $req;
     }
 
     public function getPolitiquePosts($page)
     {
-        $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM politique ORDER BY creation_date DESC LIMIT '.(($page-1)*4).', 4');
+        $req = $this->db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM politique ORDER BY creation_date DESC LIMIT '.(($page-1)*4).', 4');
 
         return $req;
     }
 
     public function getStoryPosts($page)
     {
-        $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM story ORDER BY creation_date DESC LIMIT '.(($page-1)*4).', 4');
+        $req = $this->db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM story ORDER BY creation_date DESC LIMIT '.(($page-1)*4).', 4');
 
         return $req;
     }
 
     public function getTheme()
     {
-        $db = $this->dbConnect();
-        $req = $db->query('SELECT id, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM themeJour ORDER BY creation_date DESC LIMIT 0, 3');
+        $req = $this->db->query('SELECT id, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM themeJour ORDER BY creation_date DESC LIMIT 0, 3');
 
         return $req;
     }
@@ -86,8 +77,7 @@ class PostsManager extends Managers
     //get posts for user-----------------------------------------
     public function getWordlUserPosts($pseudo)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, title, content, author, signalement, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM monde WHERE author= ? ORDER BY creation_date DESC LIMIT 0, 5');
+        $req = $this->db->prepare('SELECT id, title, content, author, signalement, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM monde WHERE author= ? ORDER BY creation_date DESC LIMIT 0, 5');
             $req->execute(array($pseudo));
 
         return $req;
@@ -96,8 +86,7 @@ class PostsManager extends Managers
 
     public function getEntrepriseUserPosts($pseudo)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, title, content, author, signalement, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM entreprise WHERE author= ? ORDER BY creation_date DESC LIMIT 0, 5');
+        $req = $this->db->prepare('SELECT id, title, content, author, signalement, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM entreprise WHERE author= ? ORDER BY creation_date DESC LIMIT 0, 5');
             $req->execute(array($pseudo));
 
         return $req;
@@ -106,8 +95,7 @@ class PostsManager extends Managers
 
     public function getPolitiqueUserPosts($pseudo)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, title, content, author, signalement, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM politique WHERE author= ? ORDER BY creation_date DESC LIMIT 0, 5');
+        $req = $this->db->prepare('SELECT id, title, content, author, signalement, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM politique WHERE author= ? ORDER BY creation_date DESC LIMIT 0, 5');
             $req->execute(array($pseudo));
 
         return $req;
@@ -116,8 +104,7 @@ class PostsManager extends Managers
 
     public function getStoryUserPosts($pseudo)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, title, content, author, signalement, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM story WHERE author= ? ORDER BY creation_date DESC LIMIT 0, 5');
+        $req = $this->db->prepare('SELECT id, title, content, author, signalement, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM story WHERE author= ? ORDER BY creation_date DESC LIMIT 0, 5');
             $req->execute(array($pseudo));
 
         return $req;
@@ -128,8 +115,7 @@ class PostsManager extends Managers
 
     public function getWorldPost($postId)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, title, author, content, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM monde WHERE id = ?');
+        $req = $this->db->prepare('SELECT id, title, author, content, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM monde WHERE id = ?');
         $req->execute(array($postId));
         $post = $req->fetch();
 
@@ -138,8 +124,7 @@ class PostsManager extends Managers
 
     public function getEntreprisePost($postId)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, title, author, content, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM entreprise WHERE id = ?');
+        $req = $this->db->prepare('SELECT id, title, author, content, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM entreprise WHERE id = ?');
         $req->execute(array($postId));
         $post = $req->fetch();
 
@@ -148,8 +133,7 @@ class PostsManager extends Managers
 
     public function getPolitiquePost($postId)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, title, author, content, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM politique WHERE id = ?');
+        $req = $this->db->prepare('SELECT id, title, author, content, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM politique WHERE id = ?');
         $req->execute(array($postId));
         $post = $req->fetch();
 
@@ -158,8 +142,7 @@ class PostsManager extends Managers
 
     public function getStoryPost($postId)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, title, author, content, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM story WHERE id = ?');
+        $req = $this->db->prepare('SELECT id, title, author, content, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM story WHERE id = ?');
         $req->execute(array($postId));
         $post = $req->fetch();
 
@@ -168,8 +151,7 @@ class PostsManager extends Managers
 
     public function getThemePost($postId)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM themejour WHERE id = ?');
+        $req = $this->db->prepare('SELECT id, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM themejour WHERE id = ?');
         $req->execute(array($postId));
         $post = $req->fetch();
 
@@ -180,32 +162,28 @@ class PostsManager extends Managers
 
     public function getAllWorldPosts()
     {
-        $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM monde ORDER BY creation_date DESC LIMIT 0, 10');
+        $req = $this->db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM monde ORDER BY creation_date DESC LIMIT 0, 10');
 
         return $req;
     }
 
     public function getAllEntreprisePosts()
     {
-        $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM entreprise ORDER BY creation_date DESC LIMIT 0, 10');
+        $req = $this->db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM entreprise ORDER BY creation_date DESC LIMIT 0, 10');
 
         return $req;
     }
 
     public function getAllPolitiquePosts()
     {
-        $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM politique ORDER BY creation_date DESC LIMIT 0, 10');
+        $req = $this->db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM politique ORDER BY creation_date DESC LIMIT 0, 10');
 
         return $req;
     }
 
     public function getAllStoryPosts()
     {
-        $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM story ORDER BY creation_date DESC LIMIT 0, 10');
+        $req = $this->db->query('SELECT id, title, content, author, signalement, jaime, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM story ORDER BY creation_date DESC LIMIT 0, 10');
 
         return $req;
     }
@@ -215,8 +193,7 @@ class PostsManager extends Managers
 
     public function insertWorldPost($title,$content,$author)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('INSERT INTO `monde` (`id`, `title`, `content`, `creation_date`, `author`, `signalement`, `jaime`, `jaimepas`) VALUES (NULL, :title, :content, CURRENT_TIMESTAMP, :author, "non", 0, 0)');
+        $req = $this->db->prepare('INSERT INTO `monde` (`id`, `title`, `content`, `creation_date`, `author`, `signalement`, `jaime`, `jaimepas`) VALUES (NULL, :title, :content, CURRENT_TIMESTAMP, :author, "non", 0, 0)');
         $req->execute(array(
         'title' => $title,
         'content' => $content,
@@ -226,8 +203,7 @@ class PostsManager extends Managers
 
     public function insertEntreprisePost($title,$content,$author)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('INSERT INTO `entreprise` (`id`, `title`, `content`, `creation_date`, `author`, `signalement`, `jaime`) VALUES (NULL, :title, :content, CURRENT_TIMESTAMP, :author, "non", 0)');
+        $req = $this->db->prepare('INSERT INTO `entreprise` (`id`, `title`, `content`, `creation_date`, `author`, `signalement`, `jaime`) VALUES (NULL, :title, :content, CURRENT_TIMESTAMP, :author, "non", 0)');
         $req->execute(array(
         'title' => $title,
         'content' => $content,
@@ -237,8 +213,7 @@ class PostsManager extends Managers
 
     public function insertPolitiquePost($title,$content,$author)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('INSERT INTO `politique` (`id`, `title`, `content`, `creation_date`, `author`, `signalement`, `jaime`) VALUES (NULL, :title, :content, CURRENT_TIMESTAMP, :author, "non", 0)');
+        $req = $this->db->prepare('INSERT INTO `politique` (`id`, `title`, `content`, `creation_date`, `author`, `signalement`, `jaime`) VALUES (NULL, :title, :content, CURRENT_TIMESTAMP, :author, "non", 0)');
         $req->execute(array(
         'title' => $title,
         'content' => $content,
@@ -248,8 +223,7 @@ class PostsManager extends Managers
 
     public function insertStoryPost($title,$content,$author)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('INSERT INTO `story` (`id`, `title`, `content`, `creation_date`, `author`, `signalement`, `jaime`) VALUES (NULL, :title, :content, CURRENT_TIMESTAMP, :author, "non", 0)');
+        $req = $this->db->prepare('INSERT INTO `story` (`id`, `title`, `content`, `creation_date`, `author`, `signalement`, `jaime`) VALUES (NULL, :title, :content, CURRENT_TIMESTAMP, :author, "non", 0)');
         $req->execute(array(
         'title' => $title,
         'content' => $content,
@@ -260,8 +234,7 @@ class PostsManager extends Managers
 
     public function insertTheme($content)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('INSERT INTO `themeJour` (`id`, `content`, `creation_date`) VALUES (NULL, :content, CURRENT_TIMESTAMP)');
+        $req = $this->db->prepare('INSERT INTO `themeJour` (`id`, `content`, `creation_date`) VALUES (NULL, :content, CURRENT_TIMESTAMP)');
         $req->execute(array(
         'content' => $content   
         ));
@@ -272,8 +245,7 @@ class PostsManager extends Managers
 
     public function UptdatePost($title, $content, $id)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('UPDATE monde SET title = :nvtitle, content = :nvcontent WHERE id= :id');
+        $req = $this->db->prepare('UPDATE monde SET title = :nvtitle, content = :nvcontent WHERE id= :id');
         $req->execute(array(
         'nvtitle' => $title,
         'nvcontent' => $content,
@@ -283,8 +255,7 @@ class PostsManager extends Managers
 
     public function UptdateEntreprisePost($title, $content, $id)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('UPDATE entreprise SET title = :nvtitle, content = :nvcontent WHERE id= :id');
+        $req = $this->db->prepare('UPDATE entreprise SET title = :nvtitle, content = :nvcontent WHERE id= :id');
         $req->execute(array(
         'nvtitle' => $title,
         'nvcontent' => $content,
@@ -294,8 +265,7 @@ class PostsManager extends Managers
 
     public function UptdatePolitiquePost($title, $content, $id)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('UPDATE politique SET title = :nvtitle, content = :nvcontent WHERE id= :id');
+        $req = $this->db->prepare('UPDATE politique SET title = :nvtitle, content = :nvcontent WHERE id= :id');
         $req->execute(array(
         'nvtitle' => $title,
         'nvcontent' => $content,
@@ -305,8 +275,7 @@ class PostsManager extends Managers
 
     public function UptdateStoryPost($title, $content, $id)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('UPDATE story SET title = :nvtitle, content = :nvcontent WHERE id= :id');
+        $req = $this->db->prepare('UPDATE story SET title = :nvtitle, content = :nvcontent WHERE id= :id');
         $req->execute(array(
         'nvtitle' => $title,
         'nvcontent' => $content,
@@ -318,8 +287,7 @@ class PostsManager extends Managers
 
     public function deleteWorldPost($id)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('DELETE FROM monde WHERE id= :id');
+        $req = $this->db->prepare('DELETE FROM monde WHERE id= :id');
         $req->execute(array(
         'id' => $id    
         ));
@@ -327,8 +295,7 @@ class PostsManager extends Managers
 
     public function deleteEntreprisePost($id)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('DELETE FROM entreprise WHERE id= :id');
+        $req = $this->db->prepare('DELETE FROM entreprise WHERE id= :id');
         $req->execute(array(
         'id' => $id    
         ));
@@ -336,8 +303,7 @@ class PostsManager extends Managers
 
     public function deletePolitiquePost($id)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('DELETE FROM politique WHERE id= :id');
+        $req = $this->db->prepare('DELETE FROM politique WHERE id= :id');
         $req->execute(array(
         'id' => $id    
         ));
@@ -345,8 +311,7 @@ class PostsManager extends Managers
 
     public function deleteStoryPost($id)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('DELETE FROM story WHERE id= :id');
+        $req = $this->db->prepare('DELETE FROM story WHERE id= :id');
         $req->execute(array(
         'id' => $id    
         ));

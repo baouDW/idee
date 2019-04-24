@@ -1,6 +1,4 @@
 <?php
-
-
 // require './model/UsersManager.php';
 // require './model/PostsManager.php';
 // require './model/SignalManager.php';
