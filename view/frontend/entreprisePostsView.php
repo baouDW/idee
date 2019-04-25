@@ -37,6 +37,7 @@
   $entrepriseposts->closeCursor();
   ?>
 
+<!----------------- Pagination --------------------->
   <?php
   // compte le nombre de poste ds la base dd
   $donner = $nbrpost->fetch();

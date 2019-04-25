@@ -1,8 +1,5 @@
 <?php
-//namespace idee;
 
-//use idee\PostsManager;
-//require './vendor/autoload.php';
 require_once("Controller.php");
 
 class CrudController extends Controller

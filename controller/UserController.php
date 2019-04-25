@@ -1,7 +1,5 @@
 <?php
-//namespace idee;
 
-//require './vendor/autoload.php';
 require_once("Controller.php");
 
 class UserController extends Controller
